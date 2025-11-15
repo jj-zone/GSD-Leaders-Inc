@@ -1,4 +1,4 @@
-
+\
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +8,8 @@
     <link rel="icon" type="image/x-icon" href="assets/img/GSD/GSD-favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/img/GSD/GSD-favicon.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/img/GSD/GSD-favicon.png">
-    <style>
+    <link rel="stylesheet" href="assets/css/style.css">
+  <!--  <style>
         * {
             margin: 0;
             padding: 0;
@@ -464,101 +465,79 @@
             line-height: 1.8;
         }
         
-        /* Two-column form layout for desktop */
-        .form-wrapper {
-            max-width: 900px;
-            margin: auto;
-            padding: 1.5rem;
-            font-family: 'Avenir', 'Nunito', sans-serif;
-            background: #f8f8f8;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        
-        .form-header {
-            text-align: center;
-            color: #87473E;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-        
-        .form-intro {
-            text-align: left;
-            color: #555;
-            font-size: 1rem;
-            line-height: 1.5;
-            margin-bottom: 1.5rem;
-        }
-        
-        #gsdForm {
+        form {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
+            margin-bottom: 40px;
         }
         
-        .form-field {
+        form > div {
             display: flex;
             flex-direction: column;
         }
         
-        .form-field.full-width {
+        form > div:nth-child(5),
+        form > div:nth-child(8),
+        form > div:last-child {
             grid-column: 1 / -1;
         }
         
-        #gsdForm label {
+        label {
             font-weight: 600;
             color: #1B365D;
             margin-bottom: 5px;
         }
         
-        #gsdForm input,
-        #gsdForm textarea {
+        input, textarea {
             width: 100%;
-            padding: 10px;
-            margin: 6px 0;
-            border: 1px solid #ccc;
-            border-radius: 6px;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
             font-size: 1em;
-            font-family: inherit;
+            transition: border-color 0.3s;
         }
         
-        #gsdForm input:focus,
-        #gsdForm textarea:focus {
+        input:focus, textarea:focus {
             outline: none;
             border-color: #6c6c6c;
         }
         
-        #gsdForm textarea {
+        textarea {
+            min-height: 120px;
             resize: vertical;
-            min-height: 100px;
         }
         
-        #gsdForm button {
-            background: #1a4d8f;
-            color: #fff;
-            padding: 12px 24px;
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .checkbox-item input {
+            width: auto;
+        }
+        
+        button {
+            background: #87473E;
+            color: white;
+            padding: 15px 40px;
             border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 1rem;
+            border-radius: 5px;
+            font-size: 1.1em;
             font-weight: 600;
+            cursor: pointer;
             transition: background 0.3s;
         }
         
-        #gsdForm button:hover {
-            background: #2a5d9f;
-        }
-        
-        .required-mark {
-            color: #87473E;
-        }
-        
-        #thankyou {
-            display: none;
-            text-align: center;
-            color: #1a4d8f;
-            font-weight: 600;
-            margin-top: 1rem;
+        button:hover {
+            background: #a8594f;
         }
         
         footer {
@@ -613,11 +592,6 @@
         html {
             scroll-behavior: smooth;
             scroll-padding-top: 160px;
-        }
-        
-        /* Mobile service blocks - hidden on desktop */
-        .service-blocks-mobile {
-            display: none;
         }
         
         @media (max-width: 1024px) {
@@ -700,66 +674,39 @@
             }
             
             .services-top {
-                display: block;
+                flex-direction: column;
                 margin-bottom: 40px;
-                min-height: auto;
             }
             
             .donut-container {
                 width: 280px;
                 height: 280px;
-                margin: 0 auto 40px;
-                position: relative;
+                margin-bottom: 40px;
             }
             
             .connector-line {
                 display: none;
             }
             
-            /* Hide desktop service blocks on mobile */
-            .service-block-left,
-            .service-block-right,
-            .service-block-bottom {
-                display: none !important;
+            .service-block {
+                position: static;
+                transform: none;
+                margin: 0 auto 30px;
+                max-width: 100%;
+                opacity: 1;
             }
             
-            /* Show mobile service blocks */
-            .service-blocks-mobile {
-                display: block;
-                width: 100%;
+            .service-block h3 {
+                white-space: normal;
             }
             
-            .service-block-mobile {
-                width: 100%;
-                padding: 0 20px;
-                margin-bottom: 30px;
-                text-align: center;
+            .donut-container.animate .service-block-left,
+            .donut-container.animate .service-block-right {
+                animation: none;
             }
             
-            .service-block-mobile h3 {
-                font-size: 1.4em;
-                margin-bottom: 12px;
-                font-weight: 700;
-            }
-            
-            .service-block-mobile p {
-                line-height: 1.5;
-                font-size: 0.95em;
-            }
-            
-            .service-block-mobile.blue h3,
-            .service-block-mobile.blue p {
-                color: #1B365D;
-            }
-            
-            .service-block-mobile.burgundy h3,
-            .service-block-mobile.burgundy p {
-                color: #87473E;
-            }
-            
-            .service-block-mobile.tan h3,
-            .service-block-mobile.tan p {
-                color: #8C7A5A;
+            .services-infographic.animate .service-block-bottom {
+                animation: none;
             }
             
             .team-grid {
@@ -770,12 +717,13 @@
                 max-width: 100%;
             }
             
-            /* Form mobile layout - single column */
-            #gsdForm {
+            form {
                 grid-template-columns: 1fr;
             }
             
-            .form-field.full-width {
+            form > div:nth-child(5),
+            form > div:nth-child(8),
+            form > div:last-child {
                 grid-column: 1;
             }
             
@@ -791,7 +739,7 @@
                 margin-bottom: 10px;
             }
         }
-    </style>
+    </style> -->
 </head>
 <body>
     <header>
@@ -816,7 +764,7 @@
             <div class="intro-content">
                 <h2 class="intro-catchphrase">GSD Leaders: <br>Where Strategic Planning Meets Decisive Action</h2>
                 <p style="padding-bottom: 24px" class="intro-text">Real change happens when strategic planning combines with decisive action.</p> 
-                <p class="intro-text">From immediate challenges to long&#8209;term transformation, we work with you to build measurable results. Grounded in research and experience, our approach strengthens your team's capacity and builds adaptive systems that&nbsp;last.</p>
+                <p class="intro-text">From immediate challenges to long&#8209;term transformation, we work with you to build measurable results. Grounded in research and experience, our approach strengthens your team's capacity and builds adaptive systems that last.</p>
             </div>
         </div>
     </section>
@@ -878,10 +826,10 @@
                         <image class="donut-icon animate-3" href="assets/img/GSD/Project-Management.png" x="36" y="58" width="28" height="28"/>
                     </svg>
                     
-                    <!-- Desktop Text Blocks -->
+                    <!-- Text Blocks -->
                     <div class="service-block service-block-left">
                         <h3>Leadership Coaching <br>& Team Development</h3>
-                        <p>Leadership isn&rsquo;t theory — it&rsquo;s practice. We build trust, communicate effectively, and move from discussion to action. Whether you&rsquo;re building a new team, navigating change, or strengthening organizational culture, our approach focuses on real progress and lasting&nbsp;growth.</p>
+                        <p>Leadership isn&rsquo;t theory — it&rsquo;s practice. We build trust, communicate effectively, and move from discussion to action. Whether you&rsquo;re building a new team, navigating change, or strengthening organizational culture, our approach focuses on real progress and lasting growth.</p>
                     </div>
                     
                     <div class="service-block service-block-right">
@@ -891,24 +839,6 @@
                 </div>
                 
                 <div class="service-block service-block-bottom">
-                        <h3>Project Management</h3>
-                        <p>Plans only matter if they get implemented. We ensure that key initiatives move forward — on time, on budget, and with accountability. We bring structure, communication, and focus to complex projects so leaders can see real progress and measurable results.</p>
-                    </div>
-                </div>
-                
-                <!-- Mobile Text Blocks -->
-                <div class="service-blocks-mobile">
-                    <div class="service-block-mobile blue">
-                        <h3>Leadership Coaching & Team Development</h3>
-                        <p>Leadership isn&rsquo;t theory — it&rsquo;s practice. We build trust, communicate effectively, and move from discussion to action. Whether you&rsquo;re building a new team, navigating change, or strengthening organizational culture, our approach focuses on real progress and lasting growth.</p>
-                    </div>
-                    
-                    <div class="service-block-mobile burgundy">
-                        <h3>Strategic Analysis & Planning</h3>
-                        <p>We help make sense of complexity and set clear direction, combining data-driven insight with grounded, collaborative design. The result: actionable plans that align resources, stakeholders, and outcomes — not just documents that sit on a shelf.</p>
-                    </div>
-                    
-                    <div class="service-block-mobile tan">
                         <h3>Project Management</h3>
                         <p>Plans only matter if they get implemented. We ensure that key initiatives move forward — on time, on budget, and with accountability. We bring structure, communication, and focus to complex projects so leaders can see real progress and measurable results.</p>
                     </div>
@@ -953,70 +883,41 @@
         <div class="container">
             <h2>Contact Us</h2>
             <div class="contact-content">
-                <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap" rel="stylesheet">
-
-                <div class="form-wrapper">
-                  <h2 class="form-header">Let's Get Things Done—Together</h2>
-                  <p class="form-intro">
-                    Tell us a bit about you and your goals so we can start shaping real solutions—today&nbsp;and for the&nbsp;future.
-                  </p>
-                
-                  <form id="gsdForm">
-                    <div class="form-field">
-                      <label>Full Name: <span class="required-mark">*</span></label>
-                      <input type="text" name="fullname" required>
-                    </div>
-                    
-                    <div class="form-field">
-                      <label>Email Address: <span class="required-mark">*</span></label>
-                      <input type="email" name="email" required>
-                    </div>
-                    
-                    <div class="form-field">
-                      <label>Organization / Community / Business Name:</label>
-                      <input type="text" name="organization">
-                    </div>
-                    
-                    <div class="form-field">
-                      <label>Phone Number (optional):</label>
-                      <input type="tel" name="phone">
-                    </div>
-                    
-                    <div class="form-field full-width">
-                      <label>Anything else you want us to know about before we call you back? (optional)</label>
-                      <textarea name="lastingchange" rows="3"></textarea>
-                    </div>
-                    
-                    <div class="form-field full-width">
-                      <button type="submit">Submit</button>
-                    </div>
-                  </form>
-                
-                  <p id="thankyou">
-                    Thank you! Your message has been sent.
-                  </p>
+                <div class="contact-intro">
+                    <h3>Let's Get Things Done—Together</h3>
+                    <p>Tell us a bit about you and your goals so we can start shaping real solutions—today and for the future.</p>
                 </div>
                 
-                <script>
-                const scriptURL = "https://script.google.com/macros/s/AKfycbx58mUcBqxjNA27I27CgLn12UrDho1DV3tDiYyYuV1DmECJRx7oRPQ5c36FyuZK9Ac/exec";
-                const form = document.getElementById("gsdForm");
-                const thankyou = document.getElementById("thankyou");
+                <form>
+                    <div>
+                        <label>Full Name: *</label>
+                        <input type="text" required>
+                    </div>
+                    
+                    <div>
+                        <label>Organization / Community / Business Name:</label>
+                        <input type="text">
+                    </div>
+                    
+                    <div>
+                        <label>Email Address: *</label>
+                        <input type="email" required>
+                    </div>
+                    
+                    <div>
+                        <label>Phone Number (optional):</label>
+                        <input type="tel">
+                    </div>
+    
+                    <div>
+                        <label>Anything else you want us to know about before we call you back? (optional)</label>
+                        <textarea></textarea>
+                    </div>
                 
-                form.addEventListener("submit", function(e){
-                  e.preventDefault();
-                
-                  const formData = new FormData(form);
-                  fetch(scriptURL, {
-                    method: 'POST',
-                    body: new URLSearchParams(formData)
-                  })
-                  .then(response => {
-                    form.reset();
-                    thankyou.style.display = 'block';
-                  })
-                  .catch(error => alert('Error! Please try again.'));
-                });
-                </script>
+                    <div>
+                        <button type="submit">Submit</button>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
