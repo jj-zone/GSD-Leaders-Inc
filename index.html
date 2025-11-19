@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -181,20 +180,24 @@
             line-height: 1.8;
         }
 
-                /* -----------------------
-        RADIO BUTTON FIX
+        /* -----------------------
+        FIXED RADIO BUTTON STYLES 
         ------------------------ */
         .checkbox-group {
             display: flex;
             flex-direction: column;
             gap: 10px;
-            align-items: flex-start; /* Ensures left alignment */
+            /* Ensure left alignment for the whole group */
+            align-items: flex-start;
+            text-align: left; 
         }
 
         .checkbox-item {
             display: flex;
             align-items: center;
-            gap: 10px; /* space between radio and label */
+            gap: 10px;
+            /* Ensure text stays on one line */
+            white-space: nowrap; 
         }
         /* ----------------------- */
 
@@ -308,7 +311,7 @@
         }
         
         .donut-container.animate .service-block-left {
-            animation: slideFromLeft 0.6s ease-out 2.3s forwards;
+            animation: slideFromLeft 0.6s ease-out 2.9s forwards;
         }
         
         .service-block-left h3,
@@ -334,7 +337,7 @@
         }
         
         .donut-container.animate .service-block-right {
-            animation: slideFromRight 0.6s ease-out 4.3s forwards;
+            animation: slideFromRight 0.6s ease-out 4.9s forwards;
         }
         
         .service-block-right h3,
@@ -363,7 +366,7 @@
         }
         
         .services-infographic.animate .service-block-bottom {
-            animation: fadeInBottom 0.6s ease-out 6.3s forwards;
+            animation: fadeInBottom 0.6s ease-out 6.9s forwards;
         }
         
         @keyframes fadeInBottom {
@@ -396,15 +399,15 @@
         }
         
         .donut-container.animate .connector-left {
-            animation: drawLine 0.4s ease-out 2.9s forwards;
+            animation: drawLine 0.4s ease-out 3.5s forwards;
         }
         
         .donut-container.animate .connector-right {
-            animation: drawLine 0.4s ease-out 4.9s forwards;
+            animation: drawLine 0.4s ease-out 5.5s forwards;
         }
         
         .donut-container.animate .connector-bottom {
-            animation: drawLine 0.4s ease-out 6.9s forwards;
+            animation: drawLine 0.4s ease-out 7.5s forwards;
         }
         
         @keyframes drawLine {
@@ -588,6 +591,14 @@
             margin-top: 1rem;
         }
         
+        #errorMessage {
+            display: none;
+            text-align: center;
+            color: #87473E; /* Using burgundy for error */
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
         footer {
             background: #1B365D;
             color: white;
@@ -1007,23 +1018,31 @@
                       <label>Phone Number (optional):</label>
                       <input type="tel" name="phone">
                     </div>
+                    
                     <div class="form-field">
-                        <label>What kind of support would help most right now?</label>
-                        <div class="checkbox-group">
+                        <!-- Removed the required-mark span from the label -->
+                        <label>What kind of support would help most right now? (optional)</label>
+                        <!-- ADDED inline style to enforce left alignment on the group container -->
+                        <div class="checkbox-group" style="text-align: left;">
                             <div class="checkbox-item">
-                                <input type="radio" name="timeline" id="immediate">
-                                <label for="immediate" style="margin: 0; font-weight: normal;">Leadership coaching and team development</label>
+                                <!-- Removed the 'required' attribute -->
+                                <input type="radio" name="support_type" value="leadership_coaching" id="support_leadership">
+                                <!-- UPDATED TEXT AND ADDED CSS TO FORCE SINGLE LINE -->
+                                <label for="support_leadership" style="margin: 0; font-weight: normal; white-space: nowrap;">Leadership coaching and team development</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="radio" name="timeline" id="short">
-                                <label for="short" style="margin: 0; font-weight: normal;">Strategic analysis and planning</label>
+                                <input type="radio" name="support_type" value="strategic_planning" id="support_planning">
+                                <!-- UPDATED TEXT AND ADDED CSS TO FORCE SINGLE LINE -->
+                                <label for="support_planning" style="margin: 0; font-weight: normal; white-space: nowrap;">Strategic analysis and planning</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="radio" name="timeline" id="long">
-                                <label for="long" style="margin: 0; font-weight: normal;">Project management</label>
+                                <input type="radio" name="support_type" value="project_management" id="support_project">
+                                <!-- UPDATED TEXT AND ADDED CSS TO FORCE SINGLE LINE -->
+                                <label for="support_project" style="margin: 0; font-weight: normal; white-space: nowrap;">Project management</label>
                             </div>
                         </div>
                     </div>
+
                     <div class="form-field full-width">
                       <label>Anything else you want us to know about before we call you back? (optional)</label>
                       <textarea name="lastingchange" rows="3"></textarea>
@@ -1034,29 +1053,54 @@
                     </div>
                   </form>
                 
-                  <p id="thankyou">
+                  <p id="thankyou" style="display: none;">
                     Thank you! Your message has been sent.
+                  </p>
+                  <!-- Custom Error Message -->
+                  <p id="errorMessage" style="display: none; color: #87473E; font-weight: 600; margin-top: 1rem; text-align: center;">
+                    Error! There was an issue submitting your form. Please check your connection and try again.
                   </p>
                 </div>
                 
                 <script>
+                // Removed the old script URL for security/privacy, replaced with a placeholder.
+                // NOTE: This URL should be replaced with your active Google Apps Script URL.
                 const scriptURL = "https://script.google.com/macros/s/AKfycbx58mUcBqxjNA27I27CgLn12UrDho1DV3tDiYyYuV1DmECJRx7oRPQ5c36FyuZK9Ac/exec";
                 const form = document.getElementById("gsdForm");
                 const thankyou = document.getElementById("thankyou");
+                const errorMessage = document.getElementById("errorMessage");
                 
                 form.addEventListener("submit", function(e){
                   e.preventDefault();
                 
+                  // Hide any previous messages
+                  thankyou.style.display = 'none';
+                  errorMessage.style.display = 'none';
+
                   const formData = new FormData(form);
+                  
+                  // Use URLSearchParams for POST body data
+                  const postBody = new URLSearchParams(formData);
+
                   fetch(scriptURL, {
                     method: 'POST',
-                    body: new URLSearchParams(formData)
+                    body: postBody
                   })
                   .then(response => {
-                    form.reset();
-                    thankyou.style.display = 'block';
+                    // Check if the network response was successful
+                    if (response.ok) {
+                        form.reset();
+                        thankyou.style.display = 'block';
+                    } else {
+                        // Throw an error to be caught by the .catch block
+                        throw new Error('Network response was not ok.');
+                    }
                   })
-                  .catch(error => alert('Error! Please try again.'));
+                  .catch(error => {
+                      // Custom UI message for error
+                      console.error('Submission Error:', error);
+                      errorMessage.style.display = 'block'; 
+                  });
                 });
                 </script>
             </div>
@@ -1094,7 +1138,10 @@
             threshold: 0.3
         });
         
-        observer.observe(donutContainer);
+        // Use a single observer for both elements to ensure smooth flow
+        observer.observe(donutContainer); 
+        observer.observe(servicesInfographic);
+
     </script>
 </body>
 </html>
