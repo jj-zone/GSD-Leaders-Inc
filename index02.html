@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -156,7 +155,7 @@
         
         h2 {
             font-size: 2.5em;
-            margin-bottom: 30px;
+            margin-bottom: 0px;
             color: #1B365D;
             text-align: left;
         }
@@ -180,7 +179,26 @@
             margin-bottom: 15px;
             line-height: 1.8;
         }
+
+                /* -----------------------
+        RADIO BUTTON STYLES (Retained from original)
+        ------------------------ */
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: flex-start; /* Ensures left alignment */
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 10px; /* space between radio and label */
+        }
+        /* ----------------------- */
+
         
+        /* Services Section Styles */
         .services-infographic {
             display: flex;
             flex-direction: column;
@@ -220,15 +238,15 @@
         }
         
         .donut-container.animate .donut-section-1 {
-            animation: sectionFadeIn 1.5s ease-out 0s forwards;
+            animation: sectionFadeIn 2s ease-out 0.3s forwards;
         }
         
         .donut-container.animate .donut-section-2 {
-            animation: sectionFadeIn 1.5s ease-out 2s forwards;
+            animation: sectionFadeIn 2s ease-out 2.3s forwards;
         }
         
         .donut-container.animate .donut-section-3 {
-            animation: sectionFadeIn 1.5s ease-out 4s forwards;
+            animation: sectionFadeIn 2s ease-out 4.3s forwards;
         }
         
         @keyframes sectionFadeIn {
@@ -249,15 +267,15 @@
         }
         
         .donut-container.animate .donut-icon.animate-1 {
-            animation: iconFadeIn 1.5s ease-out 0s forwards;
+            animation: iconFadeIn 2s ease-out 0.3s forwards;
         }
         
         .donut-container.animate .donut-icon.animate-2 {
-            animation: iconFadeIn 1.5s ease-out 2s forwards;
+            animation: iconFadeIn 2s ease-out 2.3s forwards;
         }
         
         .donut-container.animate .donut-icon.animate-3 {
-            animation: iconFadeIn 1.5s ease-out 4s forwards;
+            animation: iconFadeIn 2s ease-out 4.3s forwards;
         }
         
         @keyframes iconFadeIn {
@@ -289,7 +307,7 @@
         }
         
         .donut-container.animate .service-block-left {
-            animation: slideFromLeft 0.8s ease-out 0s forwards;
+            animation: slideFromLeft 0.6s ease-out 2.3s forwards;
         }
         
         .service-block-left h3,
@@ -315,7 +333,7 @@
         }
         
         .donut-container.animate .service-block-right {
-            animation: slideFromRight 0.8s ease-out 2s forwards;
+            animation: slideFromRight 0.6s ease-out 4.3s forwards;
         }
         
         .service-block-right h3,
@@ -336,17 +354,15 @@
         
         .service-block-bottom {
             text-align: center;
-            max-width: 280px;
-            width: 280px;
+            max-width: 100%;
+            width: 100%;
             padding: 0 20px;
             opacity: 0;
             margin-top: 485px;
-            margin-left: auto;
-            margin-right: auto;
         }
         
         .services-infographic.animate .service-block-bottom {
-            animation: fadeInBottom 0.8s ease-out 4s forwards;
+            animation: fadeInBottom 0.6s ease-out 6.3s forwards;
         }
         
         @keyframes fadeInBottom {
@@ -363,8 +379,15 @@
         .service-block-bottom h3,
         .service-block-bottom p {
             color: #6c5e44;
+
+            
         }
-        
+        .service-block h3 {
+    font-size: 1.4em;
+    margin-bottom: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+}
         .connector-line {
             position: absolute;
             stroke-dasharray: 200;
@@ -372,15 +395,15 @@
         }
         
         .donut-container.animate .connector-left {
-            animation: drawLine 0.5s ease-out 0.8s forwards;
+            animation: drawLine 0.4s ease-out 2.9s forwards;
         }
         
         .donut-container.animate .connector-right {
-            animation: drawLine 0.5s ease-out 2.8s forwards;
+            animation: drawLine 0.4s ease-out 4.9s forwards;
         }
         
         .donut-container.animate .connector-bottom {
-            animation: drawLine 0.5s ease-out 4.8s forwards;
+            animation: drawLine 0.4s ease-out 6.9s forwards;
         }
         
         @keyframes drawLine {
@@ -453,7 +476,7 @@
         
         .contact-intro {
             margin-bottom: 30px;
-            max-width: 50%;
+            max-width: 100%;
         }
         
         .contact-intro h3 {
@@ -467,6 +490,7 @@
             line-height: 1.8;
         }
         
+        /* Two-column form layout for desktop */
         .form-wrapper {
             max-width: 900px;
             margin: auto;
@@ -505,28 +529,6 @@
         
         .form-field.full-width {
             grid-column: 1 / -1;
-        }
-        
-        .checkbox-group {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        
-        .checkbox-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .checkbox-item input[type="checkbox"] {
-            width: auto;
-            margin: 0;
-        }
-        
-        .checkbox-item label {
-            margin: 0;
-            font-weight: 400;
         }
         
         #gsdForm label {
@@ -570,7 +572,7 @@
         }
         
         #gsdForm button:hover {
-            background: #a05a4f;
+            background: hsl(7, 66%, 59%);
         }
         
         .required-mark {
@@ -585,6 +587,14 @@
             margin-top: 1rem;
         }
         
+        #errorMessage {
+            display: none;
+            text-align: center;
+            color: #87473E; /* Using burgundy for error */
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
         footer {
             background: #1B365D;
             color: white;
@@ -639,6 +649,7 @@
             scroll-padding-top: 160px;
         }
         
+        /* Mobile service blocks - hidden on desktop */
         .service-blocks-mobile {
             display: none;
         }
@@ -711,8 +722,10 @@
             
             h2 {
                 font-size: 2em;
+                margin-bottom: 30px;
             }
             
+            /* Services Section Mobile */
             #services {
                 padding: 60px 0;
             }
@@ -738,12 +751,14 @@
                 display: none;
             }
             
+            /* Hide desktop service blocks on mobile */
             .service-block-left,
             .service-block-right,
             .service-block-bottom {
                 display: none !important;
             }
             
+            /* Show mobile service blocks */
             .service-blocks-mobile {
                 display: block;
                 width: 100%;
@@ -779,7 +794,7 @@
             
             .service-block-mobile.tan h3,
             .service-block-mobile.tan p {
-                color: #6c5e44;
+                color: #453820
             }
             
             .team-grid {
@@ -790,6 +805,7 @@
                 max-width: 100%;
             }
             
+            /* Form mobile layout - single column */
             #gsdForm {
                 grid-template-columns: 1fr;
             }
@@ -847,13 +863,13 @@
                 <div class="about-text">
                     
                     <h3>What We Do</h3>
-                    <p>We work with school, government, and community leaders and their team members. We develop both short- and long-term plans, and develop the internal capacity needed for lasting&nbsp;change.</p>
+                    <p>We work with school, government, and community leaders and their team members. We develop both short- and long-term plans, and develop the internal capacity needed for lasting change.</p>
                     
                     <h3>How We Do It</h3>
-                    <p>We use comprehensive assessments, and work collaboratively to develop an individualized approach grounded in research and&nbsp;practice.</p>
+                    <p>We use comprehensive assessments, and work collaboratively to develop an individualized approach grounded in research and practice.</p>
                     
                     <h3>Why We Do It</h3>
-                    <p>At GSD Leaders, we are passionate believers in the power of transformational change. We approach our work with joy, understanding, and gratitude for the important work of public&nbsp;service.</p>
+                    <p>At GSD Leaders, we are passionate believers in the power of transformational change. We approach our work with joy, understanding, and gratitude for the important work of public service.</p>
                 </div>
             </div>
         </div>
@@ -865,23 +881,35 @@
             <div class="services-infographic" id="servicesInfographic">
                 <div class="services-top">
                     <div class="donut-container" id="donutContainer">
+                    <!-- Connector Lines -->
                     <svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible;">
                         <line class="connector-line connector-left" x1="-50" y1="175" x2="70" y2="175" stroke="#1B365D" stroke-width="2"/>
                         <line class="connector-line connector-right" x1="400" y1="175" x2="280" y2="175" stroke="#87473E" stroke-width="2"/>
                         <line class="connector-line connector-bottom" x1="175" y1="365" x2="175" y2="300" stroke="#8C7A5A" stroke-width="2"/>
                     </svg>
                     
+                    <!-- Donut SVG -->
                     <svg class="donut-svg" viewBox="0 0 100 100">
+                        <!-- Blue section (LEFT) -->
                         <path class="donut-section donut-section-1" d="M 50 10 A 40 40 0 0 0 15.36 70 L 50 50 Z" fill="#1B365D"/>
+                        <!-- Burgundy section (RIGHT) -->
                         <path class="donut-section donut-section-2" d="M 50 10 A 40 40 0 0 1 84.64 70 L 50 50 Z" fill="#87473E"/>
+                        <!-- Tan section (BOTTOM) -->
                         <path class="donut-section donut-section-3" d="M 15.36 70 A 40 40 0 0 0 84.64 70 L 50 50 Z" fill="#8C7A5A"/>
+                        <!-- White center circle -->
                         <circle cx="50" cy="50" r="0" fill="white"/>
                         
+                        <!-- Leadership Coaching Icon (Blue section - LEFT) -->
                         <image class="donut-icon animate-1" href="assets/img/GSD/Leadership-Coaching-Team-Dev.png" x="20" y="24" width="28" height="28"/>
+                        
+                        <!-- Strategic Planning Icon (Burgundy section - RIGHT) -->
                         <image class="donut-icon animate-2" href="assets/img/GSD/Strategic-Analysis-Planning.png" x="52" y="24" width="28" height="28"/>
+                        
+                        <!-- Project Management Icon (Tan section - BOTTOM) -->
                         <image class="donut-icon animate-3" href="assets/img/GSD/Project-Management.png" x="36" y="58" width="28" height="28"/>
                     </svg>
                     
+                    <!-- Desktop Text Blocks -->
                     <div class="service-block service-block-left">
                         <h3>Leadership Coaching <br>& Team Development</h3>
                         <p>Leadership isn&rsquo;t theory — it&rsquo;s practice. We build trust, communicate effectively, and move from discussion to action. Whether you&rsquo;re building a new team, navigating change, or strengthening organizational culture, our approach focuses on real progress and lasting&nbsp;growth.</p>
@@ -889,16 +917,17 @@
                     
                     <div class="service-block service-block-right">
                         <h3>Strategic Analysis & Planning</h3>
-                        <p>We help make sense of complexity and set clear direction, combining data-driven insight with grounded, collaborative design. The result: actionable plans that align resources, stakeholders, and outcomes — not just documents that sit on a&nbsp;shelf.</p>
+                        <p>We help make sense of complexity and set clear direction, combining data-driven insight with grounded, collaborative design. The result: actionable plans that align resources, stakeholders, and outcomes — not just documents that sit on a shelf.</p>
                     </div>
                 </div>
                 
                 <div class="service-block service-block-bottom">
                         <h3>Project Management</h3>
-                        <p>Plans only matter if they get implemented. We ensure that key initiatives move forward — on time, on budget, and with accountability. We bring structure, communication, and focus to complex projects so leaders can see real progress and measurable&nbsp;results.</p>
+                        <p>Plans only matter if they get implemented. We ensure that key initiatives move forward — on time, on budget, and with accountability. We bring structure, communication, and focus to complex projects so leaders can see real progress and measurable results.</p>
                     </div>
                 </div>
                 
+                <!-- Mobile Text Blocks -->
                 <div class="service-blocks-mobile">
                     <div class="service-block-mobile blue">
                         <h3>Leadership Coaching & Team Development</h3>
@@ -907,12 +936,12 @@
                     
                     <div class="service-block-mobile burgundy">
                         <h3>Strategic Analysis & Planning</h3>
-                        <p>We help make sense of complexity and set clear direction, combining data-driven insight with grounded, collaborative design. The result: actionable plans that align resources, stakeholders, and outcomes — not just documents that sit on a&nbsp;shelf.</p>
+                        <p>We help make sense of complexity and set clear direction, combining data-driven insight with grounded, collaborative design. The result: actionable plans that align resources, stakeholders, and outcomes — not just documents that sit on a shelf.</p>
                     </div>
                     
                     <div class="service-block-mobile tan">
                         <h3>Project Management</h3>
-                        <p>Plans only matter if they get implemented. We ensure that key initiatives move forward — on time, on budget, and with accountability. We bring structure, communication, and focus to complex projects so leaders can see real progress and measurable&nbsp;results.</p>
+                        <p>Plans only matter if they get implemented. We ensure that key initiatives move forward — on time, on budget, and with accountability. We bring structure, communication, and focus to complex projects so leaders can see real progress and measurable results.</p>
                     </div>
                 </div>
             </div>
@@ -930,6 +959,18 @@
                     <div>
                         <h3>Peter I Parenti, Ed.D</h3>
                         <p class="title">Founder and CEO</p>
+                        <p class="email"><a style="text-decoration:none" href="mailto:peter@gsdleaders.com">peter@gsdleaders.com</a></p><br>
+                        <p class="email">A graduate from UC Berkeley's Leadership Program, Peter combines his vast experience in public and private service with extensive knowledge in organizational development. <br>For more, visit <a href="https://www.linkedin.com/in/peter-i-parenti-ed-d-5a00b26/">Peter's LinkedIn profile.</a></p>
+                        
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="assets/img/GSD/Pamela-VandeKamp.png" alt="Pam VandeKamp, Ed.D.">
+                    </div>
+                    <div>
+                        <h3>Pam VandeKamp, Ed.D.</h3>
+                        <p class="title">Director</p>
                         <p class="email"><a style="text-decoration:none" href="mailto:pam@gsdleaders.com">pam@gsdleaders.com</a></p><br>
                         <p class="email">A graduate from UC Berkeley's Leadership Program, Pam combines her vast experience in public and private service with extensive knowledge in organizational development. <br>For more, visit <a href="https://www.linkedin.com/in/pamvandekamp/">Pam's LinkedIn profile.</a></p>
                        
@@ -941,12 +982,14 @@
 
     <section id="contact">
         <div class="container">
-            <h2>Contact Us</h2>
+            <h2 style="padding-bottom: 30px">Contact Us</h2>
             <div class="contact-content">
                 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap" rel="stylesheet">
 
                 <div class="form-wrapper">
-                  <h2 class="form-header">Let's Get Things Done—Together</h2>
+                    <div class="contact-intro">
+                        <h3>Let's Get Things Done—Together</h3>
+                        </div>
                   <p class="form-intro">
                     Tell us a bit about you and your goals so we can start shaping real solutions—today&nbsp;and for the&nbsp;future.
                   </p>
@@ -972,24 +1015,29 @@
                       <input type="tel" name="phone">
                     </div>
                     
-                    <div class="form-field full-width">
-                      <label>What kind of support would help most right now?</label>
-                      <div class="checkbox-group">
-                        <div class="checkbox-item">
-                          <input type="checkbox" name="support_coaching" id="support_coaching" value="Leadership coaching and team development">
-                          <label for="support_coaching">Leadership coaching and team development</label>
+                    <!-- FIXED RADIO BUTTONS START HERE -->
+                    <div class="form-field">
+                        <label>What kind of support would help most right now? <span class="required-mark">*</span></label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <!-- FIX 1: Added unique ID and meaningful VALUE attribute -->
+                                <input type="radio" name="support_type" value="leadership_coaching" id="support_leadership" required>
+                                <label for="support_leadership" style="margin: 0; font-weight: normal;">Leadership coaching and team development</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <!-- FIX 2: Added unique ID and meaningful VALUE attribute -->
+                                <input type="radio" name="support_type" value="strategic_planning" id="support_planning">
+                                <label for="support_planning" style="margin: 0; font-weight: normal;">Strategic analysis and planning</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <!-- FIX 3: Added unique ID and meaningful VALUE attribute -->
+                                <input type="radio" name="support_type" value="project_management" id="support_project">
+                                <label for="support_project" style="margin: 0; font-weight: normal;">Project management</label>
+                            </div>
                         </div>
-                        <div class="checkbox-item">
-                          <input type="checkbox" name="support_planning" id="support_planning" value="Strategic analysis and planning">
-                          <label for="support_planning">Strategic analysis and planning</label>
-                        </div>
-                        <div class="checkbox-item">
-                          <input type="checkbox" name="support_management" id="support_management" value="Project management">
-                          <label for="support_management">Project management</label>
-                        </div>
-                      </div>
                     </div>
-                    
+                    <!-- FIXED RADIO BUTTONS END HERE -->
+
                     <div class="form-field full-width">
                       <label>Anything else you want us to know about before we call you back? (optional)</label>
                       <textarea name="lastingchange" rows="3"></textarea>
@@ -1000,8 +1048,12 @@
                     </div>
                   </form>
                 
-                  <p id="thankyou">
+                  <p id="thankyou" style="display: none;">
                     Thank you! Your message has been sent.
+                  </p>
+                  <!-- ADDED CUSTOM ERROR MESSAGE (to replace alert()) -->
+                  <p id="errorMessage" style="display: none; color: #87473E; font-weight: 600; margin-top: 1rem; text-align: center;">
+                    Error! There was an issue submitting your form. Please check your connection and try again.
                   </p>
                 </div>
                 
@@ -1009,20 +1061,35 @@
                 const scriptURL = "https://script.google.com/macros/s/AKfycbx58mUcBqxjNA27I27CgLn12UrDho1DV3tDiYyYuV1DmECJRx7oRPQ5c36FyuZK9Ac/exec";
                 const form = document.getElementById("gsdForm");
                 const thankyou = document.getElementById("thankyou");
+                const errorMessage = document.getElementById("errorMessage"); // Get the new error element
                 
                 form.addEventListener("submit", function(e){
                   e.preventDefault();
                 
+                  // Hide any previous messages
+                  thankyou.style.display = 'none';
+                  errorMessage.style.display = 'none';
+
                   const formData = new FormData(form);
                   fetch(scriptURL, {
                     method: 'POST',
                     body: new URLSearchParams(formData)
                   })
                   .then(response => {
-                    form.reset();
-                    thankyou.style.display = 'block';
+                    // Check if the network response was successful
+                    if (response.ok) {
+                        form.reset();
+                        thankyou.style.display = 'block';
+                    } else {
+                        // Throw an error to be caught by the .catch block
+                        throw new Error('Network response was not ok.');
+                    }
                   })
-                  .catch(error => alert('Error! Please try again.'));
+                  .catch(error => {
+                      // FIX: Replaced alert() with a custom UI message
+                      console.error('Submission Error:', error);
+                      errorMessage.style.display = 'block'; 
+                  });
                 });
                 </script>
             </div>
@@ -1042,6 +1109,7 @@
     </footer>
 
     <script>
+        // Intersection Observer for scroll-triggered animations
         const donutContainer = document.getElementById('donutContainer');
         const servicesInfographic = document.getElementById('servicesInfographic');
         
@@ -1062,16 +1130,4 @@
         observer.observe(donutContainer);
     </script>
 </body>
-</html>none" href="mailto:peter@gsdleaders.com">peter@gsdleaders.com</a></p><br>
-                        <p class="email">A graduate from UC Berkeley's Leadership Program, Peter combines his vast experience in public and private service with extensive knowledge in organizational development. <br>For more, visit <a href="https://www.linkedin.com/in/peter-i-parenti-ed-d-5a00b26/">Peter's LinkedIn profile.</a></p>
-                        
-                    </div>
-                </div>
-                <div class="team-member">
-                    <div class="team-photo">
-                        <img src="assets/img/GSD/Pamela-VandeKamp.png" alt="Pam VandeKamp, Ed.D.">
-                    </div>
-                    <div>
-                        <h3>Pam VandeKamp, Ed.D.</h3>
-                        <p class="title">Director</p>
-                        <p class="email"><a style="text-decoration:
+</html>
