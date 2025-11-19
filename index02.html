@@ -1,0 +1,1077 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSD Leaders</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/GSD/GSD-favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/GSD/GSD-favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/GSD/GSD-favicon.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Avenir', 'Avenir Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #1B365D;
+            background: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: #fff;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 8px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo-space img {
+            height: 130px;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: #1B365D;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #3b6bae;
+        }
+        
+        section {
+            position: relative;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        section .container {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+        }
+        
+        .intro-section {
+            margin-top: 130px;
+            padding: 120px 0 80px;
+            background: url('assets/img/GSD/GSD-Leaders-02.png');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .intro-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.75);
+            z-index: 1;
+        }
+        
+        #about {
+            background: url('assets/img/GSD/GSD-Leaders-01.png');
+            background-size: cover;
+            background-position: center;
+            padding: 80px 0;
+        }
+        
+        #about::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.75);
+            z-index: 1;
+        }
+        
+        #services {
+            background: #f9f9f9;
+            padding: 80px 0 120px;
+            min-height: 600px;
+        }
+        
+        #team {
+            background-color: #87473E;
+            padding: 80px 0;
+        }
+        
+        #contact {
+            background-color: #E8E4DF;
+            padding: 80px 0;
+        }
+        
+        .intro-content {
+            max-width: 50%;
+            padding: 0 40px 0 0;
+        }
+        
+        .intro-catchphrase {
+            font-size: 3.2em;
+            font-weight: 800;
+            color: #1B365D;
+            margin-bottom: 30px;
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
+        
+        .intro-text {
+            font-size: 1.3em;
+            color: #1B365D;
+            line-height: 1.8;
+        }
+        
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: #1B365D;
+            text-align: left;
+        }
+        
+        #team h2 {
+            color: #fff;
+        }
+        
+        .about-content {
+            max-width: 50%;
+            padding: 0 40px 0 0;
+        }
+        
+        .about-text h3 {
+            color: #87473E;
+            margin: 20px 0 10px;
+            font-size: 1.5em;
+        }
+        
+        .about-text p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        
+        .services-infographic {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px 20px 40px;
+        }
+        
+        .services-top {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            width: 100%;
+            margin-bottom: 80px;
+            min-height: 400px;
+        }
+        
+        .donut-container {
+            position: relative;
+            width: 350px;
+            height: 350px;
+            flex-shrink: 0;
+            margin-bottom: 0;
+        }
+        
+        .donut-svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .donut-section {
+            opacity: 0;
+        }
+        
+        .donut-container.animate .donut-section-1 {
+            animation: sectionFadeIn 1.5s ease-out 0s forwards;
+        }
+        
+        .donut-container.animate .donut-section-2 {
+            animation: sectionFadeIn 1.5s ease-out 2s forwards;
+        }
+        
+        .donut-container.animate .donut-section-3 {
+            animation: sectionFadeIn 1.5s ease-out 4s forwards;
+        }
+        
+        @keyframes sectionFadeIn {
+            to { opacity: 1; }
+        }
+        
+        .donut-container.animate .donut-svg {
+            animation: none;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .donut-icon {
+            opacity: 0;
+        }
+        
+        .donut-container.animate .donut-icon.animate-1 {
+            animation: iconFadeIn 1.5s ease-out 0s forwards;
+        }
+        
+        .donut-container.animate .donut-icon.animate-2 {
+            animation: iconFadeIn 1.5s ease-out 2s forwards;
+        }
+        
+        .donut-container.animate .donut-icon.animate-3 {
+            animation: iconFadeIn 1.5s ease-out 4s forwards;
+        }
+        
+        @keyframes iconFadeIn {
+            to { opacity: 1; }
+        }
+        
+        .service-block {
+            position: absolute;
+            max-width: 280px;
+            opacity: 0;
+        }
+        
+        .service-block h3 {
+            font-size: 1.4em;
+            margin-bottom: 12px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+        
+        .service-block p {
+            line-height: 1.5;
+            font-size: 0.95em;
+        }
+        
+        .service-block-left {
+            left: -320px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .donut-container.animate .service-block-left {
+            animation: slideFromLeft 0.8s ease-out 0s forwards;
+        }
+        
+        .service-block-left h3,
+        .service-block-left p {
+            color: #1B365D;
+        }
+        
+        @keyframes slideFromLeft {
+            from {
+                left: -400px;
+                opacity: 0;
+            }
+            to {
+                left: -320px;
+                opacity: 1;
+            }
+        }
+        
+        .service-block-right {
+            right: -350px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .donut-container.animate .service-block-right {
+            animation: slideFromRight 0.8s ease-out 2s forwards;
+        }
+        
+        .service-block-right h3,
+        .service-block-right p {
+            color: #87473E;
+        }
+        
+        @keyframes slideFromRight {
+            from {
+                right: -430px;
+                opacity: 0;
+            }
+            to {
+                right: -350px;
+                opacity: 1;
+            }
+        }
+        
+        .service-block-bottom {
+            text-align: center;
+            max-width: 280px;
+            width: 280px;
+            padding: 0 20px;
+            opacity: 0;
+            margin-top: 485px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .services-infographic.animate .service-block-bottom {
+            animation: fadeInBottom 0.8s ease-out 4s forwards;
+        }
+        
+        @keyframes fadeInBottom {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .service-block-bottom h3,
+        .service-block-bottom p {
+            color: #6c5e44;
+        }
+        
+        .connector-line {
+            position: absolute;
+            stroke-dasharray: 200;
+            stroke-dashoffset: 200;
+        }
+        
+        .donut-container.animate .connector-left {
+            animation: drawLine 0.5s ease-out 0.8s forwards;
+        }
+        
+        .donut-container.animate .connector-right {
+            animation: drawLine 0.5s ease-out 2.8s forwards;
+        }
+        
+        .donut-container.animate .connector-bottom {
+            animation: drawLine 0.5s ease-out 4.8s forwards;
+        }
+        
+        @keyframes drawLine {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+        
+        .team-grid {
+            display: flex;
+            gap: 60px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .team-member {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            text-align: center;
+            max-width: 450px;
+        }
+        
+        .team-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: #f0f0f0;
+        }
+        
+        .team-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .team-photo.placeholder {
+            border: 3px dashed #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 14px;
+            background: white;
+        }
+        
+        .team-member h3 {
+            color: #fff;
+            margin-bottom: 5px;
+        }
+        
+        .team-member .title {
+            color: #f0f0f0;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        
+        .team-member .email {
+            color: #fff;
+            font-size: 0.9em;
+        }
+        
+        .team-member .email a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .contact-intro {
+            margin-bottom: 30px;
+            max-width: 50%;
+        }
+        
+        .contact-intro h3 {
+            color: #87473E;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+        
+        .contact-intro p {
+            color: #1B365D;
+            line-height: 1.8;
+        }
+        
+        .form-wrapper {
+            max-width: 900px;
+            margin: auto;
+            padding: 1.5rem;
+            font-family: 'Avenir', 'Nunito', sans-serif;
+            background: #f8f8f8;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .form-header {
+            text-align: center;
+            color: #87473E;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .form-intro {
+            text-align: left;
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+        }
+        
+        #gsdForm {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .form-field {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-field.full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .checkbox-item input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+        }
+        
+        .checkbox-item label {
+            margin: 0;
+            font-weight: 400;
+        }
+        
+        #gsdForm label {
+            font-weight: 600;
+            color: #1B365D;
+            margin-bottom: 5px;
+        }
+        
+        #gsdForm input,
+        #gsdForm textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 6px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1em;
+            font-family: inherit;
+        }
+        
+        #gsdForm input:focus,
+        #gsdForm textarea:focus {
+            outline: none;
+            border-color: #6c6c6c;
+        }
+        
+        #gsdForm textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        #gsdForm button {
+            background: #87473E;
+            color: #fff;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        
+        #gsdForm button:hover {
+            background: #a05a4f;
+        }
+        
+        .required-mark {
+            color: #87473E;
+        }
+        
+        #thankyou {
+            display: none;
+            text-align: center;
+            color: #1a4d8f;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+        
+        footer {
+            background: #1B365D;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            position: relative;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            position: relative;
+        }
+        
+        .footer-designer {
+            position: absolute;
+            left: 40px;
+            color: #8BA9CC;
+            text-decoration: none;
+            font-size: 0.85em;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-designer:hover {
+            opacity: 0.9;
+        }
+        
+        .return-to-top {
+            position: absolute;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+        
+        .return-to-top:hover {
+            opacity: 0.7;
+        }
+        
+        .footer-icon {
+            width: 50px;
+            height: 50px;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 160px;
+        }
+        
+        .service-blocks-mobile {
+            display: none;
+        }
+        
+        @media (max-width: 1024px) {
+            .services-infographic {
+                padding: 20px 20px 100px;
+            }
+            
+            .service-block-left {
+                left: -280px;
+                max-width: 240px;
+            }
+            
+            .service-block-right {
+                right: -300px;
+                max-width: 240px;
+            }
+            
+            .service-block h3 {
+                font-size: 1.2em;
+            }
+            
+            .service-block p {
+                font-size: 0.9em;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            html {
+                scroll-padding-top: 180px;
+            }
+            
+            section {
+                min-height: auto;
+            }
+            
+            .intro-section {
+                padding: 100px 0 60px;
+            }
+            
+            .intro-section::after,
+            #about::after {
+                width: 100%;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            .intro-content, .about-content, .contact-intro {
+                max-width: 100%;
+            }
+            
+            .intro-catchphrase {
+                font-size: 1.8em;
+                line-height: 1.3;
+            }
+            
+            .intro-text {
+                font-size: 1.1em;
+            }
+            
+            h2 {
+                font-size: 2em;
+            }
+            
+            #services {
+                padding: 60px 0;
+            }
+            
+            .services-infographic {
+                padding: 20px;
+            }
+            
+            .services-top {
+                display: block;
+                margin-bottom: 40px;
+                min-height: auto;
+            }
+            
+            .donut-container {
+                width: 280px;
+                height: 280px;
+                margin: 0 auto 40px;
+                position: relative;
+            }
+            
+            .connector-line {
+                display: none;
+            }
+            
+            .service-block-left,
+            .service-block-right,
+            .service-block-bottom {
+                display: none !important;
+            }
+            
+            .service-blocks-mobile {
+                display: block;
+                width: 100%;
+            }
+            
+            .service-block-mobile {
+                width: 100%;
+                padding: 0 20px;
+                margin-bottom: 30px;
+                text-align: center;
+            }
+            
+            .service-block-mobile h3 {
+                font-size: 1.4em;
+                margin-bottom: 12px;
+                font-weight: 700;
+            }
+            
+            .service-block-mobile p {
+                line-height: 1.5;
+                font-size: 0.95em;
+            }
+            
+            .service-block-mobile.blue h3,
+            .service-block-mobile.blue p {
+                color: #1B365D;
+            }
+            
+            .service-block-mobile.burgundy h3,
+            .service-block-mobile.burgundy p {
+                color: #87473E;
+            }
+            
+            .service-block-mobile.tan h3,
+            .service-block-mobile.tan p {
+                color: #6c5e44;
+            }
+            
+            .team-grid {
+                gap: 40px;
+            }
+            
+            .team-member {
+                max-width: 100%;
+            }
+            
+            #gsdForm {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-field.full-width {
+                grid-column: 1;
+            }
+            
+            .return-to-top {
+                position: static;
+                transform: none;
+                margin-top: 20px;
+            }
+            
+            .footer-designer {
+                position: static;
+                display: block;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-space"><img src="assets/img/GSD/GSD-Leaders-Inc-logo.png" alt="GSD Leaders, Inc."></div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#team">Team</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="intro-section" id="home">
+        <div class="container">
+            <div class="intro-content">
+                <h2 class="intro-catchphrase">GSD Leaders: <br>Where Strategic Planning Meets Decisive Action</h2>
+                <p style="padding-bottom: 24px" class="intro-text">Real change happens when strategic planning combines with decisive action.</p> 
+                <p class="intro-text">From immediate challenges to long&#8209;term transformation, we work with you to build measurable results. Grounded in research and experience, our approach strengthens your team's capacity and builds adaptive systems that&nbsp;last.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2>About Us</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    
+                    <h3>What We Do</h3>
+                    <p>We work with school, government, and community leaders and their team members. We develop both short- and long-term plans, and develop the internal capacity needed for lasting&nbsp;change.</p>
+                    
+                    <h3>How We Do It</h3>
+                    <p>We use comprehensive assessments, and work collaboratively to develop an individualized approach grounded in research and&nbsp;practice.</p>
+                    
+                    <h3>Why We Do It</h3>
+                    <p>At GSD Leaders, we are passionate believers in the power of transformational change. We approach our work with joy, understanding, and gratitude for the important work of public&nbsp;service.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-infographic" id="servicesInfographic">
+                <div class="services-top">
+                    <div class="donut-container" id="donutContainer">
+                    <svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible;">
+                        <line class="connector-line connector-left" x1="-50" y1="175" x2="70" y2="175" stroke="#1B365D" stroke-width="2"/>
+                        <line class="connector-line connector-right" x1="400" y1="175" x2="280" y2="175" stroke="#87473E" stroke-width="2"/>
+                        <line class="connector-line connector-bottom" x1="175" y1="365" x2="175" y2="300" stroke="#8C7A5A" stroke-width="2"/>
+                    </svg>
+                    
+                    <svg class="donut-svg" viewBox="0 0 100 100">
+                        <path class="donut-section donut-section-1" d="M 50 10 A 40 40 0 0 0 15.36 70 L 50 50 Z" fill="#1B365D"/>
+                        <path class="donut-section donut-section-2" d="M 50 10 A 40 40 0 0 1 84.64 70 L 50 50 Z" fill="#87473E"/>
+                        <path class="donut-section donut-section-3" d="M 15.36 70 A 40 40 0 0 0 84.64 70 L 50 50 Z" fill="#8C7A5A"/>
+                        <circle cx="50" cy="50" r="0" fill="white"/>
+                        
+                        <image class="donut-icon animate-1" href="assets/img/GSD/Leadership-Coaching-Team-Dev.png" x="20" y="24" width="28" height="28"/>
+                        <image class="donut-icon animate-2" href="assets/img/GSD/Strategic-Analysis-Planning.png" x="52" y="24" width="28" height="28"/>
+                        <image class="donut-icon animate-3" href="assets/img/GSD/Project-Management.png" x="36" y="58" width="28" height="28"/>
+                    </svg>
+                    
+                    <div class="service-block service-block-left">
+                        <h3>Leadership Coaching <br>& Team Development</h3>
+                        <p>Leadership isn&rsquo;t theory — it&rsquo;s practice. We build trust, communicate effectively, and move from discussion to action. Whether you&rsquo;re building a new team, navigating change, or strengthening organizational culture, our approach focuses on real progress and lasting&nbsp;growth.</p>
+                    </div>
+                    
+                    <div class="service-block service-block-right">
+                        <h3>Strategic Analysis & Planning</h3>
+                        <p>We help make sense of complexity and set clear direction, combining data-driven insight with grounded, collaborative design. The result: actionable plans that align resources, stakeholders, and outcomes — not just documents that sit on a&nbsp;shelf.</p>
+                    </div>
+                </div>
+                
+                <div class="service-block service-block-bottom">
+                        <h3>Project Management</h3>
+                        <p>Plans only matter if they get implemented. We ensure that key initiatives move forward — on time, on budget, and with accountability. We bring structure, communication, and focus to complex projects so leaders can see real progress and measurable&nbsp;results.</p>
+                    </div>
+                </div>
+                
+                <div class="service-blocks-mobile">
+                    <div class="service-block-mobile blue">
+                        <h3>Leadership Coaching & Team Development</h3>
+                        <p>Leadership isn&rsquo;t theory — it&rsquo;s practice. We build trust, communicate effectively, and move from discussion to action. Whether you&rsquo;re building a new team, navigating change, or strengthening organizational culture, our approach focuses on real progress and lasting growth.</p>
+                    </div>
+                    
+                    <div class="service-block-mobile burgundy">
+                        <h3>Strategic Analysis & Planning</h3>
+                        <p>We help make sense of complexity and set clear direction, combining data-driven insight with grounded, collaborative design. The result: actionable plans that align resources, stakeholders, and outcomes — not just documents that sit on a&nbsp;shelf.</p>
+                    </div>
+                    
+                    <div class="service-block-mobile tan">
+                        <h3>Project Management</h3>
+                        <p>Plans only matter if they get implemented. We ensure that key initiatives move forward — on time, on budget, and with accountability. We bring structure, communication, and focus to complex projects so leaders can see real progress and measurable&nbsp;results.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="team">
+        <div class="container">
+            <h2>Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="assets/img/GSD/Peter-Parenti.png" alt="Peter I Parenti">
+                    </div>
+                    <div>
+                        <h3>Peter I Parenti, Ed.D</h3>
+                        <p class="title">Founder and CEO</p>
+                        <p class="email"><a style="text-decoration:none" href="mailto:pam@gsdleaders.com">pam@gsdleaders.com</a></p><br>
+                        <p class="email">A graduate from UC Berkeley's Leadership Program, Pam combines her vast experience in public and private service with extensive knowledge in organizational development. <br>For more, visit <a href="https://www.linkedin.com/in/pamvandekamp/">Pam's LinkedIn profile.</a></p>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <div class="contact-content">
+                <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+
+                <div class="form-wrapper">
+                  <h2 class="form-header">Let's Get Things Done—Together</h2>
+                  <p class="form-intro">
+                    Tell us a bit about you and your goals so we can start shaping real solutions—today&nbsp;and for the&nbsp;future.
+                  </p>
+                
+                  <form id="gsdForm">
+                    <div class="form-field">
+                      <label>Full Name: <span class="required-mark">*</span></label>
+                      <input type="text" name="fullname" required>
+                    </div>
+                    
+                    <div class="form-field">
+                      <label>Email Address: <span class="required-mark">*</span></label>
+                      <input type="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-field">
+                      <label>Organization / Community / Business Name:</label>
+                      <input type="text" name="organization">
+                    </div>
+                    
+                    <div class="form-field">
+                      <label>Phone Number (optional):</label>
+                      <input type="tel" name="phone">
+                    </div>
+                    
+                    <div class="form-field full-width">
+                      <label>What kind of support would help most right now?</label>
+                      <div class="checkbox-group">
+                        <div class="checkbox-item">
+                          <input type="checkbox" name="support_coaching" id="support_coaching" value="Leadership coaching and team development">
+                          <label for="support_coaching">Leadership coaching and team development</label>
+                        </div>
+                        <div class="checkbox-item">
+                          <input type="checkbox" name="support_planning" id="support_planning" value="Strategic analysis and planning">
+                          <label for="support_planning">Strategic analysis and planning</label>
+                        </div>
+                        <div class="checkbox-item">
+                          <input type="checkbox" name="support_management" id="support_management" value="Project management">
+                          <label for="support_management">Project management</label>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="form-field full-width">
+                      <label>Anything else you want us to know about before we call you back? (optional)</label>
+                      <textarea name="lastingchange" rows="3"></textarea>
+                    </div>
+                    
+                    <div class="form-field full-width">
+                      <button type="submit">Submit</button>
+                    </div>
+                  </form>
+                
+                  <p id="thankyou">
+                    Thank you! Your message has been sent.
+                  </p>
+                </div>
+                
+                <script>
+                const scriptURL = "https://script.google.com/macros/s/AKfycbx58mUcBqxjNA27I27CgLn12UrDho1DV3tDiYyYuV1DmECJRx7oRPQ5c36FyuZK9Ac/exec";
+                const form = document.getElementById("gsdForm");
+                const thankyou = document.getElementById("thankyou");
+                
+                form.addEventListener("submit", function(e){
+                  e.preventDefault();
+                
+                  const formData = new FormData(form);
+                  fetch(scriptURL, {
+                    method: 'POST',
+                    body: new URLSearchParams(formData)
+                  })
+                  .then(response => {
+                    form.reset();
+                    thankyou.style.display = 'block';
+                  })
+                  .catch(error => alert('Error! Please try again.'));
+                });
+                </script>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <a href="https://www.jobesstudio.com/" target="_blank" rel="noopener noreferrer" class="footer-designer">Designed by Jobes Studio</a>
+            <div class="footer-content">
+                <p>&copy; 2025 GSD Leaders, Inc. All rights reserved.</p>
+            </div>
+            <a href="#home" class="return-to-top">
+                <img src="assets/img/GSD/GSD-favicon.png" alt="Return to top" class="footer-icon">
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        const donutContainer = document.getElementById('donutContainer');
+        const servicesInfographic = document.getElementById('servicesInfographic');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                    if (entry.target.id === 'donutContainer') {
+                        servicesInfographic.classList.add('animate');
+                    }
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.3
+        });
+        
+        observer.observe(donutContainer);
+    </script>
+</body>
+</html>none" href="mailto:peter@gsdleaders.com">peter@gsdleaders.com</a></p><br>
+                        <p class="email">A graduate from UC Berkeley's Leadership Program, Peter combines his vast experience in public and private service with extensive knowledge in organizational development. <br>For more, visit <a href="https://www.linkedin.com/in/peter-i-parenti-ed-d-5a00b26/">Peter's LinkedIn profile.</a></p>
+                        
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="assets/img/GSD/Pamela-VandeKamp.png" alt="Pam VandeKamp, Ed.D.">
+                    </div>
+                    <div>
+                        <h3>Pam VandeKamp, Ed.D.</h3>
+                        <p class="title">Director</p>
+                        <p class="email"><a style="text-decoration:
