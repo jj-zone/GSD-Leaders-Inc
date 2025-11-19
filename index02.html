@@ -211,7 +211,7 @@
             position: relative;
             max-width: 1000px;
             margin: 0 auto;
-            padding: 20px 20px 40px;
+            padding: 20px 20px 80px;
         }
         
         .services-top {
@@ -240,6 +240,8 @@
         .donut-section {
             opacity: 0;
         }
+        
+        /* --- MODIFIED ANIMATION TIMING START --- */
         
         .donut-container.animate .donut-section-1 {
             animation: sectionFadeIn 2s ease-out 0.3s forwards;
@@ -304,6 +306,7 @@
             font-size: 0.95em;
         }
         
+        /* Blue Section (Left) - Connects with Donut Section 1 */
         .service-block-left {
             left: -320px;
             top: 50%;
@@ -311,7 +314,8 @@
         }
         
         .donut-container.animate .service-block-left {
-            animation: slideFromLeft 0.6s ease-out 2.9s forwards;
+            /* Start delay set to 0.3s to match .donut-section-1 start */
+            animation: slideFromLeft 0.6s ease-out 0.3s forwards;
         }
         
         .service-block-left h3,
@@ -330,6 +334,7 @@
             }
         }
         
+        /* Burgundy Section (Right) - Connects with Donut Section 2 */
         .service-block-right {
             right: -350px;
             top: 50%;
@@ -337,7 +342,8 @@
         }
         
         .donut-container.animate .service-block-right {
-            animation: slideFromRight 0.6s ease-out 4.9s forwards;
+            /* Start delay set to 2.3s to match .donut-section-2 start */
+            animation: slideFromRight 0.6s ease-out 2.3s forwards;
         }
         
         .service-block-right h3,
@@ -356,17 +362,21 @@
             }
         }
         
+        /* Tan Section (Bottom) - Connects with Donut Section 3 */
         .service-block-bottom {
             text-align: center;
-            max-width: 100%;
-            width: 100%;
+            max-width: 280px;
+            width: 280px;
             padding: 0 20px;
             opacity: 0;
-            margin-top: 485px;
+            margin-top: 650px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .services-infographic.animate .service-block-bottom {
-            animation: fadeInBottom 0.6s ease-out 6.9s forwards;
+            /* Start delay set to 4.3s to match .donut-section-3 start */
+            animation: fadeInBottom 0.6s ease-out 4.3s forwards;
         }
         
         @keyframes fadeInBottom {
@@ -387,27 +397,33 @@
             
         }
         .service-block h3 {
-    font-size: 1.4em;
-    margin-bottom: 12px;
-    font-weight: 700;
-    white-space: nowrap;
-}
+            font-size: 1.4em;
+            margin-bottom: 12px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
         .connector-line {
             position: absolute;
             stroke-dasharray: 200;
             stroke-dashoffset: 200;
         }
         
+        /* Blue Connector - Connects with Donut Section 1 */
         .donut-container.animate .connector-left {
-            animation: drawLine 0.4s ease-out 3.5s forwards;
+            /* Start delay set to 0.3s to match .donut-section-1 start */
+            animation: drawLine 0.6s ease-out 0.3s forwards;
         }
         
+        /* Burgundy Connector - Connects with Donut Section 2 */
         .donut-container.animate .connector-right {
-            animation: drawLine 0.4s ease-out 5.5s forwards;
+            /* Start delay set to 2.3s to match .donut-section-2 start */
+            animation: drawLine 0.6s ease-out 2.3s forwards;
         }
         
+        /* Tan Connector - Connects with Donut Section 3 */
         .donut-container.animate .connector-bottom {
-            animation: drawLine 0.4s ease-out 7.5s forwards;
+            /* Start delay set to 4.3s to match .donut-section-3 start */
+            animation: drawLine 0.6s ease-out 4.3s forwards;
         }
         
         @keyframes drawLine {
@@ -415,6 +431,8 @@
                 stroke-dashoffset: 0;
             }
         }
+        
+        /* --- MODIFIED ANIMATION TIMING END --- */
         
         .team-grid {
             display: flex;
@@ -798,7 +816,7 @@
             
             .service-block-mobile.tan h3,
             .service-block-mobile.tan p {
-                color: #453820
+                color: #6c5e44;
             }
             
             .team-grid {
@@ -885,35 +903,25 @@
             <div class="services-infographic" id="servicesInfographic">
                 <div class="services-top">
                     <div class="donut-container" id="donutContainer">
-                    <!-- Connector Lines -->
                     <svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible;">
                         <line class="connector-line connector-left" x1="-50" y1="175" x2="70" y2="175" stroke="#1B365D" stroke-width="2"/>
                         <line class="connector-line connector-right" x1="400" y1="175" x2="280" y2="175" stroke="#87473E" stroke-width="2"/>
                         <line class="connector-line connector-bottom" x1="175" y1="365" x2="175" y2="300" stroke="#8C7A5A" stroke-width="2"/>
                     </svg>
                     
-                    <!-- Donut SVG -->
                     <svg class="donut-svg" viewBox="0 0 100 100">
-                        <!-- Blue section (LEFT) -->
                         <path class="donut-section donut-section-1" d="M 50 10 A 40 40 0 0 0 15.36 70 L 50 50 Z" fill="#1B365D"/>
-                        <!-- Burgundy section (RIGHT) -->
                         <path class="donut-section donut-section-2" d="M 50 10 A 40 40 0 0 1 84.64 70 L 50 50 Z" fill="#87473E"/>
-                        <!-- Tan section (BOTTOM) -->
                         <path class="donut-section donut-section-3" d="M 15.36 70 A 40 40 0 0 0 84.64 70 L 50 50 Z" fill="#8C7A5A"/>
-                        <!-- White center circle -->
                         <circle cx="50" cy="50" r="0" fill="white"/>
                         
-                        <!-- Leadership Coaching Icon (Blue section - LEFT) -->
                         <image class="donut-icon animate-1" href="assets/img/GSD/Leadership-Coaching-Team-Dev.png" x="20" y="24" width="28" height="28"/>
                         
-                        <!-- Strategic Planning Icon (Burgundy section - RIGHT) -->
                         <image class="donut-icon animate-2" href="assets/img/GSD/Strategic-Analysis-Planning.png" x="52" y="24" width="28" height="28"/>
                         
-                        <!-- Project Management Icon (Tan section - BOTTOM) -->
                         <image class="donut-icon animate-3" href="assets/img/GSD/Project-Management.png" x="36" y="58" width="28" height="28"/>
                     </svg>
                     
-                    <!-- Desktop Text Blocks -->
                     <div class="service-block service-block-left">
                         <h3>Leadership Coaching <br>& Team Development</h3>
                         <p>Leadership isn&rsquo;t theory — it&rsquo;s practice. We build trust, communicate effectively, and move from discussion to action. Whether you&rsquo;re building a new team, navigating change, or strengthening organizational culture, our approach focuses on real progress and lasting&nbsp;growth.</p>
@@ -921,31 +929,30 @@
                     
                     <div class="service-block service-block-right">
                         <h3>Strategic Analysis & Planning</h3>
-                        <p>We help make sense of complexity and set clear direction, combining data-driven insight with grounded, collaborative design. The result: actionable plans that align resources, stakeholders, and outcomes — not just documents that sit on a shelf.</p>
+                        <p>We help make sense of complexity and set clear direction, combining data-driven insight with grounded, collaborative design. The result: actionable plans that align resources, stakeholders, and outcomes — not just documents that sit on a&nbsp;shelf.</p>
                     </div>
                 </div>
                 
                 <div class="service-block service-block-bottom">
                         <h3>Project Management</h3>
-                        <p>Plans only matter if they get implemented. We ensure that key initiatives move forward — on time, on budget, and with accountability. We bring structure, communication, and focus to complex projects so leaders can see real progress and measurable results.</p>
+                        <p>Plans only matter if they get implemented. We ensure that key initiatives move forward — on time, on budget, and with accountability. We bring structure, communication, and focus to complex projects so leaders can see real progress and measurable&nbsp;results.</p>
                     </div>
                 </div>
                 
-                <!-- Mobile Text Blocks -->
                 <div class="service-blocks-mobile">
                     <div class="service-block-mobile blue">
                         <h3>Leadership Coaching & Team Development</h3>
-                        <p>Leadership isn&rsquo;t theory — it&rsquo;s practice. We build trust, communicate effectively, and move from discussion to action. Whether you&rsquo;re building a new team, navigating change, or strengthening organizational culture, our approach focuses on real progress and lasting growth.</p>
+                        <p>Leadership isn&rsquo;t theory — it&rsquo;s practice. We build trust, communicate effectively, and move from discussion to action. Whether you&rsquo;re building a new team, navigating change, or strengthening organizational culture, our approach focuses on real progress and lasting&nbsp;growth.</p>
                     </div>
                     
                     <div class="service-block-mobile burgundy">
                         <h3>Strategic Analysis & Planning</h3>
-                        <p>We help make sense of complexity and set clear direction, combining data-driven insight with grounded, collaborative design. The result: actionable plans that align resources, stakeholders, and outcomes — not just documents that sit on a shelf.</p>
+                        <p>We help make sense of complexity and set clear direction, combining data-driven insight with grounded, collaborative design. The result: actionable plans that align resources, stakeholders, and outcomes — not just documents that sit on a&nbsp;shelf.</p>
                     </div>
                     
                     <div class="service-block-mobile tan">
                         <h3>Project Management</h3>
-                        <p>Plans only matter if they get implemented. We ensure that key initiatives move forward — on time, on budget, and with accountability. We bring structure, communication, and focus to complex projects so leaders can see real progress and measurable results.</p>
+                        <p>Plans only matter if they get implemented. We ensure that key initiatives move forward — on time, on budget, and with accountability. We bring structure, communication, and focus to complex projects so leaders can see real progress and measurable&nbsp;results.</p>
                     </div>
                 </div>
             </div>
@@ -1020,24 +1027,18 @@
                     </div>
                     
                     <div class="form-field">
-                        <!-- Removed the required-mark span from the label -->
                         <label>What kind of support would help most right now? (optional)</label>
-                        <!-- ADDED inline style to enforce left alignment on the group container -->
                         <div class="checkbox-group" style="text-align: left;">
                             <div class="checkbox-item">
-                                <!-- Removed the 'required' attribute -->
                                 <input type="radio" name="support_type" value="leadership_coaching" id="support_leadership">
-                                <!-- UPDATED TEXT AND ADDED CSS TO FORCE SINGLE LINE -->
                                 <label for="support_leadership" style="margin: 0; font-weight: normal; white-space: nowrap;">Leadership coaching and team development</label>
                             </div>
                             <div class="checkbox-item">
                                 <input type="radio" name="support_type" value="strategic_planning" id="support_planning">
-                                <!-- UPDATED TEXT AND ADDED CSS TO FORCE SINGLE LINE -->
                                 <label for="support_planning" style="margin: 0; font-weight: normal; white-space: nowrap;">Strategic analysis and planning</label>
                             </div>
                             <div class="checkbox-item">
                                 <input type="radio" name="support_type" value="project_management" id="support_project">
-                                <!-- UPDATED TEXT AND ADDED CSS TO FORCE SINGLE LINE -->
                                 <label for="support_project" style="margin: 0; font-weight: normal; white-space: nowrap;">Project management</label>
                             </div>
                         </div>
@@ -1056,7 +1057,6 @@
                   <p id="thankyou" style="display: none;">
                     Thank you! Your message has been sent.
                   </p>
-                  <!-- Custom Error Message -->
                   <p id="errorMessage" style="display: none; color: #87473E; font-weight: 600; margin-top: 1rem; text-align: center;">
                     Error! There was an issue submitting your form. Please check your connection and try again.
                   </p>
