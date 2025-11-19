@@ -361,7 +361,7 @@
         
         .service-block-bottom h3,
         .service-block-bottom p {
-            color: #584b32;
+            color: #6c5e44;
         }
         
         .connector-line {
@@ -446,7 +446,8 @@
         
         .team-member .email a {
             color: #fff;
-            text-decoration: underline;
+            text-decoration: none;
+            font-weight: 500;
         }
         
         .contact-intro {
@@ -689,6 +690,7 @@
             
             h2 {
                 font-size: 2em;
+                margin-bottom: 30px;
             }
             
             /* Services Section Mobile */
@@ -978,7 +980,23 @@
                       <label>Phone Number (optional):</label>
                       <input type="tel" name="phone">
                     </div>
-                    
+                    <div class="form-field">
+                        <label>What kind of support would help most right now?</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="radio" name="timeline" id="immediate">
+                                <label for="immediate" style="margin: 0; font-weight: normal;">Leadership coaching and team development</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="radio" name="timeline" id="short">
+                                <label for="short" style="margin: 0; font-weight: normal;">Strategic analysis and planning</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="radio" name="timeline" id="long">
+                                <label for="long" style="margin: 0; font-weight: normal;">Project management</label>
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-field full-width">
                       <label>Anything else you want us to know about before we call you back? (optional)</label>
                       <textarea name="lastingchange" rows="3"></textarea>
