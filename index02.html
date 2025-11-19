@@ -243,6 +243,7 @@
         
         /* --- MODIFIED ANIMATION TIMING START --- */
         
+        /* Donut section fade-in (2s duration) starts first */
         .donut-container.animate .donut-section-1 {
             animation: sectionFadeIn 2s ease-out 0.3s forwards;
         }
@@ -272,16 +273,17 @@
             opacity: 0;
         }
         
+        /* Icon fade-in delays are adjusted to start AFTER the donut section is fully colored (2s after it starts) */
         .donut-container.animate .donut-icon.animate-1 {
-            animation: iconFadeIn 2s ease-out 0.3s forwards;
+            animation: iconFadeIn 2s ease-out 2.4s forwards;
         }
         
         .donut-container.animate .donut-icon.animate-2 {
-            animation: iconFadeIn 2s ease-out 2.3s forwards;
+            animation: iconFadeIn 2s ease-out 4.4s forwards;
         }
         
         .donut-container.animate .donut-icon.animate-3 {
-            animation: iconFadeIn 2s ease-out 4.3s forwards;
+            animation: iconFadeIn 2s ease-out 6.4s forwards;
         }
         
         @keyframes iconFadeIn {
@@ -314,8 +316,8 @@
         }
         
         .donut-container.animate .service-block-left {
-            /* Start delay set to 0.3s to match .donut-section-1 start */
-            animation: slideFromLeft 0.6s ease-out 0.3s forwards;
+            /* Start delay set to 2.4s to match .donut-section-1 END time */
+            animation: slideFromLeft 0.6s ease-out 2.4s forwards;
         }
         
         .service-block-left h3,
@@ -342,8 +344,8 @@
         }
         
         .donut-container.animate .service-block-right {
-            /* Start delay set to 2.3s to match .donut-section-2 start */
-            animation: slideFromRight 0.6s ease-out 2.3s forwards;
+            /* Start delay set to 4.4s to match .donut-section-2 END time */
+            animation: slideFromRight 0.6s ease-out 4.4s forwards;
         }
         
         .service-block-right h3,
@@ -375,8 +377,8 @@
         }
         
         .services-infographic.animate .service-block-bottom {
-            /* Start delay set to 4.3s to match .donut-section-3 start */
-            animation: fadeInBottom 0.6s ease-out 4.3s forwards;
+            /* Start delay set to 6.4s to match .donut-section-3 END time */
+            animation: fadeInBottom 0.6s ease-out 6.4s forwards;
         }
         
         @keyframes fadeInBottom {
@@ -410,20 +412,20 @@
         
         /* Blue Connector - Connects with Donut Section 1 */
         .donut-container.animate .connector-left {
-            /* Start delay set to 0.3s to match .donut-section-1 start */
-            animation: drawLine 0.6s ease-out 0.3s forwards;
+            /* Start delay set to 2.4s to match .donut-section-1 END time */
+            animation: drawLine 0.6s ease-out 2.4s forwards;
         }
         
         /* Burgundy Connector - Connects with Donut Section 2 */
         .donut-container.animate .connector-right {
-            /* Start delay set to 2.3s to match .donut-section-2 start */
-            animation: drawLine 0.6s ease-out 2.3s forwards;
+            /* Start delay set to 4.4s to match .donut-section-2 END time */
+            animation: drawLine 0.6s ease-out 4.4s forwards;
         }
         
         /* Tan Connector - Connects with Donut Section 3 */
         .donut-container.animate .connector-bottom {
-            /* Start delay set to 4.3s to match .donut-section-3 start */
-            animation: drawLine 0.6s ease-out 4.3s forwards;
+            /* Start delay set to 6.4s to match .donut-section-3 END time */
+            animation: drawLine 0.6s ease-out 6.4s forwards;
         }
         
         @keyframes drawLine {
