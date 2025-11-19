@@ -1020,11 +1020,13 @@
                     </div>
                     
                     <div class="form-field">
-                        <label>What kind of support would help most right now? <span class="required-mark">*</span></label>
+                        <!-- Removed the required-mark span from the label -->
+                        <label>What kind of support would help most right now?</label>
                         <!-- ADDED inline style to enforce left alignment on the group container -->
                         <div class="checkbox-group" style="text-align: left;">
                             <div class="checkbox-item">
-                                <input type="radio" name="support_type" value="leadership_coaching" id="support_leadership" required>
+                                <!-- Removed the 'required' attribute -->
+                                <input type="radio" name="support_type" value="leadership_coaching" id="support_leadership">
                                 <!-- UPDATED TEXT AND ADDED CSS TO FORCE SINGLE LINE -->
                                 <label for="support_leadership" style="margin: 0; font-weight: normal; white-space: nowrap;">Leadership coaching and team development</label>
                             </div>
