@@ -197,7 +197,7 @@
             white-space: nowrap; 
         }
 
-        /* Services Section Styles (Existing Infographic Logic) */
+        /* Services Section Styles */
         .services-infographic {
             display: flex;
             flex-direction: column;
@@ -209,9 +209,7 @@
             padding: 20px 20px 80px;
         }
         
-        /* --- Services Animation Styles (Restored and Implemented) --- */
-
-        /* Initial states for infographic elements */
+        /* Initial states for infographic elements (for Services animation) */
         .donut-svg {
             opacity: 0;
             transform: scale(0.5);
@@ -235,7 +233,7 @@
             opacity: 0;
         }
 
-        /* Final states when 'animate' class is added */
+        /* Final states when 'animate' class is added (for Services animation) */
         /* 1. Donut Scaling */
         #donutContainer.animate .donut-svg {
             opacity: 1;
@@ -269,9 +267,8 @@
         .connector-left { transition-delay: 1.5s; }
         .connector-right { transition-delay: 1.8s; }
         .connector-bottom { transition-delay: 2.1s; }
-        
-        /* --- End Services Animation Styles --- */
-        
+
+
         /* Team Section Styles */
         .team-grid {
             display: flex;
@@ -287,10 +284,8 @@
             align-items: center;
             text-align: center;
             max-width: 450px;
-            /* Initial state for animation */
-            opacity: 0; 
-            transform: translateX(0); /* Default for non-animated members */
-            transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+            /* No initial state here, managed by specific slide-in classes */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
         
         .team-photo {
@@ -365,88 +360,39 @@
             background: #f8f8f8;
             border-radius: 12px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            /* Initial state for contact form animation */
-            opacity: 0;
-            transition: opacity 1.5s ease-out;
         }
 
-        /* ... (Rest of Form Styles omitted for brevity) ... */
-
-        /* --- NEW ANIMATION STYLES --- */
-
-        /* 1. Hero Section Animation Classes */
+        /* --- NEW SCROLL ANIMATION STYLES (About, Team, Contact) --- */
         
-        /* Initial state for hero elements */
-        .hero-title, .hero-text {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        /* Final state on load */
-        .hero-title.loaded {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .hero-text.loaded {
-            opacity: 1;
-            transform: translateY(0);
-            transition-delay: 0.3s; /* Stagger text after title */
-        }
-        
-        /* 2. About Us Animation Classes */
-        
-        /* Initial state for all about blocks */
-        .about-text-block {
+        /* Base initial state for elements that slide in from the left */
+        .slide-in-left-init {
             opacity: 0;
             transform: translateX(-100px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
         
-        /* Final state on scroll trigger */
-        .about-content.animate .about-text-block {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        
-        /* Staggered delays for the three blocks */
-        .about-content.animate .about-text-block:nth-child(1) { transition-delay: 0s; }
-        .about-content.animate .about-text-block:nth-child(2) { transition-delay: 0.3s; }
-        .about-content.animate .about-text-block:nth-child(3) { transition-delay: 0.6s; }
-
-
-        /* 3. Our Team Animation Classes */
-        
-        /* Initial state for Peter (Left) */
-        .team-member.peter {
-            opacity: 0;
-            transform: translateX(-100px);
-        }
-        
-        /* Final state on scroll trigger */
-        .team-grid.animate .team-member.peter {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        /* Initial state for Pam (Right) */
-        .team-member.pam {
+        /* Base initial state for elements that slide in from the right */
+        .slide-in-right-init {
             opacity: 0;
             transform: translateX(100px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
         
-        /* Final state on scroll trigger, slightly delayed */
-        .team-grid.animate .team-member.pam {
-            opacity: 1;
-            transform: translateX(0);
-            transition-delay: 0.5s;
+        /* Base initial state for elements that only fade in */
+        .fade-in-init {
+            opacity: 0;
+            transition: opacity 1.2s ease-out;
         }
 
+        /* Final state: When the initial class is removed by JS, the element animates to its default state (opacity 1, transform none) */
 
-        /* 4. Contact Us Animation Class */
-        .form-wrapper.animate {
-            opacity: 1;
-        }
+        /* Staggered delays for About Us blocks */
+        .about-text-block:nth-child(1) { transition-delay: 0s; }
+        .about-text-block:nth-child(2) { transition-delay: 0.3s; }
+        .about-text-block:nth-child(3) { transition-delay: 0.6s; }
+        
+        /* Staggered delay for Pam */
+        .team-member.pam { transition-delay: 0.5s; }
 
         /* --- MEDIA QUERIES --- */
         
@@ -459,27 +405,23 @@
                 scroll-padding-top: 180px;
             }
             
-            /* ... (Existing 768px styles) ... */
-            
-            /* Adjust mobile team animation for full width */
-            .team-member.peter, .team-member.pam {
-                /* Reset transform for mobile since they stack vertically */
+            /* Reset mobile team animation for full width stack */
+            .team-member.slide-in-left-init, 
+            .team-member.slide-in-right-init {
                 transform: translateX(0);
                 opacity: 0;
             }
-            .team-grid.animate .team-member.peter,
-            .team-grid.animate .team-member.pam {
-                 opacity: 1;
-                 /* Use delayed fade-in for vertical stacking */
+            /* Use fade-in only for vertical stacking on mobile */
+            .team-member {
                  transition: opacity 1.5s ease-out;
             }
-            .team-grid.animate .team-member.pam {
+            .team-member.pam {
                 transition-delay: 0.5s;
             }
 
-            /* About text blocks should still slide in on mobile */
-            .about-text-block {
-                transform: translateX(-50px); /* Smaller slide distance for mobile */
+            /* About text blocks still slide in from a shorter distance on mobile */
+            .slide-in-left-init {
+                transform: translateX(-50px);
             }
             
             .intro-content, .about-content {
@@ -509,12 +451,9 @@
     <section class="intro-section" id="home">
         <div class="container">
             <div class="intro-content">
-                <!-- Apply hero-title class for animation -->
-                <h2 class="intro-catchphrase hero-title">GSD Leaders: <br>Where Strategic Planning Meets Decisive Action</h2>
-                <!-- Apply hero-text class for animation -->
-                <p style="padding-bottom: 24px" class="intro-text hero-text">Real change happens when strategic planning combines with decisive action.</p> 
-                <!-- Apply hero-text class for animation -->
-                <p class="intro-text hero-text">From immediate challenges to long&#8209;term transformation, we work with you to build measurable results. Grounded in research and experience, our approach strengthens your team's capacity and builds adaptive systems that&nbsp;last.</p>
+                <h2 class="intro-catchphrase">GSD Leaders: <br>Where Strategic Planning Meets Decisive Action</h2>
+                <p style="padding-bottom: 24px" class="intro-text">Real change happens when strategic planning combines with decisive action.</p> 
+                <p class="intro-text">From immediate challenges to long&#8209;term transformation, we work with you to build measurable results. Grounded in research and experience, our approach strengthens your team's capacity and builds adaptive systems that&nbsp;last.</p>
             </div>
         </div>
     </section>
@@ -522,24 +461,24 @@
     <section id="about">
         <div class="container">
             <h2>About Us</h2>
-            <!-- Add ID to content wrapper to observe and trigger child animations -->
-            <div class="about-content" id="aboutContent">
+            <!-- Add data-animation-target attribute -->
+            <div class="about-content" data-animation-target>
                 <div class="about-text">
                     
-                    <!-- Apply class for staggered animation -->
-                    <div class="about-text-block">
+                    <!-- Apply initial state classes for slide-in animation -->
+                    <div class="about-text-block slide-in-left-init">
                         <h3>What We Do</h3>
                         <p>We work with school, government, and community leaders and their team members. We develop both short- and long-term plans, and develop the internal capacity needed for lasting change.</p>
                     </div>
                     
-                    <!-- Apply class for staggered animation -->
-                    <div class="about-text-block">
+                    <!-- Apply initial state classes for slide-in animation -->
+                    <div class="about-text-block slide-in-left-init">
                         <h3>How We Do It</h3>
                         <p>We use comprehensive assessments, and work collaboratively to develop an individualized approach grounded in research and practice.</p>
                     </div>
                     
-                    <!-- Apply class for staggered animation -->
-                    <div class="about-text-block">
+                    <!-- Apply initial state classes for slide-in animation -->
+                    <div class="about-text-block slide-in-left-init">
                         <h3>Why We Do It</h3>
                         <p>At GSD Leaders, we are passionate believers in the power of transformational change. We approach our work with joy, understanding, and gratitude for the important work of public service.</p>
                     </div>
@@ -613,10 +552,10 @@
     <section id="team">
         <div class="container">
             <h2>Our Team</h2>
-            <!-- Add ID and class to observe and trigger child animations -->
-            <div class="team-grid" id="teamGrid">
-                <!-- Add animation class: peter (slides from left) -->
-                <div class="team-member peter">
+            <!-- Add data-animation-target attribute -->
+            <div class="team-grid" data-animation-target>
+                <!-- Apply initial state classes for slide-in animation -->
+                <div class="team-member slide-in-left-init">
                     <div class="team-photo">
                         <img src="assets/img/GSD/Peter-Parenti.png" alt="Peter I Parenti">
                     </div>
@@ -628,8 +567,8 @@
                         
                     </div>
                 </div>
-                <!-- Add animation class: pam (slides from right) -->
-                <div class="team-member pam">
+                <!-- Apply initial state classes for slide-in animation -->
+                <div class="team-member pam slide-in-right-init">
                     <div class="team-photo">
                         <img src="assets/img/GSD/Pamela-VandeKamp.png" alt="Pam VandeKamp, Ed.D.">
                     </div>
@@ -651,8 +590,8 @@
             <div class="contact-content">
                 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap" rel="stylesheet">
 
-                <!-- Add ID to observe and trigger animation -->
-                <div class="form-wrapper" id="contactFormWrapper">
+                <!-- Apply initial state classes for fade-in animation, and add data-animation-target -->
+                <div class="form-wrapper fade-in-init" data-animation-target>
                     <div class="contact-intro">
                         <h3>Let's Get Things Done—Together</h3>
                         </div>
@@ -775,82 +714,72 @@
     </footer>
 
     <script>
-        // Set up the Hero Section animation to run immediately on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            const heroTitle = document.querySelector('.hero-title');
-            const heroTexts = document.querySelectorAll('.hero-text');
-            
-            // 1. Hero Animation (Immediate on load)
-            if (heroTitle) {
-                heroTitle.classList.add('loaded');
-            }
-            if (heroTexts) {
-                // The staggering is handled by CSS transition-delay but adding class here
-                heroTexts.forEach(text => text.classList.add('loaded'));
-            }
-        });
-
-
-        // --- SCROLL-TRIGGERED ANIMATIONS ---
-
-        // 1. SERVICES INFOGRAPHIC ANIMATION OBSERVER (Dedicated Logic)
-        // Uses a lower threshold (0.3) to ensure the complex graphic loads before the user is fully past it.
+        // --- SERVICES INFOGRAPHIC ANIMATION (Original, Untouched Logic) ---
         const donutContainer = document.getElementById('donutContainer');
         const servicesInfographic = document.getElementById('servicesInfographic');
         
-        const serviceObserverOptions = {
-            threshold: 0.3,
-            rootMargin: '0px 0px -100px 0px' // Start slightly earlier
-        };
-        
-        const serviceObserver = new IntersectionObserver((entries, observer) => {
+        const serviceObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // Add 'animate' class to the specific Services elements
                     entry.target.classList.add('animate');
-
-                    // If the donut container is visible, also trigger the main infographic wrapper
-                    // to start the block animations.
                     if (entry.target.id === 'donutContainer') {
-                        if (servicesInfographic) servicesInfographic.classList.add('animate');
+                        servicesInfographic.classList.add('animate');
+                    }
+                    serviceObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.3
+        });
+        
+        // Use a single observer for both elements to ensure smooth flow
+        serviceObserver.observe(donutContainer); 
+        serviceObserver.observe(servicesInfographic);
+
+        // --- NEW SCROLL ANIMATION LOGIC (FOR ABOUT, TEAM, CONTACT) ---
+        
+        // Target all elements that need scroll-triggered animation
+        const animationTargets = document.querySelectorAll('[data-animation-target]');
+        
+        const contentObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    
+                    // Logic for About Us section (staggered animation of children)
+                    if (entry.target.querySelector('.about-text-block')) {
+                        const blocks = entry.target.querySelectorAll('.about-text-block');
+                        // For each block, remove the initial slide-in class
+                        blocks.forEach(block => block.classList.remove('slide-in-left-init'));
+                    } 
+                    
+                    // Logic for Team section (slide-in of children)
+                    else if (entry.target.querySelector('.team-member')) {
+                        const members = entry.target.querySelectorAll('.team-member');
+                        // Remove specific slide-in classes
+                        members.forEach(member => {
+                            member.classList.remove('slide-in-left-init');
+                            member.classList.remove('slide-in-right-init');
+                        });
+                    } 
+                    
+                    // Logic for Contact form (simple fade-in)
+                    else if (entry.target.id === 'contactFormWrapper') {
+                        entry.target.classList.remove('fade-in-init');
                     }
                     
                     observer.unobserve(entry.target);
                 }
             });
-        }, serviceObserverOptions);
+        }, {
+            // Animation triggers when 40% of the element is visible
+            threshold: 0.4 
+        });
 
-        if (donutContainer) serviceObserver.observe(donutContainer);
-        // Observing servicesInfographic ensures the mobile blocks also animate
-        if (servicesInfographic) serviceObserver.observe(servicesInfographic);
-
-
-        // 2. GENERAL CONTENT ANIMATION OBSERVER (About, Team, Contact)
-        // Uses a standard threshold (0.5) for the text/image sections.
-        const aboutContent = document.getElementById('aboutContent');
-        const teamGrid = document.getElementById('teamGrid');
-        const contactFormWrapper = document.getElementById('contactFormWrapper');
+        // Observe all the target sections
+        animationTargets.forEach(target => {
+            contentObserver.observe(target);
+        });
         
-        const contentObserverOptions = {
-            threshold: 0.5, 
-        };
-
-        const contentObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Use a common class 'animate' to trigger CSS transitions/animations
-                    entry.target.classList.add('animate');
-                    
-                    // Stop observing once the animation has been triggered
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, contentObserverOptions);
-        
-        if (aboutContent) contentObserver.observe(aboutContent);
-        if (teamGrid) contentObserver.observe(teamGrid);
-        if (contactFormWrapper) contentObserver.observe(contactFormWrapper);
-
     </script>
 </body>
 </html>
