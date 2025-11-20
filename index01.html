@@ -209,7 +209,68 @@
             padding: 20px 20px 80px;
         }
         
-        /* ... (Existing Services styles omitted for brevity, as they were not requested to change) ... */
+        /* --- Services Animation Styles (Restored and Implemented) --- */
+
+        /* Initial states for infographic elements */
+        .donut-svg {
+            opacity: 0;
+            transform: scale(0.5);
+            transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+        }
+
+        .service-block-left, .service-block-right, .service-block-bottom {
+            opacity: 0;
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        
+        .service-block-left { transform: translateX(-50px); }
+        .service-block-right { transform: translateX(50px); }
+        .service-block-bottom { transform: translateY(50px); }
+
+        .connector-line {
+            /* Create a dash-offset effect to 'draw' the line */
+            stroke-dasharray: 500; 
+            stroke-dashoffset: 500;
+            transition: stroke-dashoffset 1.5s ease-out, opacity 0.5s ease-out;
+            opacity: 0;
+        }
+
+        /* Final states when 'animate' class is added */
+        /* 1. Donut Scaling */
+        #donutContainer.animate .donut-svg {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        /* 2. Text Blocks Slide/Fade-in */
+        #servicesInfographic.animate .service-block-left {
+            opacity: 1;
+            transform: translateX(0);
+            transition-delay: 0.5s;
+        }
+        
+        #servicesInfographic.animate .service-block-right {
+            opacity: 1;
+            transform: translateX(0);
+            transition-delay: 0.8s;
+        }
+        
+        #servicesInfographic.animate .service-block-bottom {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 1.1s;
+        }
+
+        /* 3. Line Drawing */
+        #donutContainer.animate .connector-line {
+            stroke-dashoffset: 0;
+            opacity: 1;
+        }
+        .connector-left { transition-delay: 1.5s; }
+        .connector-right { transition-delay: 1.8s; }
+        .connector-bottom { transition-delay: 2.1s; }
+        
+        /* --- End Services Animation Styles --- */
         
         /* Team Section Styles */
         .team-grid {
@@ -724,41 +785,71 @@
                 heroTitle.classList.add('loaded');
             }
             if (heroTexts) {
+                // The staggering is handled by CSS transition-delay but adding class here
                 heroTexts.forEach(text => text.classList.add('loaded'));
             }
         });
 
 
-        // Intersection Observer for scroll-triggered animations
-        // Removed donutContainer and servicesInfographic variables and observation to prevent conflict
-        // with the existing Services section animation logic.
+        // --- SCROLL-TRIGGERED ANIMATIONS ---
+
+        // 1. SERVICES INFOGRAPHIC ANIMATION OBSERVER (Dedicated Logic)
+        // Uses a lower threshold (0.3) to ensure the complex graphic loads before the user is fully past it.
+        const donutContainer = document.getElementById('donutContainer');
+        const servicesInfographic = document.getElementById('servicesInfographic');
+        
+        const serviceObserverOptions = {
+            threshold: 0.3,
+            rootMargin: '0px 0px -100px 0px' // Start slightly earlier
+        };
+        
+        const serviceObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Add 'animate' class to the specific Services elements
+                    entry.target.classList.add('animate');
+
+                    // If the donut container is visible, also trigger the main infographic wrapper
+                    // to start the block animations.
+                    if (entry.target.id === 'donutContainer') {
+                        if (servicesInfographic) servicesInfographic.classList.add('animate');
+                    }
+                    
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, serviceObserverOptions);
+
+        if (donutContainer) serviceObserver.observe(donutContainer);
+        // Observing servicesInfographic ensures the mobile blocks also animate
+        if (servicesInfographic) serviceObserver.observe(servicesInfographic);
+
+
+        // 2. GENERAL CONTENT ANIMATION OBSERVER (About, Team, Contact)
+        // Uses a standard threshold (0.5) for the text/image sections.
         const aboutContent = document.getElementById('aboutContent');
         const teamGrid = document.getElementById('teamGrid');
         const contactFormWrapper = document.getElementById('contactFormWrapper');
         
-        // Options: threshold 0.5 means the animation triggers when 50% of the element is visible.
-        const observerOptions = {
+        const contentObserverOptions = {
             threshold: 0.5, 
         };
 
-        const observer = new IntersectionObserver((entries, observer) => {
+        const contentObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     // Use a common class 'animate' to trigger CSS transitions/animations
                     entry.target.classList.add('animate');
                     
-                    // Removed the special case for services infographic
-                    
                     // Stop observing once the animation has been triggered
                     observer.unobserve(entry.target);
                 }
             });
-        }, observerOptions);
+        }, contentObserverOptions);
         
-        // Only observe the newly requested elements: About, Team, and Contact.
-        if (aboutContent) observer.observe(aboutContent);
-        if (teamGrid) observer.observe(teamGrid);
-        if (contactFormWrapper) observer.observe(contactFormWrapper);
+        if (aboutContent) contentObserver.observe(aboutContent);
+        if (teamGrid) contentObserver.observe(teamGrid);
+        if (contactFormWrapper) contentObserver.observe(contactFormWrapper);
 
     </script>
 </body>
