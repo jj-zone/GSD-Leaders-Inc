@@ -211,7 +211,7 @@
             position: relative;
             max-width: 1000px;
             margin: 0 auto;
-            padding: 20px 20px 80px;
+            padding: 0px 20px 80px;
         }
         
         .services-top {
@@ -241,6 +241,9 @@
             opacity: 0;
         }
         
+        /* --- MODIFIED ANIMATION TIMING START --- */
+        
+        /* Donut section fade-in (2s duration) starts first */
         .donut-container.animate .donut-section-1 {
             animation: sectionFadeIn 2s ease-out 0.3s forwards;
         }
@@ -270,6 +273,7 @@
             opacity: 0;
         }
         
+        /* Icon fade-in delays are set to match the donut section start time for simultaneous fade-in */
         .donut-container.animate .donut-icon.animate-1 {
             animation: iconFadeIn 2s ease-out 0.3s forwards;
         }
@@ -304,6 +308,7 @@
             font-size: 0.95em;
         }
         
+        /* Blue Section (Left) - Connects with Donut Section 1 */
         .service-block-left {
             left: -320px;
             top: 50%;
@@ -311,7 +316,8 @@
         }
         
         .donut-container.animate .service-block-left {
-            animation: slideFromLeft 0.6s ease-out 2.9s forwards;
+            /* Start delay set to 2.4s (after section 1 is complete) */
+            animation: slideFromLeft 0.6s ease-out 2.4s forwards;
         }
         
         .service-block-left h3,
@@ -330,6 +336,7 @@
             }
         }
         
+        /* Burgundy Section (Right) - Connects with Donut Section 2 */
         .service-block-right {
             right: -350px;
             top: 50%;
@@ -337,7 +344,8 @@
         }
         
         .donut-container.animate .service-block-right {
-            animation: slideFromRight 0.6s ease-out 4.9s forwards;
+            /* Start delay set to 4.4s (after section 2 is complete) */
+            animation: slideFromRight 0.6s ease-out 4.4s forwards;
         }
         
         .service-block-right h3,
@@ -356,6 +364,7 @@
             }
         }
         
+        /* Tan Section (Bottom) - Connects with Donut Section 3 */
         .service-block-bottom {
             text-align: center;
             max-width: 280px;
@@ -368,7 +377,8 @@
         }
         
         .services-infographic.animate .service-block-bottom {
-            animation: fadeInBottom 0.6s ease-out 6.9s forwards;
+            /* Start delay set to 6.4s (after section 3 is complete) */
+            animation: fadeInBottom 0.6s ease-out 6.4s forwards;
         }
         
         @keyframes fadeInBottom {
@@ -389,27 +399,33 @@
             
         }
         .service-block h3 {
-    font-size: 1.4em;
-    margin-bottom: 12px;
-    font-weight: 700;
-    white-space: nowrap;
-}
+            font-size: 1.4em;
+            margin-bottom: 12px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
         .connector-line {
             position: absolute;
             stroke-dasharray: 200;
             stroke-dashoffset: 200;
         }
         
+        /* Blue Connector - Connects with Donut Section 1 */
         .donut-container.animate .connector-left {
-            animation: drawLine 0.4s ease-out 3.5s forwards;
+            /* Start delay set to 2.4s (after section 1 is complete) */
+            animation: drawLine 0.6s ease-out 2.4s forwards;
         }
         
+        /* Burgundy Connector - Connects with Donut Section 2 */
         .donut-container.animate .connector-right {
-            animation: drawLine 0.4s ease-out 5.5s forwards;
+            /* Start delay set to 4.4s (after section 2 is complete) */
+            animation: drawLine 0.6s ease-out 4.4s forwards;
         }
         
+        /* Tan Connector - Connects with Donut Section 3 */
         .donut-container.animate .connector-bottom {
-            animation: drawLine 0.4s ease-out 7.5s forwards;
+            /* Start delay set to 6.4s (after section 3 is complete) */
+            animation: drawLine 0.6s ease-out 6.4s forwards;
         }
         
         @keyframes drawLine {
@@ -417,6 +433,8 @@
                 stroke-dashoffset: 0;
             }
         }
+        
+        /* --- MODIFIED ANIMATION TIMING END --- */
         
         .team-grid {
             display: flex;
@@ -662,7 +680,7 @@
         
         @media (max-width: 1024px) {
             .services-infographic {
-                padding: 20px 20px 100px;
+                padding: 0px 20px 100px;
             }
             
             .service-block-left {
@@ -887,35 +905,25 @@
             <div class="services-infographic" id="servicesInfographic">
                 <div class="services-top">
                     <div class="donut-container" id="donutContainer">
-                    <!-- Connector Lines -->
                     <svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible;">
                         <line class="connector-line connector-left" x1="-50" y1="175" x2="70" y2="175" stroke="#1B365D" stroke-width="2"/>
                         <line class="connector-line connector-right" x1="400" y1="175" x2="280" y2="175" stroke="#87473E" stroke-width="2"/>
                         <line class="connector-line connector-bottom" x1="175" y1="365" x2="175" y2="300" stroke="#8C7A5A" stroke-width="2"/>
                     </svg>
                     
-                    <!-- Donut SVG -->
                     <svg class="donut-svg" viewBox="0 0 100 100">
-                        <!-- Blue section (LEFT) -->
                         <path class="donut-section donut-section-1" d="M 50 10 A 40 40 0 0 0 15.36 70 L 50 50 Z" fill="#1B365D"/>
-                        <!-- Burgundy section (RIGHT) -->
                         <path class="donut-section donut-section-2" d="M 50 10 A 40 40 0 0 1 84.64 70 L 50 50 Z" fill="#87473E"/>
-                        <!-- Tan section (BOTTOM) -->
                         <path class="donut-section donut-section-3" d="M 15.36 70 A 40 40 0 0 0 84.64 70 L 50 50 Z" fill="#8C7A5A"/>
-                        <!-- White center circle -->
                         <circle cx="50" cy="50" r="0" fill="white"/>
                         
-                        <!-- Leadership Coaching Icon (Blue section - LEFT) -->
                         <image class="donut-icon animate-1" href="assets/img/GSD/Leadership-Coaching-Team-Dev.png" x="20" y="24" width="28" height="28"/>
                         
-                        <!-- Strategic Planning Icon (Burgundy section - RIGHT) -->
                         <image class="donut-icon animate-2" href="assets/img/GSD/Strategic-Analysis-Planning.png" x="52" y="24" width="28" height="28"/>
                         
-                        <!-- Project Management Icon (Tan section - BOTTOM) -->
                         <image class="donut-icon animate-3" href="assets/img/GSD/Project-Management.png" x="36" y="58" width="28" height="28"/>
                     </svg>
                     
-                    <!-- Desktop Text Blocks -->
                     <div class="service-block service-block-left">
                         <h3>Leadership Coaching <br>& Team Development</h3>
                         <p>Leadership isn&rsquo;t theory — it&rsquo;s practice. We build trust, communicate effectively, and move from discussion to action. Whether you&rsquo;re building a new team, navigating change, or strengthening organizational culture, our approach focuses on real progress and lasting&nbsp;growth.</p>
@@ -933,7 +941,6 @@
                     </div>
                 </div>
                 
-                <!-- Mobile Text Blocks -->
                 <div class="service-blocks-mobile">
                     <div class="service-block-mobile blue">
                         <h3>Leadership Coaching & Team Development</h3>
@@ -1022,24 +1029,18 @@
                     </div>
                     
                     <div class="form-field">
-                        <!-- Removed the required-mark span from the label -->
                         <label>What kind of support would help most right now? (optional)</label>
-                        <!-- ADDED inline style to enforce left alignment on the group container -->
                         <div class="checkbox-group" style="text-align: left;">
                             <div class="checkbox-item">
-                                <!-- Removed the 'required' attribute -->
                                 <input type="radio" name="support_type" value="leadership_coaching" id="support_leadership">
-                                <!-- UPDATED TEXT AND ADDED CSS TO FORCE SINGLE LINE -->
                                 <label for="support_leadership" style="margin: 0; font-weight: normal; white-space: nowrap;">Leadership coaching and team development</label>
                             </div>
                             <div class="checkbox-item">
                                 <input type="radio" name="support_type" value="strategic_planning" id="support_planning">
-                                <!-- UPDATED TEXT AND ADDED CSS TO FORCE SINGLE LINE -->
                                 <label for="support_planning" style="margin: 0; font-weight: normal; white-space: nowrap;">Strategic analysis and planning</label>
                             </div>
                             <div class="checkbox-item">
                                 <input type="radio" name="support_type" value="project_management" id="support_project">
-                                <!-- UPDATED TEXT AND ADDED CSS TO FORCE SINGLE LINE -->
                                 <label for="support_project" style="margin: 0; font-weight: normal; white-space: nowrap;">Project management</label>
                             </div>
                         </div>
@@ -1058,7 +1059,154 @@
                   <p id="thankyou" style="display: none;">
                     Thank you! Your message has been sent.
                   </p>
-                  <!-- Custom Error Message -->
+                  <p id="errorMessage" style="display: none; color: #87473E; font-weight: 600; margin-top: 1rem; text-align: center;">
+                    Error! There was an issue submitting your form. Please check your connection and try again.
+                  </p>
+                </div>
+                
+                <script>
+                // Removed the old script URL for security/privacy, replaced with a placeholder.
+                // NOTE: This URL should be replaced with your active Google Apps Script URL.
+                const scriptURL = "https://script.google.com/macros/s/AKfycbx58mUcBqxjNA27I27CgLn12UrDho1DV3tDiYyYuV1DmECJRx7oRPQ5c36FyuZK9Ac/exec";
+                const form = document.getElementById("gsdForm");
+                const thankyou = document.getElementById("thankyou");
+                const errorMessage = document.getElementById("errorMessage");
+                
+                form.addEventListener("submit", function(e){
+                  e.preventDefault();
+                
+                  // Hide any previous messages
+                  thankyou.style.display = 'none';
+                  errorMessage.style.display = 'none';
+
+                  const formData = new FormData(form);
+                  
+                  // Use URLSearchParams for POST body data
+                  const postBody = new URLSearchParams(formData);
+
+                  fetch(scriptURL, {
+                    method: 'POST',
+                    body: postBody
+                  })
+                  .then(response => {
+                    // Check if the network response was successful
+                    if (response.ok) {
+                        form.reset();
+                        thankyou.style.display = 'block';
+                    } else {
+                        // Throw an error to be caught by the .catch block
+                        throw new Error('Network response was not ok.');
+                    }
+                  })
+                  .catch(error => {
+                      // Custom UI message for error
+                      console.error('Submission Error:', error);
+                      errorMessage.style.display = 'block'; 
+                  });
+                });
+                </script>
+            </div>
+        </div>
+    </section>
+
+    <section id="team">
+        <div class="container">
+            <h2>Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="assets/img/GSD/Peter-Parenti.png" alt="Peter I Parenti">
+                    </div>
+                    <div>
+                        <h3>Peter I Parenti, Ed.D</h3>
+                        <p class="title">Founder and CEO</p>
+                        <p class="email"><a style="text-decoration:none" href="mailto:peter@gsdleaders.com">peter@gsdleaders.com</a></p><br>
+                        <p class="email">A graduate from UC Berkeley's Leadership Program, Peter combines his vast experience in public and private service with extensive knowledge in organizational development. <br>For more, visit <a href="https://www.linkedin.com/in/peter-i-parenti-ed-d-5a00b26/">Peter's LinkedIn profile.</a></p>
+                        
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="assets/img/GSD/Pamela-VandeKamp.png" alt="Pam VandeKamp, Ed.D.">
+                    </div>
+                    <div>
+                        <h3>Pam VandeKamp, Ed.D.</h3>
+                        <p class="title">Director</p>
+                        <p class="email"><a style="text-decoration:none" href="mailto:pam@gsdleaders.com">pam@gsdleaders.com</a></p><br>
+                        <p class="email">A graduate from UC Berkeley's Leadership Program, Pam combines her vast experience in public and private service with extensive knowledge in organizational development. <br>For more, visit <a href="https://www.linkedin.com/in/pamvandekamp/">Pam's LinkedIn profile.</a></p>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 style="padding-bottom: 30px">Contact Us</h2>
+            <div class="contact-content">
+                <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+
+                <div class="form-wrapper">
+                    <div class="contact-intro">
+                        <h3>Let's Get Things Done—Together</h3>
+                        </div>
+                  <p class="form-intro">
+                    Tell us a bit about you and your goals so we can start shaping real solutions—today&nbsp;and for the&nbsp;future.
+                  </p>
+                
+                  <form id="gsdForm">
+                    <div class="form-field">
+                      <label>Full Name: <span class="required-mark">*</span></label>
+                      <input type="text" name="fullname" required>
+                    </div>
+                    
+                    <div class="form-field">
+                      <label>Email Address: <span class="required-mark">*</span></label>
+                      <input type="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-field">
+                      <label>Organization / Community / Business Name:</label>
+                      <input type="text" name="organization">
+                    </div>
+                    
+                    <div class="form-field">
+                      <label>Phone Number (optional):</label>
+                      <input type="tel" name="phone">
+                    </div>
+                    
+                    <div class="form-field">
+                        <label>What kind of support would help most right now? (optional)</label>
+                        <div class="checkbox-group" style="text-align: left;">
+                            <div class="checkbox-item">
+                                <input type="radio" name="support_type" value="leadership_coaching" id="support_leadership">
+                                <label for="support_leadership" style="margin: 0; font-weight: normal; white-space: nowrap;">Leadership coaching and team development</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="radio" name="support_type" value="strategic_planning" id="support_planning">
+                                <label for="support_planning" style="margin: 0; font-weight: normal; white-space: nowrap;">Strategic analysis and planning</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="radio" name="support_type" value="project_management" id="support_project">
+                                <label for="support_project" style="margin: 0; font-weight: normal; white-space: nowrap;">Project management</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-field full-width">
+                      <label>Anything else you want us to know about before we call you back? (optional)</label>
+                      <textarea name="lastingchange" rows="3"></textarea>
+                    </div>
+                    
+                    <div class="form-field full-width">
+                      <button type="submit">Submit</button>
+                    </div>
+                  </form>
+                
+                  <p id="thankyou" style="display: none;">
+                    Thank you! Your message has been sent.
+                  </p>
                   <p id="errorMessage" style="display: none; color: #87473E; font-weight: 600; margin-top: 1rem; text-align: center;">
                     Error! There was an issue submitting your form. Please check your connection and try again.
                   </p>
