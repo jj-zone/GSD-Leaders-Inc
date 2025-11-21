@@ -87,6 +87,12 @@
             background: url('assets/img/GSD/GSD-Leaders-02.png');
             background-size: cover;
             background-position: center;
+            opacity: 0;
+            transition: opacity 2s ease-out;
+        }
+        
+        .intro-section.bg-animate {
+            opacity: 1;
         }
         
         .intro-section::after {
@@ -105,6 +111,12 @@
             background-size: cover;
             background-position: center;
             padding: 80px 0;
+            opacity: 0;
+            transition: opacity 2s ease-out;
+        }
+        
+        #about.bg-animate {
+            opacity: 1;
         }
         
         #about::after {
@@ -667,7 +679,7 @@
         .intro-content .intro-catchphrase {
             opacity: 0;
             transform: translateX(-80px);
-            transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+            transition: opacity 3s ease-out, transform 3s ease-out;
         }
         
         .intro-content.animate-in .intro-catchphrase {
@@ -684,7 +696,7 @@
         .intro-content.animate-in .intro-text {
             opacity: 1;
             transform: translateX(0);
-            transition-delay: 0.4s;
+            transition-delay: 2.5s;
         }
         
         /* About Section Animation */
@@ -706,21 +718,21 @@
         .about-content.animate-in .about-text p:nth-of-type(2) {
             opacity: 1;
             transform: translateX(0);
-            transition-delay: 0.3s;
+            transition-delay: 2s;
         }
         
         .about-content.animate-in .about-text h3:nth-of-type(3),
         .about-content.animate-in .about-text p:nth-of-type(3) {
             opacity: 1;
             transform: translateX(0);
-            transition-delay: 0.6s;
+            transition-delay: 4s;
         }
         
         /* Team Section Animation */
         .team-member {
             opacity: 0;
             transform: translateX(-80px);
-            transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+            transition: opacity 1.2s ease-out 1.5s, transform 1.2s ease-out 1.5s;
         }
         
         .team-member.animate-in {
@@ -741,7 +753,7 @@
         .form-wrapper {
             opacity: 0;
             transform: translateY(50px);
-            transition: opacity 1.4s ease-out, transform 1.4s ease-out;
+            transition: opacity 1.4s ease-out 1.5s, transform 1.4s ease-out 1.5s;
         }
         
         .form-wrapper.animate-in {
@@ -1188,6 +1200,10 @@
     <script>
         // NEW ANIMATION OBSERVERS FOR INTRO, ABOUT, TEAM, AND CONTACT
         
+        // Get section elements for background animation
+        const introSection = document.querySelector('.intro-section');
+        const aboutSection = document.getElementById('about');
+        
         // Create observers for new sections
         const introContent = document.getElementById('introContent');
         const aboutContent = document.getElementById('aboutContent');
@@ -1195,7 +1211,31 @@
         const teamMember2 = document.getElementById('teamMember2');
         const formWrapper = document.getElementById('formWrapper');
         
-        // Observer for intro section
+        // Observer for intro section background
+        const introSectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('bg-animate');
+                    introSectionObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        // Observer for about section background
+        const aboutSectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('bg-animate');
+                    aboutSectionObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        // Observer for intro content
         const introObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1242,6 +1282,10 @@
         }, {
             threshold: 0.2
         });
+        
+        // Observe background sections
+        if (introSection) introSectionObserver.observe(introSection);
+        if (aboutSection) aboutSectionObserver.observe(aboutSection);
         
         // Observe new animated elements
         if (introContent) introObserver.observe(introContent);
