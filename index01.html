@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -913,57 +912,50 @@
             }
             
             /* Form mobile layout - single column */
-            .form-wrapper {
-                padding: 1rem;
-                max-width: 100%;
-                box-sizing: border-box;
-            }
-            
             #gsdForm {
                 grid-template-columns: 1fr;
-            }
-            
-            .form-field {
-                max-width: 100%;
-                box-sizing: border-box;
             }
             
             .form-field.full-width {
                 grid-column: 1;
             }
             
-            #gsdForm input,
-            #gsdForm textarea {
-                max-width: 100%;
-                box-sizing: border-box;
+            /* FIX START: Apply a max-width to the form wrapper to keep it within the container's padding */
+            .form-wrapper {
+                max-width: 100%; /* Keep max-width 100% on small screens */
+                margin: 0 20px; /* Use margins to respect the main page padding if needed, but the container handles this. Removing the auto margin on mobile for better control. */
+                padding: 1.5rem; /* Padding inside the form wrapper itself */
             }
             
-            /* Ensure radio buttons stay left-aligned on mobile */
+            /* FIX: Ensure form inputs/textarea/button take up full available width minus padding */
+            #gsdForm input,
+            #gsdForm textarea,
+            #gsdForm button {
+                width: 100%;
+                /* Resetting width to 100% is fine, but the issue is with the content of the form wrapper. */
+            }
+            
+            /* FIX START: Checkbox group alignment fix */
             .checkbox-group {
+                /* Set width to 100% to fill the grid column */
+                width: 100%; 
                 align-items: flex-start;
                 text-align: left;
-                max-width: 100%;
             }
             
             .checkbox-item {
                 display: flex;
-                align-items: flex-start;
+                align-items: center;
                 justify-content: flex-start;
                 gap: 10px;
+                /* Remove white-space: nowrap to allow text to wrap */
                 white-space: normal;
                 text-align: left;
-                max-width: 100%;
             }
             
             .checkbox-item label {
                 text-align: left;
-                flex: 1;
-                word-wrap: break-word;
-            }
-            
-            .checkbox-item input[type="radio"] {
-                flex-shrink: 0;
-                margin-top: 3px;
+                white-space: normal !important; /* Force text to wrap */
             }
             
             .return-to-top {
@@ -978,6 +970,19 @@
                 margin-bottom: 10px;
             }
         }
+        
+        /* FINAL FIX: Ensure form wrapper respects the container on mobile */
+        @media (max-width: 768px) {
+            .form-wrapper {
+                margin: 0; /* Remove the desktop auto margin to use 100% width within container */
+            }
+            
+            /* Adjust the padding of the contact section itself to contain the form */
+            #contact .container {
+                padding: 0 20px; /* Re-apply container padding */
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -1034,7 +1039,7 @@
                 <div class="services-top">
                     <div class="donut-container" id="donutContainer">
                     <svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible;">
-                        <line class="connector-line connector-left" x1="-50" y1="175" x2="70" y2="175" stroke="#1B365D" stroke-width="2"/>
+                        <line class="connector-line connector-left" x1="-30" y1="175" x2="70" y2="175" stroke="#1B365D" stroke-width="2"/>
                         <line class="connector-line connector-right" x1="400" y1="175" x2="280" y2="175" stroke="#87473E" stroke-width="2"/>
                         <line class="connector-line connector-bottom" x1="175" y1="365" x2="175" y2="300" stroke="#8C7A5A" stroke-width="2"/>
                     </svg>
