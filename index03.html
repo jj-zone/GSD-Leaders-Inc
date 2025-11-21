@@ -1024,4 +1024,292 @@
                 
                 <div class="service-block service-block-bottom">
                         <h3>Project Management</h3>
-                        <p>Plans only matter if they get implemented. We ensure that key initiatives move forward—on time, on budget, and
+                        <p>Plans only matter if they get implemented. We ensure that key initiatives move forward—on time, on budget, and with accountability. We bring structure, communication, and focus to complex projects so leaders can see real progress and measurable&nbsp;results.</p>
+                    </div>
+                </div>
+                
+                <div class="service-blocks-mobile">
+                    <div class="service-block-mobile blue">
+                        <h3>Leadership Coaching & Team Development</h3>
+                        <p>Leadership isn&rsquo;t theory—it&rsquo;s practice. We build trust, communicate effectively, and move from discussion to action. Whether you&rsquo;re building a new team, navigating change, or strengthening organizational culture, our approach focuses on real progress and lasting&nbsp;growth.</p>
+                    </div>
+                    
+                    <div class="service-block-mobile burgundy">
+                        <h3>Strategic Analysis & Planning</h3>
+                        <p>We help make sense of complexity and set clear direction, combining data-driven insight with grounded, collaborative design. The result: actionable plans that align resources, stakeholders, and outcomes—not just documents that sit on a&nbsp;shelf.</p>
+                    </div>
+                    
+                    <div class="service-block-mobile tan">
+                        <h3>Project Management</h3>
+                        <p>Plans only matter if they get implemented. We ensure that key initiatives move forward—on time, on budget, and with accountability. We bring structure, communication, and focus to complex projects so leaders can see real progress and measurable&nbsp;results.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="team">
+        <div class="container">
+            <h2>Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member" id="teamMember1">
+                    <div class="team-photo">
+                        <img src="assets/img/GSD/Peter-Parenti.png" alt="Peter I Parenti">
+                    </div>
+                    <div>
+                        <h3>Peter I Parenti, Ed.D</h3>
+                        <p class="title">Founder and CEO</p>
+                        <p class="email"><a style="text-decoration:none" href="mailto:peter@gsdleaders.com">peter@gsdleaders.com</a></p><br>
+                        <p class="email">A graduate from UC Berkeley's Leadership Program, Peter combines his vast experience in public and private service with extensive knowledge in organizational development. <br>For more, visit <a href="https://www.linkedin.com/in/peter-i-parenti-ed-d-5a00b26/">Peter's LinkedIn profile.</a></p>
+                        
+                    </div>
+                </div>
+                <div class="team-member" id="teamMember2">
+                    <div class="team-photo">
+                        <img src="assets/img/GSD/Pamela-VandeKamp.png" alt="Pam VandeKamp, Ed.D.">
+                    </div>
+                    <div>
+                        <h3>Pam VandeKamp, Ed.D.</h3>
+                        <p class="title">Director</p>
+                        <p class="email"><a style="text-decoration:none" href="mailto:pam@gsdleaders.com">pam@gsdleaders.com</a></p><br>
+                        <p class="email">A graduate from UC Berkeley's Leadership Program, Pam combines her vast experience in public and private service with extensive knowledge in organizational development. <br>For more, visit <a href="https://www.linkedin.com/in/pamvandekamp/">Pam's LinkedIn profile.</a></p>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 style="padding-bottom: 30px">Contact Us</h2>
+            <div class="contact-content">
+                <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+
+                <div class="form-wrapper" id="formWrapper">
+                    <div class="contact-intro">
+                        <h3>Let's Get Things Done—Together</h3>
+                        </div>
+                  <p class="form-intro">
+                    Tell us a bit about you and your goals so we can start shaping real solutions—today&nbsp;and for the&nbsp;future.
+                  </p>
+                
+                  <form id="gsdForm">
+                    <div class="form-field">
+                      <label>Full Name: <span class="required-mark">*</span></label>
+                      <input type="text" name="fullname" required>
+                    </div>
+                    
+                    <div class="form-field">
+                      <label>Email Address: <span class="required-mark">*</span></label>
+                      <input type="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-field">
+                      <label>Organization / Community / Business Name:</label>
+                      <input type="text" name="organization">
+                    </div>
+                    
+                    <div class="form-field">
+                      <label>Phone Number (optional):</label>
+                      <input type="tel" name="phone">
+                    </div>
+                    
+                    <div class="form-field">
+                        <label for="support_select">What kind of support would help most right now? (optional)</label>
+                        <select name="support_type" id="support_select">
+                            <option value="">-- Please Select One --</option>
+                            <option value="leadership_coaching">Leadership coaching and team development</option>
+                            <option value="strategic_planning">Strategic analysis and planning</option>
+                            <option value="project_management">Project management</option>
+                        </select>
+                    </div>
+                    <div class="form-field full-width">
+                      <label>Anything else you want us to know about before we call you back? (optional)</label>
+                      <textarea name="lastingchange" rows="3"></textarea>
+                    </div>
+                    
+                    <div class="form-field full-width">
+                      <button type="submit">Submit</button>
+                    </div>
+                  </form>
+                
+                  <p id="thankyou" style="display: none;">
+                    Thank you! Your message has been sent.
+                  </p>
+                  <p id="errorMessage" style="display: none; color: #87473E; font-weight: 600; margin-top: 1rem; text-align: center;">
+                    Error! There was an issue submitting your form. Please check your connection and try again.
+                  </p>
+                </div>
+                
+                <script>
+                const scriptURL = "https://script.google.com/macros/s/AKfycbx58mUcBqxjNA27I27CgLn12UrDho1DV3tDiYyYuV1DmECJRx7oRPQ5c36FyuZK9Ac/exec";
+                const form = document.getElementById("gsdForm");
+                const thankyou = document.getElementById("thankyou");
+                const errorMessage = document.getElementById("errorMessage");
+                
+                form.addEventListener("submit", function(e){
+                  e.preventDefault();
+                
+                  thankyou.style.display = 'none';
+                  errorMessage.style.display = 'none';
+
+                  const formData = new FormData(form);
+                  
+                  const postBody = new URLSearchParams(formData);
+
+                  fetch(scriptURL, {
+                    method: 'POST',
+                    body: postBody
+                  })
+                  .then(response => {
+                    if (response.ok) {
+                        form.reset();
+                        thankyou.style.display = 'block';
+                    } else {
+                        throw new Error('Network response was not ok.');
+                    }
+                  })
+                  .catch(error => {
+                      console.error('Submission Error:', error);
+                      errorMessage.style.display = 'block'; 
+                  });
+                });
+                </script>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <a href="https://www.jobesstudio.com/" target="_blank" rel="noopener noreferrer" class="footer-designer">Designed by Jobes Studio</a>
+            <div class="footer-content">
+                <p>&copy; 2025 GSD Leaders, Inc. All rights reserved.</p>
+            </div>
+            <a href="#home" class="return-to-top">
+                <img src="assets/img/GSD/GSD-favicon.png" alt="Return to top" class="footer-icon">
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        // NEW ANIMATION OBSERVERS FOR INTRO, ABOUT, TEAM, AND CONTACT
+        
+        // Get section elements for background animation
+        const introSection = document.querySelector('.intro-section');
+        const aboutSection = document.getElementById('about');
+        
+        // Create observers for new sections
+        const introContent = document.getElementById('introContent');
+        const aboutContent = document.getElementById('aboutContent');
+        const teamMember1 = document.getElementById('teamMember1');
+        const teamMember2 = document.getElementById('teamMember2');
+        const formWrapper = document.getElementById('formWrapper');
+        
+        // Observer for intro section background
+        const introSectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('bg-animate');
+                    introSectionObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        // Observer for about section background
+        const aboutSectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('bg-animate');
+                    aboutSectionObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        // Observer for intro content
+        const introObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    introObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.2
+        });
+        
+        // Observer for about section
+        const aboutObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    aboutObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.2
+        });
+        
+        // Observer for team members
+        const teamObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    teamObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.2
+        });
+        
+        // Observer for contact form
+        const contactObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    contactObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.2
+        });
+        
+        // Observe background sections
+        if (introSection) introSectionObserver.observe(introSection);
+        if (aboutSection) aboutSectionObserver.observe(aboutSection);
+        
+        // Observe new animated elements
+        if (introContent) introObserver.observe(introContent);
+        if (aboutContent) aboutObserver.observe(aboutContent);
+        if (teamMember1) teamObserver.observe(teamMember1);
+        if (teamMember2) teamObserver.observe(teamMember2);
+        if (formWrapper) contactObserver.observe(formWrapper);
+        
+        // ORIGINAL SERVICES SECTION ANIMATION (PRESERVED)
+        const donutContainer = document.getElementById('donutContainer');
+        const servicesInfographic = document.getElementById('servicesInfographic');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                    if (entry.target.id === 'donutContainer') {
+                        servicesInfographic.classList.add('animate');
+                    }
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.3
+        });
+        
+        observer.observe(donutContainer); 
+        observer.observe(servicesInfographic);
+
+    </script>
+</body>
+</html>
