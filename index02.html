@@ -193,7 +193,7 @@
         }
 
         /* -----------------------
-        FIXED RADIO BUTTON STYLES 
+        FIXED RADIO BUTTON STYLES (Desktop/Default)
         ------------------------ */
         .checkbox-group {
             display: flex;
@@ -208,7 +208,6 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            /* Allow text to wrap by default */
         }
         /* ----------------------- */
 
@@ -554,8 +553,10 @@
             margin-bottom: 5px;
         }
         
+        /* Added select element here */
         #gsdForm input,
-        #gsdForm textarea {
+        #gsdForm textarea,
+        #gsdForm select { 
             width: 100%;
             padding: 10px;
             margin: 6px 0;
@@ -566,7 +567,8 @@
         }
         
         #gsdForm input:focus,
-        #gsdForm textarea:focus {
+        #gsdForm textarea:focus,
+        #gsdForm select:focus {
             outline: none;
             border-color: #6c6c6c;
         }
@@ -929,15 +931,17 @@
             /* FIX: Ensure form inputs/textarea/button take up full available width minus padding */
             #gsdForm input,
             #gsdForm textarea,
+            #gsdForm select,
             #gsdForm button {
                 width: 100%;
             }
             
-            /* FIX: Checkbox group alignment fix */
+            /* FIX START: Checkbox group alignment fix */
             .checkbox-group {
                 width: 100%; 
                 align-items: flex-start;
                 text-align: left;
+                padding-right: 15px; /* Added padding to prevent labels from hugging the form edge */
             }
             
             .checkbox-item {
@@ -947,12 +951,17 @@
                 gap: 10px;
                 white-space: normal;
                 text-align: left;
+                width: 100%; /* Important: Force the item to occupy full width */
             }
             
             .checkbox-item label {
                 text-align: left;
-                white-space: normal; /* No longer needs !important, the inline style is removed */
+                white-space: normal;
+                flex-grow: 1; /* Important: Allows the label to take up remaining space */
+                min-width: 0; /* CRITICAL: Allows flex item to shrink and wrap its content */
+                word-break: break-word; /* Failsafe for long words */
             }
+            /* FIX END */
             
             .return-to-top {
                 position: static;
@@ -1166,7 +1175,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="form-field full-width">
                       <label>Anything else you want us to know about before we call you back? (optional)</label>
                       <textarea name="lastingchange" rows="3"></textarea>
