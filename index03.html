@@ -1,1315 +1,1641 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Jason Jobes: Multimedia Designer Portfolio | Web, Print & Motion Graphics</title>
+  
+  <meta name="description" content="Jason Jobes: Multimedia Designer specializing in creative web design, print assets, motion graphics, and brand elevation. Based in the San Francisco Bay Area.">
+  <meta name="keywords" content="multimedia designer, web design, print design, motion graphics, graphic design, portfolio, Jason Jobes, Jobes Studio, UX design, branding">
+  
+  <link rel="canonical" href="https://yourwebsite.com/index.html">
+  
+  <meta property="og:title" content="Jason Jobes: Multimedia Designer Portfolio">
+  <meta property="og:description" content="Creative design solutions that elevate your brand across web, print, and video.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yourwebsite.com/index.html">
+  <meta property="og:image" content="https://yourwebsite.com/assets/img/og-image.jpg"> 
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;600i;700;700i&display=swap" rel="stylesheet">
+  
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  
+  <style>
+    /* NEW: Universal Box Sizing to ensure width calculations are always consistent, resolving subtle right-side space issues */
+    *, *::before, *::after {
+        box-sizing: border-box;
+    }
     
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GSD Leaders</title>
-    <link rel="icon" type="image/x-icon" href="assets/img/GSD/GSD-favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/GSD/GSD-favicon.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/GSD/GSD-favicon.png">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    /* Reset and Typography */
+    :root {
+      --primary-color: #0563bb;
+      --secondary-color: #0d6efd;
+      --text-color: #45505b;
+      --bg-light: #f5f8fd;
+      --bg-dark: #373737;
+      /* NEW: Modal Backdrop Color */
+      --modal-backdrop-color: rgba(0, 0, 0, 0.95);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.65;
+      color: var(--text-color);
+      background-color: #fff;
+      overflow-x: hidden; /* FIX 1: Prevent horizontal scroll/wobble */
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Inter', sans-serif;
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+      font-weight: 500;
+      color: var(--bg-dark);
+    }
+
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    h3 { font-size: 1.5rem; }
+    p { margin-top: 0; margin-bottom: 1rem; }
+    a { text-decoration: none; color: var(--primary-color); transition: color 0.3s; }
+    a:hover { color: #0780f7; }
+    
+    /* Default Container Padding (Desktop/Tablet) */
+    .container {
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+        max-width: 1200px;
+    }
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+    
+    .section-title {
+        text-align: center;
+        padding-bottom: 0px;
+    }
+    
+    /* Main Content Header (Sticky, White, Shadow) */
+    #main-content-header {
+        background: #ffffff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+        padding: 15px 0;
+        position: sticky;
+        top: 0;
+        z-index: 999; 
+    }
+
+    .tagline-area {
+        display: flex;
+        align-items: center;
+        gap: 25px; 
+        /* Important for mobile: allow tagline area to shrink */
+        flex-shrink: 1; 
+        min-width: 0; /* Prevents overflow with flex items */
+    }
+
+    /* Logo size 3x larger */
+    .logo-banner-logo img {
+        max-width: 300px; 
+        height: auto;
+        display: block;
+    }
+
+    .tagline-block {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        line-height: 1.1;
+        /* Important for mobile: allow text block to shrink */
+        min-width: 0; 
+    }
+
+    .tagline-line-1 {
+        font-size: 1.4rem; 
+        font-weight: 700; 
+        color: var(--bg-dark);
+        margin-bottom: 0px;
+        white-space: nowrap; /* Keep nowrap on Desktop */
+    }
+
+    .tagline-line-2 {
+        font-size: 1.1rem; 
+        font-weight: 400;
+        color: var(--text-color);
+        margin-top: 5px;
         
-        body {
-            font-family: 'Avenir', 'Avenir Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            line-height: 1.6;
-            color: #1B365D;
-            background: #f8f9fa;
+        /* Animation CSS - Increased translateY to make it "rise further" */
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        white-space: nowrap; /* Keep nowrap on Desktop */
+    }
+
+    .tagline-line-2.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Navbar in Header Styling (Far Right) - Desktop */
+    .horizontal-nav-in-header ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex; 
+        gap: 20px;
+    }
+
+    .horizontal-nav-in-header ul li a {
+        color: var(--text-color);
+        font-size: 15px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+    .horizontal-nav-in-header ul li a:hover {
+        color: var(--primary-color);
+    }
+    
+    /* Main content always stays in place */
+    #main {
+      margin-left: 0px; 
+      transition: none; /* No shifting */
+    }
+    
+    /* Mobile Navigation Toggle Button for the header */
+    .mobile-nav-toggle-header {
+        display: none; /* Hidden by default on desktop */
+        z-index: 1000;
+        font-size: 24px;
+        border: 0;
+        background: none;
+        outline: none !important;
+        line-height: 1;
+        cursor: pointer;
+        color: var(--primary-color);
+    }
+    
+    /* Desktop Viewport Logic */
+    @media (min-width: 992px) {
+        .horizontal-nav-in-header {
+            display: block !important;
         }
+        .mobile-nav-toggle-header {
+            display: none;
+        }
+    }
+
+    /* Mobile Viewport Logic (Tablet and Mobile) */
+    @media (max-width: 991px) {
         
+        /* FIX 1: Ensure consistent and visible padding on all edges for the container (20px) */
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        /* FIX 2: Remove negative margins from the row element to prevent horizontal overflow/drift */
+        .row {
+            margin-right: 0; 
+            margin-left: 0;
         }
         
-        header {
-            background: #fff;
+        /* FIX 7: Allow tagline text to wrap on mobile to prevent horizontal overflow 
+           and ensure the hamburger menu is visible on the right edge. */
+        .tagline-line-1,
+        .tagline-line-2 {
+            white-space: normal !important; 
+        }
+        
+        /* FIX 3: Remove internal 15px padding from About teaser/accordion for consistent 20px container margin */
+        .about-teaser {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+        /* Restore specific vertical padding for about-teaser and open accordion */
+        .about-teaser {
+            padding-top: 30px !important;
+            padding-bottom: 0 !important;
+        }
+        
+        .accordion-content {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+        .accordion-content.open {
+            padding-top: 10px !important;
+            padding-bottom: 20px !important;
+        }
+
+
+        /* FIX 4 (Testimonials): Remove the internal 15px padding on the slider element 
+           to align its contents flush with the container's 20px padding. */
+        .testimonials-slider {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+        
+        /* FIX 5: Override portfolio animation transforms on mobile (prevents the 'drift' from animation) */
+        .portfolio-item,
+        .portfolio-item:nth-child(1),
+        .portfolio-item:nth-child(2),
+        .portfolio-item:nth-child(3),
+        .portfolio-item:nth-child(4),
+        .portfolio-item:nth-child(5),
+        .portfolio-item:nth-child(6),
+        .portfolio-item:nth-child(7),
+        .portfolio-item:nth-child(8),
+        .portfolio-item:nth-child(9),
+        .portfolio-item:nth-child(10) { /* Added index 10 */
+            transform: none !important;
+        }
+
+        /* FIX 6: Set opacity to 1 on mobile to override the default opacity: 0 set for the desktop animation */
+        .portfolio-item {
+            opacity: 1 !important; 
+        }
+        
+        /* Show the toggle button */
+        .mobile-nav-toggle-header {
+            display: block; 
+        }
+        
+        /* Navigation is hidden by default and positioned for full-screen overlay */
+        .horizontal-nav-in-header {
             position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 8px 10px rgba(0,0,0,0.1);
+            top: 60px; /* Below the sticky header */
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: rgba(255, 255, 255, 0.95); /* Semi-transparent white background */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+            transition: all 0.3s ease-in-out;
+            display: none; /* Initially hidden */
+            padding: 20px;
+            z-index: 998;
+        }
+
+        .horizontal-nav-in-header.nav-active {
+            display: block; /* Show when toggled */
         }
         
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
+        /* Vertical stacking for mobile */
+        .horizontal-nav-in-header ul {
+            flex-direction: column; 
+            text-align: center;
         }
         
-        .logo-space img {
-            height: 130px;
+        .horizontal-nav-in-header ul li {
+            margin: 10px 0;
         }
         
-        nav ul {
+        .horizontal-nav-in-header ul li a {
+            padding: 10px 15px;
+            display: block;
+            font-size: 17px;
+        }
+    }
+    
+    /* Hide the old banner and horizontal nav that were removed in step 1 */
+    .logo-banner, .horizontal-nav {
+        display: none !important;
+    }
+    
+    /* ****************************************************** */
+    /* NEW: About Section & Accordion Styles */
+    /* ****************************************************** */
+    
+    /* FIX: Add scroll-margin-top to all sections to account for sticky header */
+    #about, #portfoio, #testimonials, #contact {
+        scroll-margin-top: 100px; 
+    }
+    
+    /* FIX: The main section no longer has the ID, but keeps the padding */
+    .about-section {
+        padding: 20px 0; /* Consistent padding */
+        background: #fff;
+    }
+
+    .about-teaser {
+        max-width: 100%; 
+        margin: 0 auto;
+        /* FIX: Increased top padding from 0 to 30px to push content below the anchor point */
+        padding: 30px 15px 0 15px; 
+        text-align: left;
+    }
+    
+    /* Ensure the button is also left-aligned with the text */
+    .about-teaser .read-more-btn {
+        margin-left: 0;
+    }
+
+    .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.7s ease-in-out, padding 0.7s ease-in-out;
+        padding: 0 15px; /* Initial padding is zero */
+    }
+
+    .accordion-content.open {
+        max-height: 3500px; /* Increased height to accommodate the new layout */
+        padding: 10px 15px 20px 15px; 
+    }
+
+    /* NEW: Wrapper for Centered Content */
+    .centered-content-wrapper {
+        max-width: 100%; 
+        margin: 0 auto;
+    }
+    .centered-content-wrapper p {
+        text-align: left; /* Keep paragraphs readable */
+    }
+    
+    /* UPDATED: Read More Button Styling (Link-style with Arrow) */
+    .read-more-btn {
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+        font-weight: 700; /* Changed from 600 to 700 for bold link */
+        color: var(--bg-dark); /* Dark Gray/Black text */
+        margin-top: 10px;
+        /* REMOVED Button Styling: */
+        padding: 0; /* Removed 5px 10px padding */
+        border: none; /* Removed 2px solid border */
+        border-radius: 0px;
+        background: none; /* Ensure no background */
+        /* END REMOVED Button Styling */
+        transition: color 0.3s;
+        gap: 8px; /* Increased gap from 5px to 8px for better separation */
+        font-size: 1.1rem; /* New size for link emphasis */
+    }
+
+    .read-more-btn:hover,
+    .read-more-btn.active { /* Use dark background when active/open */
+        background: none; /* Ensure no background */
+        color: #555555; /* Subtle color change on hover/active */
+    }
+    
+    .read-more-btn i {
+        transition: transform 0.3s;
+        font-size: 1.2rem; /* New size for arrow */
+    }
+    
+    /* Add hover effect for arrow */
+    .read-more-btn:hover i {
+        transform: translateX(4px); 
+    }
+
+    .read-more-btn.active i {
+        transform: rotate(180deg);
+    }
+
+
+    /* Stagnant Grid for About section (Lightbox enabled) */
+    .stagnant-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin-top: 0; /* Ensures minimal space after the accordion content opens */
+        margin-bottom: 30px;
+    }
+    
+    /* MODIFIED: Changed link to button for modal trigger */
+    .stagnant-grid .open-modal-btn { /* The button is the grid item */
+        all: unset; /* Remove all default button styling */
+        text-align: center; 
+        display: block;
+        cursor: pointer;
+        text-decoration: none;
+        color: inherit; /* Inherit text color for caption */
+        transition: transform 0.2s;
+    }
+
+    .stagnant-grid .open-modal-btn:hover {
+        transform: translateY(-3px);
+    }
+    
+    .stagnant-grid img { 
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-radius: 4px;
+        display: block;
+        border: 1px solid #ddd;
+    }
+    
+    .stagnant-grid p { 
+        padding: 10px 0 0 0; /* Space for the caption */
+        font-size: 0.9rem;
+        font-weight: 400;
+        color: var(--bg-dark);
+        margin-bottom: 0;
+    }
+
+    /* ****************************************************** */
+    /* NEW: Modal/Dialog Styles (Replaces GLightbox) */
+    /* ****************************************************** */
+    #image-modal {
+        /* Dialog default styles for overlay */
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        /* Custom backdrop */
+        background-color: var(--modal-backdrop-color); 
+        padding: 0;
+        border: none;
+        max-width: 100vw;
+        max-height: 100vh;
+        width: 100%;
+        height: 100%;
+        /* Ensure it's above everything */
+        z-index: 99999; 
+    }
+    
+    /* Fallback for browsers that don't support ::backdrop */
+    #image-modal:not([open]) {
+        display: none;
+    }
+
+    /* Main content wrapper inside the dialog */
+    .modal-content-wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+    
+    /* Image element within the modal */
+    #modal-image {
+        max-width: 95vw;
+        max-height: 80vh; /* Leave room for caption and close button */
+        width: auto;
+        height: auto;
+        object-fit: contain; /* Ensure the full image is visible */
+        border-radius: 4px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+    
+    /* Caption for the image */
+    #modal-caption {
+        color: #fff;
+        font-size: 1.1rem;
+        font-weight: 500;
+        margin-top: 15px;
+        text-align: center;
+        max-width: 90%;
+    }
+
+    /* Close Button (Positioned top right) */
+    #modal-close-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: #fff;
+        color: var(--bg-dark);
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        font-weight: bold;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 100000; /* Above the image and everything else */
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    #modal-close-btn:hover {
+        background: var(--primary-color);
+        color: #fff;
+    }
+    /* ****************************************************** */
+
+
+    /* Portfolio Section (FIXED 16:9 LAYOUT) */
+    .portfolio {
+        /* Adjusted: Reduced top padding for less space between header/about and grid */
+        padding: 20px 0; 
+        background: #fff; 
+    }
+
+    .portfolio-container {
+      display: grid;
+      /* Use a 3-column base grid */
+      grid-template-columns: repeat(3, 1fr); 
+      /* gap: 15px;*/  /* Added gap for the bento feel */ 
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    
+    /* Grid Spanning Classes for Bento Layout - REMOVED */
+    /*
+    .portfolio-item-wide {
+        grid-column: span 3;
+        aspect-ratio: 3 / 1; 
+    }
+
+    .portfolio-item-medium {
+        grid-column: span 2;
+        aspect-ratio: 2 / 1.5;
+    }
+
+    .portfolio-item-narrow {
+        grid-column: span 1;
+        aspect-ratio: 1 / 1.5;
+    }
+    */
+    
+    /* NEW: All portfolio items must be 16:9 aspect ratio and span 1 column */
+    .portfolio-item {
+        grid-column: span 1 !important; /* Force all to 1 column width */
+        aspect-ratio: 16 / 9; /* NEW: All items are 16:9 aspect ratio */
+        position: relative;
+        overflow: hidden;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    /* END NEW GRID CHANGES */
+    
+    .portfolio-wrap {
+        position: relative;
+        overflow: hidden;
+        height: 100%; /* Important for image sizing */
+    }
+
+    .portfolio-wrap img {
+      width: 100%; 
+      height: 100%; /* Force image to fill container height */
+      object-fit: cover; /* Crop image to cover the container without stretching */
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    /* ****************************************************** */
+    /* Portfolio Links for FULL OVERLAY & CENTERED TEXT */
+    /* ****************************************************** */
+    .portfolio-links {
+        /* Full overlay positioning */
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        
+        /* Centering content with Flexbox */
+        display: flex;
+        flex-direction: column; 
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+
+        /* Text styling */
+        color: #fff;
+        font-weight: 700; 
+        padding: 15px;
+        line-height: 1.4; /* Improve readability of stacked text */
+        
+        /* Initial state (transparent and hidden) */
+        background: rgba(0, 0, 0, 0.0);
+        opacity: 0;
+        
+        /* Animation transition */
+        transition: all 0.4s ease;
+        /* Ensure any old transforms are overridden */
+        transform: none; 
+    }
+
+    .portfolio-item a:hover .portfolio-links {
+        opacity: 1; /* Fully visible */
+        background: rgba(0, 0, 0, 0.8); /* Darkened background */
+    }
+    
+    .portfolio-item a:hover .portfolio-wrap img {
+        transform: scale(1.05);
+    }
+
+    /* Animated Portfolio Grid Items - ANIMATION REMAINS AS-IS (DESKTOP ONLY) */
+    .portfolio-item {
+      opacity: 0;
+      transition: all 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .portfolio-item.animate-in {
+      opacity: 1;
+      transform: translate(0, 0) !important;
+    }
+
+    /* INITIAL STATES FOR ANIMATION (Updated for all items to glide from sides) */
+    /* Increased translateX to 300px for a cleaner glide. */
+    
+    /* Row 1: Item 1 (Wide - Full Center) - Glide from Left */
+    .portfolio-item:nth-child(1) { transform: translateX(-300px); transition-delay: 0s; } /* NEW: Logo Design */
+    
+    /* Row 2: Item 2 (Narrow - Left 1/3) and Item 3 (Medium - Right 2/3) */
+    .portfolio-item:nth-child(2) { transform: translateX(-300px); transition-delay: 0s; } /* GSD Leaders (Left) */
+    .portfolio-item:nth-child(3) { transform: translateX(300px); transition-delay: 0.15s; } /* Michael and Ming (Right) */
+    
+    /* Row 3: Item 4 (Wide - Full Center) - Glide from Left */
+    .portfolio-item:nth-child(4) { transform: translateX(-300px); transition-delay: 0.6s; } /* Bay Machinery (Left) */
+    /* Removed the original scale animation override */
+    
+    /* Row 4: Item 5 (Narrow - Left 1/3) and Item 6 (Medium - Right 2/3) */
+    .portfolio-item:nth-child(5) { transform: translateX(-300px); transition-delay: 0.3s; } /* Bio-Rad Flyers (Left) */
+    .portfolio-item:nth-child(6) { transform: translateX(300px); transition-delay: 0.45s; } /* Bio-Rad Banners (Right) */
+    
+    /* Row 5: Item 7 (Wide - Full Center) - Glide from Left */
+    .portfolio-item:nth-child(7) { transform: translateX(-300px); transition-delay: 0.6s; } /* Bio-Rad Motion */
+    /* Removed the original scale animation override */
+    
+    /* Row 6: Item 8 (Narrow - Left 1/3) and Item 9 (Medium - Right 2/3) - Glide from sides */
+    .portfolio-item:nth-child(8) { transform: translateX(-300px); transition-delay: 0.75s; } /* Bio-Rad LP */
+    .portfolio-item:nth-child(9) { transform: translateX(300px); transition-delay: 0.9s; } /* Guitello CD */
+    
+    /* Row 7: Item 10 (Wide - Full Center) - Glide from Left */
+    .portfolio-item:nth-child(10) { transform: translateX(-300px); transition-delay: 1.05s; } /* Guitar Book */
+    /* Removed the original scale animation override */
+
+    /* Row 8: Item 11 (Narrow - Left 1/3) and Item 12 (Medium - Right 2/3) - Glide from sides */
+    .portfolio-item:nth-child(11) { transform: translateX(-300px); transition-delay: 1.2s; } /* Johnsong Music */
+    .portfolio-item:nth-child(12) { transform: translateX(300px); transition-delay: 1.35s; } /* NV Publishing */
+    
+    /* Responsive adjustments for Portfolio */
+    @media (max-width: 992px) {
+        .portfolio-container {
+            /* On tablet, switch to 2 columns */
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 10px;
+        }
+        .portfolio-item {
+            /* Force all items back to 1 column or default 2-column on tablet */
+            grid-column: span 1 !important; 
+            aspect-ratio: auto !important; /* Reset specific aspect ratios */
+        }
+        /* REMOVED: Specific bento box classes no longer needed */
+        /*
+        .portfolio-item-wide, .portfolio-item-medium, .portfolio-item-narrow {
+            grid-column: span 1; 
+        }
+        */
+        
+        /* About section column layout for tablet */
+        .col-lg-8, .col-lg-4 {
+            width: 100% !important;
+            flex-basis: 100% !important;
+        }
+    }
+    @media (max-width: 768px) {
+        /* On mobile, remove the float on the profile image */
+        .portfolio-info {
+            float: none !important;
+            margin-right: 0 !important;
+            max-width: 100% !important;
+            text-align: center !important;
+            margin: 0 auto 20px auto !important;
+        }
+        .portfolio-info img {
+            display: block;
+            margin: 0 auto;
+        }
+        .portfolio-container {
+            grid-template-columns: 1fr; /* Single column on mobile */
+        }
+        /* About section image grid for mobile */
+        .stagnant-grid {
+             grid-template-columns: 1fr;
+        }
+        
+        /* FIX (Header): Set a reasonable max-width for the logo on phone screens. */
+        .logo-banner-logo img {
+            max-width: 200px; 
+        }
+        
+        /* FIX (Testimonials): Remove horizontal margins and adjust padding to ensure 
+           perfect 100% alignment within the container. */
+        .testimonial-item {
+            /* Now width is 100% since margins are gone */
+            width: 100% !important; 
+            max-width: 100% !important; 
+            min-width: 0;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            /* Reduced inner padding to 20px L/R for mobile readability */
+            padding: 40px 20px; 
+        }
+        
+        /* Modal tweaks for small screens */
+        #modal-image {
+            max-width: 100%;
+            max-height: 75vh;
+        }
+        #modal-close-btn {
+            top: 10px;
+            right: 10px;
+            width: 36px;
+            height: 36px;
+            font-size: 18px;
+        }
+    }
+
+
+    /* Testimonials Section (2-Up Display) */
+    .testimonials {
+        padding: 60px 0;
+        background: var(--bg-light);
+    }
+    
+    .testimonials-slider {
+        position: relative;
+        overflow: hidden; /* Prevents horizontal overflow caused by margins on items */
+        max-width: 100%;
+        padding: 0 15px; /* Default for desktop. This padding is REMOVED in mobile media query for alignment. */
+    }
+    
+    .testimonials-wrapper {
+        display: flex;
+        transition: transform 0.8s ease-in-out; 
+        padding: 20px 0; 
+    }
+
+    .testimonial-item {
+        flex-shrink: 0; 
+        width: 50%; 
+        min-width: 300px; 
+        margin: 0 10px; 
+        /* FIX: Increased horizontal padding to 60px for desktop/tablet */
+        padding: 40px 60px; 
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        text-align: center; 
+        align-self: center; 
+        /* FIX: Add position relative for absolute positioning of icons */
+        position: relative; 
+    }
+    
+    /* FIX: Position icons absolutely (outside of text flow) */
+    .testimonial-item .quote-icon-left {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        color: #ccc;
+        float: none; 
+        margin-right: 0; 
+        font-size: 28px; 
+    }
+    
+    /* MODIFIED: Remove absolute positioning for the closing quote to make it flow with the text */
+    .testimonial-item .quote-icon-right {
+        color: #ccc;
+        font-size: 28px;
+        /* Inline flow adjustments: */
+        display: inline; 
+        margin-left: 5px; /* Add small space after the text */
+        vertical-align: middle; /* Helps align with the text line */
+        line-height: 1; /* Ensure it doesn't add extra line height */
+    }
+
+    /* Set testimonial paragraph font to Inter Light (300) */
+    .testimonial-item p {
+        font-weight: 300 !important; 
+        /* Ensure P does not have conflicting overflow/float properties */
+        overflow: visible; 
+    }
+
+    /* Center the person's name and title inside the left-aligned box */
+    .testimonial-item h3, 
+    .testimonial-item h4 {
+        text-align: center;
+    }
+    
+    
+    /* Contact Section (Retained) */
+    .contact {
+        padding: 60px 0; 
+    }
+    
+    /* Horizontal and Centered arrangement for contact info */
+    .info {
+        padding: 30px;
+        width: 100%;
+        /* UPDATED: Add Max-Width and Center */
+        max-width: 900px; /* New Max Width */
+        margin: 0 auto; /* Center the block */
+        /* END UPDATED */
+        background: #fff;
+        box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.12);
+        display: flex;
+        flex-direction: row; 
+        justify-content: center; /* Center remaining items horizontally */
+        flex-wrap: wrap; 
+        gap: 60px; /* Increased gap for better separation */
+    }
+    
+    /* Styling for the icon and label pair (Icon next to text) */
+    .contact-detail-row {
+        display: flex;
+        align-items: center;
+        justify-content: center; /* Center icon/title block */
+        gap: 10px;
+        margin-bottom: 5px;
+    }
+
+    .contact .info h4 {
+        margin-bottom: 0;
+        white-space: nowrap; /* Prevent "Email:" from wrapping */
+    }
+
+    .contact .info i {
+        font-size: 24px;
+        /* Icon color is dark gray/black to match sidebar */
+        color: var(--bg-dark); 
+        line-height: 0;
+    }
+    
+    /* Footer (Retained) */
+    #footer { 
+        padding: 20px 0; 
+        background-color: var(--bg-dark); 
+        color: #fff; 
+    }
+    
+    .footer-content { 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        gap: 30px; 
+        flex-wrap: wrap; 
+    }
+    
+    .footer-logo img { max-width: 100px; height: auto; opacity: 0.8; transition: opacity 0.3s ease; }
+    .footer-logo img:hover { opacity: 1; }
+    .copyright strong { font-weight: 700; }
+    
+    /* Footer Social Links Styling */
+    #footer .social-links a {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%; 
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        transition: all 0.3s; 
+        margin-right: 10px; /* Space between icons */
+
+        /* Requested Default: Same gray as footer (var(--bg-dark)) icon, fine white border, no background */
+        color: #fff; 
+        background: transparent; 
+        border: 1px solid #fff; 
+    }
+
+    /* UPDATED: Reverse colors on mouseover (Gray icon on White background) */
+    #footer .social-links a:hover {
+        background: #fff; /* White background */
+        border-color: #fff;
+        color: var(--bg-dark); /* Dark Gray icon */
+    }
+    
+    /* Utility Classes and Responsive Tweaks (Retained) */
+    .d-flex { display: flex; }
+    .flex-column { flex-direction: column; }
+    .align-items-stretch { align-items: stretch; }
+    .text-center { text-align: center; }
+    .img-fluid { max-width: 100%; height: auto; }
+    .text-light { color: #fff !important; }
+    .justify-content-between { justify-content: space-between; }
+    .align-items-center { align-items: center; }
+    
+    @media (max-width: 768px) {
+        .tagline-area {
+            gap: 15px;
+            flex-direction: column; 
+            align-items: flex-start;
+        }
+        
+        .tagline-line-1 {
+            font-size: 1.2rem;
+        }
+        .tagline-line-2 {
+            font-size: 0.9rem;
+        }
+        
+        /* Stack footer items on mobile */
+        .footer-content {
+            flex-direction: column;
+            gap: 10px;
+        }
+    }
+    
+    /* Back to Top Button Styling (Retained) */
+    .back-to-top {
+      position: fixed;
+      visibility: hidden;
+      opacity: 0;
+      right: 15px;
+      bottom: 15px;
+      z-index: 99999;
+      background: var(--bg-dark); 
+      width: 44px;
+      height: 44px;
+      border-radius: 50px;
+      transition: all 0.4s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .back-to-top i {
+      font-size: 24px;
+      color: #fff;
+      line-height: 0;
+    }
+
+    .back-to-top:hover {
+      background: #fff; 
+    }
+    
+    .back-to-top:hover i {
+      color: var(--bg-dark); 
+    }
+    
+    .back-to-top.active {
+      visibility: visible;
+      opacity: 1;
+    }
+    /* CUSTOM LINK STYLING */
+    .links-list {
             list-style: none;
-            display: flex;
-            gap: 30px;
+            padding: 0;
+            margin: 10px auto 0 auto; /* Center the list itself */
+            max-width: 900px;
+            font-size: 1.1rem; /* Slightly larger font size */
+            line-height: 1.8;
         }
-        
-        nav a {
-            color: #1B365D;
-            text-decoration: none;
-            font-weight: 500;
+
+        .links-list li {
+            display: flex; 
+            justify-content: center; /* Center the link block */
+            margin-bottom: 5px;
+        }
+
+        .links-list a {
+            color: var(--charcoal-black); /* Charcoal color: #373737 */
+            font-weight: 700; /* Bold Inter font */
+            text-decoration: none; /* Remove underline */
+            display: flex; /* Use flex to align text and icon inside the link */
+            align-items: center;
             transition: color 0.3s;
         }
-        
-        nav a:hover {
-            color: #3b6bae;
-        }
-        
-        section {
-            position: relative;
-            min-height: 600px;
-            display: flex;
-            align-items: center;
-            background-size: cover;
-            background-position: center;
-        }
-        
-        section .container {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-        }
-        
-        .intro-section {
-            margin-top: 130px;
-            padding: 120px 0 80px;
-            background: url('assets/img/GSD/GSD-Leaders-02.png');
-            background-size: cover;
-            background-position: center;
-            opacity: 0;
-            transition: opacity 3s ease-out;
-        }
-        
-        .intro-section.bg-animate {
-            opacity: 1;
-        }
-        
-        .intro-section::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 50%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.75);
-            z-index: 1;
-        }
-        
-        #about {
-            background: url('assets/img/GSD/GSD-Leaders-01.png');
-            background-size: cover;
-            background-position: center;
-            padding: 80px 0;
-            opacity: 0;
-            transition: opacity 3s ease-out;
-        }
-        
-        #about.bg-animate {
-            opacity: 1;
-        }
-        
-        #about::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 50%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.75);
-            z-index: 1;
-        }
-        
-        #services {
-            background: #f9f9f9;
-            padding: 80px 0 120px;
-            min-height: 600px;
-        }
-        
-        #team {
-            background-color: #87473E;
-            padding: 80px 0;
-        }
-        
-        #contact {
-            background-color: #E8E4DF;
-            padding: 80px 0;
-        }
-        
-        .intro-content {
-            max-width: 50%;
-            padding: 0 40px 0 0;
-        }
-        
-        .intro-catchphrase {
-            font-size: 3.2em;
-            font-weight: 800;
-            color: #1B365D;
-            margin-bottom: 30px;
-            line-height: 1.2;
-            letter-spacing: -1px;
-        }
-        
-        .intro-text {
-            font-size: 1.3em;
-            color: #1B365D;
-            line-height: 1.8;
-        }
-        
-        h2 {
-            font-size: 2.5em;
-            margin-bottom: 0px;
-            color: #1B365D;
-            text-align: left;
-        }
-        
-        #team h2 {
-            color: #fff;
-        }
-        
-        .about-content {
-            max-width: 50%;
-            padding: 0 40px 0 0;
-        }
-        
-        .about-text h3 {
-            color: #87473E;
-            margin: 20px 0 10px;
-            font-size: 1.5em;
-        }
-        
-        .about-text p {
-            margin-bottom: 15px;
-            line-height: 1.8;
+
+        .links-list a:hover {
+            color: #555555; /* Slightly lighter charcoal on hover */
         }
 
-        /* Services Section Styles */
-        .services-infographic {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px 20px 80px;
+        .links-list a i {
+            font-size: 1.2rem;
+            margin-left: 8px; /* Space between text and arrow */
+            line-height: 0;
+            transition: transform 0.3s;
         }
         
-        .services-top {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            width: 100%;
-            margin-bottom: 80px;
-            min-height: 400px;
-        }
-        
-        .donut-container {
-            position: relative;
-            width: 350px;
-            height: 350px;
-            flex-shrink: 0;
-            margin-bottom: 0;
-        }
-        
-        .donut-svg {
-            width: 100%;
-            height: 100%;
-        }
-        
-        .donut-section {
-            opacity: 0;
-        }
-        
-        .donut-container.animate .donut-section-1 {
-            animation: sectionFadeIn 2s ease-out 0.3s forwards;
-        }
-        
-        .donut-container.animate .donut-section-2 {
-            animation: sectionFadeIn 2s ease-out 2.3s forwards;
-        }
-        
-        .donut-container.animate .donut-section-3 {
-            animation: sectionFadeIn 2s ease-out 4.3s forwards;
-        }
-        
-        @keyframes sectionFadeIn {
-            to { opacity: 1; }
-        }
-        
-        .donut-container.animate .donut-svg {
-            animation: none;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        .donut-icon {
-            opacity: 0;
-        }
-        
-        .donut-container.animate .donut-icon.animate-1 {
-            animation: iconFadeIn 2s ease-out 0.3s forwards;
-        }
-        
-        .donut-container.animate .donut-icon.animate-2 {
-            animation: iconFadeIn 2s ease-out 2.3s forwards;
-        }
-        
-        .donut-container.animate .donut-icon.animate-3 {
-            animation: iconFadeIn 2s ease-out 4.3s forwards;
-        }
-        
-        @keyframes iconFadeIn {
-            to { opacity: 1; }
-        }
-        
-        .service-block {
-            position: absolute;
-            max-width: 280px;
-            opacity: 0;
-        }
-        
-        .service-block h3 {
-            font-size: 1.4em;
-            margin-bottom: 12px;
-            font-weight: 700;
-            white-space: nowrap;
-        }
-        
-        .service-block p {
-            line-height: 1.5;
-            font-size: 0.95em;
-        }
-        
-        .service-block-left {
-            left: -320px;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-        
-        .donut-container.animate .service-block-left {
-            animation: slideFromLeft 0.6s ease-out 2.9s forwards;
-        }
-        
-        .service-block-left h3,
-        .service-block-left p {
-            color: #1B365D;
-        }
-        
-        @keyframes slideFromLeft {
-            from {
-                left: -400px;
-                opacity: 0;
-            }
-            to {
-                left: -320px;
-                opacity: 1;
-            }
-        }
-        
-        .service-block-right {
-            right: -350px;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-        
-        .donut-container.animate .service-block-right {
-            animation: slideFromRight 0.6s ease-out 4.9s forwards;
-        }
-        
-        .service-block-right h3,
-        .service-block-right p {
-            color: #87473E;
-        }
-        
-        @keyframes slideFromRight {
-            from {
-                right: -430px;
-                opacity: 0;
-            }
-            to {
-                right: -350px;
-                opacity: 1;
-            }
-        }
-        
-        .service-block-bottom {
-            text-align: center;
-            max-width: 280px;
-            width: 280px;
-            padding: 0 20px;
-            opacity: 0;
-            margin-top: 650px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .services-infographic.animate .service-block-bottom {
-            animation: fadeInBottom 0.6s ease-out 6.9s forwards;
-        }
-        
-        @keyframes fadeInBottom {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .service-block-bottom h3,
-        .service-block-bottom p {
-            color: #6c5e44;
-
-            
-        }
-        .service-block h3 {
-    font-size: 1.4em;
-    margin-bottom: 12px;
-    font-weight: 700;
-    white-space: nowrap;
-}
-        .connector-line {
-            position: absolute;
-            stroke-dasharray: 200;
-            stroke-dashoffset: 200;
-        }
-        
-        .donut-container.animate .connector-left {
-            animation: drawLine 0.4s ease-out 3.5s forwards;
-        }
-        
-        .donut-container.animate .connector-right {
-            animation: drawLine 0.4s ease-out 5.5s forwards;
-        }
-        
-        .donut-container.animate .connector-bottom {
-            animation: drawLine 0.4s ease-out 7.5s forwards;
-        }
-        
-        @keyframes drawLine {
-            to {
-                stroke-dashoffset: 0;
-            }
-        }
-        
-        .team-grid {
-            display: flex;
-            gap: 60px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        .team-member {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            align-items: center;
-            text-align: center;
-            max-width: 450px;
-        }
-        
-        .team-photo {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            overflow: hidden;
-            background: #f0f0f0;
-        }
-        
-        .team-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .team-photo.placeholder {
-            border: 3px dashed #ccc;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999;
-            font-size: 14px;
-            background: white;
-        }
-        
-        .team-member h3 {
-            color: #fff;
-            margin-bottom: 5px;
-        }
-        
-        .team-member .title {
-            color: #f0f0f0;
-            font-style: italic;
-            margin-bottom: 10px;
-        }
-        
-        .team-member .email {
-            color: #fff;
-            font-size: 0.9em;
-        }
-        
-        .team-member .email a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        
-        .contact-intro {
-            margin-bottom: 30px;
-            max-width: 100%;
-        }
-        
-        .contact-intro h3 {
-            color: #87473E;
-            font-size: 1.8em;
-            margin-bottom: 15px;
-        }
-        
-        .contact-intro p {
-            color: #1B365D;
-            line-height: 1.8;
-        }
-        
-        /* Two-column form layout for desktop */
-        .form-wrapper {
-            max-width: 900px;
-            margin: auto;
-            padding: 1.5rem;
-            font-family: 'Avenir', 'Nunito', sans-serif;
-            background: #f8f8f8;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        
-        .form-header {
-            text-align: center;
-            color: #87473E;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-        
-        .form-intro {
-            text-align: left;
-            color: #555;
-            font-size: 1rem;
-            line-height: 1.5;
-            margin-bottom: 1.5rem;
-        }
-        
-        #gsdForm {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-        
-        .form-field {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .form-field.full-width {
-            grid-column: 1 / -1;
-        }
-        
-        #gsdForm label {
-            font-weight: 600;
-            color: #1B365D;
-            margin-bottom: 5px;
-        }
-        
-        #gsdForm input,
-        #gsdForm textarea,
-        #gsdForm select { /* Added select element here */
-            width: 100%;
-            padding: 10px;
-            margin: 6px 0;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 1em;
-            font-family: inherit;
-        }
-        
-        #gsdForm input:focus,
-        #gsdForm textarea:focus,
-        #gsdForm select:focus {
-            outline: none;
-            border-color: #6c6c6c;
-        }
-        
-        #gsdForm textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-        
-        #gsdForm button {
-            background: #87473E;
-            color: #fff;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 600;
-            transition: background 0.3s;
-        }
-        
-        #gsdForm button:hover {
-            background: hsl(7, 66%, 59%);
-        }
-        
-        .required-mark {
-            color: #87473E;
-        }
-        
-        #thankyou {
-            display: none;
-            text-align: center;
-            color: #1a4d8f;
-            font-weight: 600;
-            margin-top: 1rem;
-        }
-        
-        #errorMessage {
-            display: none;
-            text-align: center;
-            color: #87473E;
-            font-weight: 600;
-            margin-top: 1rem;
+        .links-list a:hover i {
+            transform: translateX(4px); /* Subtle hover effect on the arrow */
         }
 
-        footer {
-            background: #1B365D;
-            color: white;
-            text-align: center;
-            padding: 30px 0;
-            position: relative;
-        }
-        
-        .footer-content {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            position: relative;
-        }
-        
-        .footer-designer {
-            position: absolute;
-            left: 40px;
-            color: #8BA9CC;
-            text-decoration: none;
-            font-size: 0.85em;
-            opacity: 0.7;
-            transition: opacity 0.3s;
-        }
-        
-        .footer-designer:hover {
-            opacity: 0.9;
-        }
-        
-        .return-to-top {
-            position: absolute;
-            right: 40px;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            transition: opacity 0.3s;
-        }
-        
-        .return-to-top:hover {
-            opacity: 0.7;
-        }
-        
-        .footer-icon {
-            width: 50px;
-            height: 50px;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 160px;
-        }
-        
-        /* Mobile service blocks - hidden on desktop */
-        .service-blocks-mobile {
-            display: none;
-        }
-
-        /* NEW ANIMATIONS FOR INTRO, ABOUT, TEAM, AND CONTACT SECTIONS */
-        
-        /* Intro Section Animation */
-        .intro-content .intro-catchphrase {
-            opacity: 0;
-            transform: translateX(-80px);
-            transition: opacity 3s ease-out, transform 3s ease-out;
-        }
-        
-        .intro-content.animate-in .intro-catchphrase {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        
-        .intro-content .intro-text {
-            opacity: 0;
-            transform: translateX(-80px);
-            transition: opacity 1.2s ease-out, transform 1.2s ease-out;
-        }
-        
-        .intro-content.animate-in .intro-text {
-            opacity: 1;
-            transform: translateX(0);
-            transition-delay: 2.5s;
-        }
-        
-        /* About Section Animation */
-        .about-content .about-text h3,
-        .about-content .about-text p {
-            opacity: 0;
-            transform: translateX(-80px);
-            transition: opacity 1.2s ease-out, transform 1.2s ease-out;
-        }
-        
-        .about-content.animate-in .about-text h3:nth-of-type(1),
-        .about-content.animate-in .about-text p:nth-of-type(1) {
-            opacity: 1;
-            transform: translateX(0);
-            transition-delay: 0s;
-        }
-        
-        .about-content.animate-in .about-text h3:nth-of-type(2),
-        .about-content.animate-in .about-text p:nth-of-type(2) {
-            opacity: 1;
-            transform: translateX(0);
-            transition-delay: 2s;
-        }
-        
-        .about-content.animate-in .about-text h3:nth-of-type(3),
-        .about-content.animate-in .about-text p:nth-of-type(3) {
-            opacity: 1;
-            transform: translateX(0);
-            transition-delay: 4s;
-        }
-        
-        /* Team Section Animation */
-        .team-member {
-            opacity: 0;
-            transform: translateX(-80px);
-            transition: opacity 1.2s ease-out 1s, transform 1.2s ease-out 1s;
-        }
-        
-        .team-member.animate-in {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        
-        /* Second team member slides in from right */
-        .team-member:nth-child(2) {
-            transform: translateX(80px);
-        }
-        
-        .team-member:nth-child(2).animate-in {
-            transform: translateX(0);
-        }
-        
-        /* Contact Section Animation */
-        .form-wrapper {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 1.4s ease-out 0.7s, transform 1.4s ease-out 0.7s;
-        }
-        
-        .form-wrapper.animate-in {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        @media (max-width: 1024px) {
-            .services-infographic {
-                padding: 20px 20px 100px;
-            }
-            
-            .service-block-left {
-                left: -280px;
-                max-width: 240px;
-            }
-            
-            .service-block-right {
-                right: -300px;
-                max-width: 240px;
-            }
-            
-            .service-block h3 {
-                font-size: 1.2em;
-            }
-            
-            .service-block p {
-                font-size: 0.9em;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            html {
-                scroll-padding-top: 180px;
-            }
-            
-            section {
-                min-height: auto;
-            }
-            
-            .intro-section {
-                padding: 100px 0 60px;
-            }
-            
-            .intro-section::after,
-            #about::after {
-                width: 100%;
-            }
-            
-            .header-content {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 15px;
-            }
-            
-            .intro-content, .about-content, .contact-intro {
-                max-width: 100%;
-            }
-            
-            .intro-catchphrase {
-                font-size: 1.8em;
-                line-height: 1.3;
-            }
-            
-            .intro-text {
-                font-size: 1.1em;
-            }
-            
-            h2 {
-                font-size: 2em;
-                margin-bottom: 30px;
-            }
-            
-            /* Services Section Mobile */
-            #services {
-                padding: 60px 0;
-            }
-            
-            .services-infographic {
-                padding: 20px;
-            }
-            
-            .services-top {
-                display: block;
-                margin-bottom: 40px;
-                min-height: auto;
-            }
-            
-            .donut-container {
-                width: 280px;
-                height: 280px;
-                margin: 0 auto 40px;
-                position: relative;
-            }
-            
-            .connector-line {
-                display: none;
-            }
-            
-            /* Hide desktop service blocks on mobile */
-            .service-block-left,
-            .service-block-right,
-            .service-block-bottom {
-                display: none !important;
-            }
-            
-            /* Show mobile service blocks */
-            .service-blocks-mobile {
-                display: block;
-                width: 100%;
-            }
-            
-            .service-block-mobile {
-                width: 100%;
-                padding: 0 20px;
-                margin-bottom: 30px;
-                text-align: center;
-            }
-            
-            .service-block-mobile h3 {
-                font-size: 1.4em;
-                margin-bottom: 12px;
-                font-weight: 700;
-            }
-            
-            .service-block-mobile p {
-                line-height: 1.5;
-                font-size: 0.95em;
-            }
-            
-            .service-block-mobile.blue h3,
-            .service-block-mobile.blue p {
-                color: #1B365D;
-            }
-            
-            .service-block-mobile.burgundy h3,
-            .service-block-mobile.burgundy p {
-                color: #87473E;
-            }
-            
-            .service-block-mobile.tan h3,
-            .service-block-mobile.tan p {
-                color: #6c5e44;
-            }
-            
-            .team-grid {
-                gap: 40px;
-            }
-            
-            .team-member {
-                max-width: 100%;
-            }
-            
-            /* Form mobile layout - single column */
-            #gsdForm {
-                grid-template-columns: 1fr;
-            }
-            
-            .form-field.full-width {
-                grid-column: 1;
-            }
-            
-            /* FIX: Apply a max-width to the form wrapper to keep it within the container's padding */
-            .form-wrapper {
-                max-width: 100%; 
-                margin: 0; 
-                padding: 1.5rem; 
-            }
-            
-            /* FIX: Ensure form inputs/textarea/select/button take up full available width minus padding */
-            #gsdForm input,
-            #gsdForm textarea,
-            #gsdForm select,
-            #gsdForm button {
-                width: 100%;
-            }
-            
-            /* NEW FIX: Force dark blue color on select element text for mobile browsers */
-            #gsdForm select {
-                color: #1B365D !important;
-            }
-            
-            .return-to-top {
-                position: static;
-                transform: none;
-                margin-top: 20px;
-            }
-            
-            .footer-designer {
-                position: static;
-                display: block;
-                margin-bottom: 10px;
-            }
-
-            #contact .container {
-                padding: 0 20px;
-            }
-        }
-        
-    </style>
+  </style>
 </head>
-<body>
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo-space"><img src="assets/img/GSD/GSD-Leaders-Inc-logo.png" alt="GSD Leaders, Inc."></div>
-                <nav>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#team">Team</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </header>
 
-    <section class="intro-section" id="home">
-        <div class="container">
-            <div class="intro-content" id="introContent">
-                <h2 class="intro-catchphrase">GSD Leaders: <br>Where Strategic Planning Meets Decisive Action</h2>
-                <p style="padding-bottom: 24px" class="intro-text">Real change happens when strategic planning combines with decisive action.</p> 
-                <p class="intro-text">From immediate challenges to long&#8209;term transformation, we work with you to build measurable results. Grounded in research and experience, our approach strengthens your team's capacity and builds adaptive systems that&nbsp;last.</p>
-            </div>
+<body itemscope itemtype="http://schema.org/Person">
+  
+  <main id="main">
+
+    <div id="main-content-header">
+      <div class="container d-flex justify-content-between align-items-center">
+        <div class="tagline-area">
+          <div class="logo-banner-logo">
+            <a href="index.html" title="Go to Home Page">
+              <img src="assets/img/Jobes-Studio-logo.png" alt="Jobes Studio Brand Logo" class="img-fluid">
+            </a>
+          </div>
+          
+          <div class="tagline-block">
+            <h2 class="tagline-line-1" itemprop="jobTitle">Creative design solutions</h2>
+            <h3 class="tagline-line-2" itemprop="description">that elevate your brand</h3>
+          </div>
         </div>
+        
+        <nav id="navbar" class="horizontal-nav-in-header">
+          <ul>
+            <li><a href="#portfoio" class="scrollto active">Portfolio</a></li>
+            <li><a href="#about" class="scrollto">About</a></li>
+            <li><a href="#testimonials" class="scrollto">Testimonials</a></li>
+            <li><a href="#contact" class="scrollto">Contact</a></li>
+          </ul>
+        </nav>
+        
+        <button type="button" class="mobile-nav-toggle-header" id="mobile-nav-toggle-header" title="Toggle Menu">
+            <i class="bi bi-list"></i>
+        </button>
+      </div>
+    </div>
+    
+    <section class="about-section">
+      <div id="about"></div>
+      
+      <div class="container">
+          <div class="about-teaser">
+              <p>Jason Jobes is a passionate and imaginative multimedia designer with 15 years of experience bringing brands to life across digital, print, and video. Based in the San Francisco Bay Area, he specializes in crafting compelling visual design and building distinctive brand identities that drive meaningful engagement.</p>
+              
+              <a href="#" class="read-more-btn" id="read-more-btn">
+                  <span>View more about my background</span> <i class="bi bi-chevron-down"></i>
+              </a>
+          </div>
+          
+          <div class="accordion-content" id="about-accordion-content">
+              
+              <div class="centered-content-wrapper">
+                  <div class="row d-flex">
+                      <div style="flex: 1 1 100%; padding: 0 15px;">
+                          <div class="portfolio-info" style="margin-top: 10px; margin-bottom: 20px; float: left; margin-right: 20px; max-width: 300px;">
+                              <img style="width: 100%; height: auto;" src="assets/img/about/Jason-Jobes-Portrait-circle-white-bk.png" alt="Jason Jobes">
+                              <p style="padding-bottom: 0px; padding-top: 15px; text-align: center;">
+                                  To learn more, please feel free to view my 
+                                  <a style="font-weight: 700; color: #373737;" href="https://www.linkedin.com/in/jason-jobes/" target="_blank">LinkedIn profile</a>.
+                              </p>
+                          </div>
+  
+                          <h3 style="text-align: left; margin-top: 10px; margin-bottom: 20px;">Jason's Background in Art and Design</h3>
+  
+                          <p>My foundation lies in art, as I began as a painter and sketch artist who won numerous competitions in my youth. After earning a bachelor’s degree in graphic design, I launched my career at The Napa Valley Publishing Company, where I created impactful print advertisements for newspapers and magazines. My background also includes working with cross-functional teams at Bio-Rad Laboratories as an intermediate art director, where I led the design and execution of tradeshow banners, posters, web pages, microsites, infographics, technical illustrations, and video presentations for multiple science&nbsp;divisions.</p>
+                          
+                          <p>As a freelance designer, I work with musicians, entrepreneurs, and a variety of other clients to create distinctive brand identities and marketing materials across web and print design. With experience in both print and digital media, including video, I take a creative approach to crafting visually compelling designs that strengthen recognition and&nbsp;engagement.</p>
+  
+                          <div style="clear: both;"></div> 
+  
+                          <h3 style="text-align: center; margin-top: 30px; margin-bottom: 20px;">Featured Artwork by Jason Jobes</h3>
+                      </div>
+                      
+                      <div style="flex: 1 1 100%; padding: 0 15px;">
+                          <div class="stagnant-grid">
+                              <button type="button" class="open-modal-btn" data-image="assets/img/about/car-paintings.png" data-title="Classic car acrylic paintings">
+                                  <img src="assets/img/about/car-paintings.png" alt="Classic car acrylic paintings">
+                                  <p><strong>Classic car acrylic paintings</strong></p>
+                              </button>
+                              <button type="button" class="open-modal-btn" data-image="assets/img/about/human-subject-paintings.png" data-title="Human subject acrylic paintings">
+                                  <img src="assets/img/about/human-subject-paintings.png" alt="Human subject acrylic paintings">
+                                  <p><strong>Human subject acrylic paintings</strong></p>
+                              </button>
+                              <button type="button" class="open-modal-btn" data-image="assets/img/about/human-subject-paintings-01.png" data-title="Human subject acrylic paintings">
+                                  <img src="assets/img/about/human-subject-paintings-01.png" alt="Human subject acrylic paintings">
+                                  <p><strong>Human subject acrylic paintings</strong></p>
+                              </button>
+                              <button type="button" class="open-modal-btn" data-image="assets/img/about/pet-portraits.png" data-title="Pet portraits">
+                                  <img src="assets/img/about/pet-portraits.png" alt="Pet portraits">
+                                  <p><strong>Pet portraits</strong></p>
+                              </button>
+                              <button type="button" class="open-modal-btn" data-image="assets/img/about/cartoons-charicatures.png" data-title="Cartoons and charicatures">
+                                  <img src="assets/img/about/cartoons-charicatures.png" alt="Cartoons and charicatures">
+                                  <p><strong>Cartoons and charicatures</strong></p>
+                              </button>
+                          </div>
+                      </div>
+                      </div>
+              </div>
+          </div>
+      </div>
     </section>
 
-    <section id="about">
-        <div class="container">
-            <h2>About Us</h2>
-            <div class="about-content" id="aboutContent">
-                <div class="about-text">
-                    
-                    <h3>What We Do</h3>
-                    <p>We work with school, government, and community leaders and their team members. We develop both short- and long-term plans, and develop the internal capacity needed for lasting change.</p>
-                    
-                    <h3>How We Do It</h3>
-                    <p>We use comprehensive assessments, and work collaboratively to develop an individualized approach grounded in research and practice.</p>
-                    
-                    <h3>Why We Do It</h3>
-                    <p>At GSD Leaders, we are passionate believers in the power of transformational change. We approach our work with joy, understanding, and gratitude for the important work of public service.</p>
-                </div>
-            </div>
-        </div>
+    <section id="portfoio" class="portfolio section-bg" itemscope itemtype="http://schema.org/ItemList">
+      <div class="container">
+
+        <div class="row section-title">
+          </div>
+
+        <div class="portfolio-container">
+          
+          <div class="portfolio-item portfolio-item-wide filter-gsd-leaders" itemprop="itemListElement" itemscope itemtype="http://schema.org/CreativeWork">
+            <a href="GSD-Leaders-website.html" title="View GSD Leaders website design project" itemprop="url"><div class="portfolio-wrap">
+              <img src="assets/img/GSD/GSD-Leaders-main.png" class="img-fluid" alt="GSD Leaders website design thumbnail" itemprop="image">
+              <div class="portfolio-links">
+                GSD LEADERS INC.<span itemprop="name">Website Design</span>
+              </div>
+            </div></a>
+          </div>
+
+          <div class="portfolio-item portfolio-item-narrow filter-logos" itemprop="itemListElement" itemscope itemtype="http://schema.org/CreativeWork">
+            <a href="logos.html" title="View Logo Design" itemprop="url"><div class="portfolio-wrap">
+              <img src="assets/img/logos/logo-webpage.gif" class="img-fluid" alt="Logo Design" itemprop="image">
+              <div class="portfolio-links">
+                LOGO DESIGN<span itemprop="name"></span>
+              </div>
+            </div></a>
+          </div>
+          <div class="portfolio-item portfolio-item-medium filter-michael-ming" itemprop="itemListElement" itemscope itemtype="http://schema.org/CreativeWork">
+            <a href="michael-and-ming-website.html" title="View Michael and Ming website design for YouTube channel project" itemprop="url"><div class="portfolio-wrap">
+              <img src="assets/img/michael-and-ming/michael-and-ming-website.png" class="img-fluid" alt="Michael and Ming website design thumbnail" itemprop="image">
+              <div class="portfolio-links">
+                MICHAEL AND MING <span itemprop="name">YouTube Channel and Website Design</span>
+              </div>
+            </div></a>
+          </div>
+          <div class="portfolio-item portfolio-item-wide filter-bio-rad" itemprop="itemListElement" itemscope itemtype="http://schema.org/CreativeWork">
+            <a href="bay-machinery-corp.html" title="View Bay Machinery Corporation website design project" itemprop="url"><div class="portfolio-wrap">
+              <img src="assets/img/bay-machinery-corp/bay-machinery-corp-website.png" class="img-fluid" alt="Bay Machinery Corporation website design thumbnail" itemprop="image">
+              <div class="portfolio-links">
+                BAY MACHINERY CORPORATION <span itemprop="name">Website Design</span>
+              </div>
+            </div></a>
+          </div>
+          <div class="portfolio-item portfolio-item-narrow filter-bio-rad" itemprop="itemListElement" itemscope itemtype="http://schema.org/CreativeWork">
+            <a href="bio-rad-flyers.html" title="View Bio-Rad flyers and print material" itemprop="url"><div class="portfolio-wrap">
+              <img src="assets/img/bio-rad-flyers/Bio-Rad-flyers-thumb.png" class="img-fluid" alt="Bio-Rad flyers print design thumbnail" itemprop="image">
+              <div class="portfolio-links">
+                BIO-RAD FLYERS <span itemprop="name">Print Design</span>
+              </div>
+            </div></a>
+          </div>
+
+          <div class="portfolio-item portfolio-item-medium filter-bio-rad" itemprop="itemListElement" itemscope itemtype="http://schema.org/CreativeWork">
+            <a href="bio-rad-trade-show-banners.html" title="View Bio-Rad trade show banners design" itemprop="url"><div class="portfolio-wrap">
+              <img src="assets/img/bio-rad-trade-show-banners/ASHG-banner-thumb-new.png" class="img-fluid" alt="Bio-Rad trade show banners design thumbnail" itemprop="image">
+              <div class="portfolio-links">
+                BIO-RAD TRADE SHOW BANNERS <span itemprop="name">Trade Show Graphics</span>
+              </div>
+            </div></a>
+          </div>
+          <div class="portfolio-item portfolio-item-wide filter-bio-rad" itemprop="itemListElement" itemscope itemtype="http://schema.org/CreativeWork">
+            <a href="bio-rad-motion-graphics.html" title="View Bio-Rad motion graphics" itemprop="url"><div class="portfolio-wrap">
+              <img src="assets/img/bio-rad-motion-graphics/Everyblot-thumb-new.png" class="img-fluid" alt="Bio-Rad motion graphics thumbnail" itemprop="image">
+              <div class="portfolio-links">
+                BIO-RAD MOTION GRAPHICS <span itemprop="name">Motion Design</span>
+              </div>
+            </div></a>
+          </div>
+          <div class="portfolio-item portfolio-item-narrow filter-bio-rad" itemprop="itemListElement" itemscope itemtype="http://schema.org/CreativeWork">
+            <a href="Bio-Rad-LP.html" title="View Bio-Rad landing pages design" itemprop="url"><div class="portfolio-wrap">
+              <img src="assets/img/bio-rad-LP/Bio-Rad-LP-thumb.png" class="img-fluid" alt="Bio-Rad landing pages UX/UI design thumbnail" itemprop="image">
+              <div class="portfolio-links">
+                BIO-RAD LANDING PAGES <span itemprop="name">Landing Page Design</span>
+              </div>
+            </div></a>
+          </div>
+
+          <div class="portfolio-item portfolio-item-medium filter-johnsong" itemprop="itemListElement" itemscope itemtype="http://schema.org/CreativeWork">
+            <a href="johnsong-guitello.html" title="View Johnsong Guitello CD artwork" itemprop="url"><div class="portfolio-wrap">
+              <img src="assets/img/guitello-cd/guitello-CD-cover-art.png" class="img-fluid" alt="Johnsong Guitello CD cover art design" itemprop="image">
+              <div class="portfolio-links">
+                GUITELLO CD <span itemprop="name">Packaging Design</span>
+              </div>
+            </div></a>
+          </div>
+          <div class="portfolio-item portfolio-item-wide filter-johnsong" itemprop="itemListElement" itemscope itemtype="http://schema.org/CreativeWork">
+            <a href="visual-approach-to-scales-and-chords-on-guitar.html" title="View Guitar Instruction Book Design" itemprop="url"><div class="portfolio-wrap">
+              <img src="assets/img/johnsong-music/Visual-Approach-to-Scales-and-Chords-on-Guitar-thumb.png" class="img-fluid" alt="A Visual Approach to Scales and Chords on Guitar Book cover design" itemprop="image">
+              <div class="portfolio-links">
+                GUITAR MUSIC INSTRUCTION BOOK <span itemprop="name">Book Design</span>
+              </div>
+            </div></a>
+          </div>
+          <div class="portfolio-item portfolio-item-narrow filter-johnsong" itemprop="itemListElement" itemscope itemtype="http://schema.org/CreativeWork">
+            <a href="johnsong-music-website.html" title="View Johnsong Music website design" itemprop="url"><div class="portfolio-wrap">
+              <img src="assets/img/johnsong-music/johnsong-music-website.png" class="img-fluid" alt="Johnsong Music website design thumbnail" itemprop="image">
+              <div class="portfolio-links">
+                JOHNSONG MUSIC <span itemprop="name">Website Design</span>
+              </div>
+            </div></a>
+          </div>
+          
+          <div class="portfolio-item portfolio-item-medium filter-nvpub" itemprop="itemListElement" itemscope itemtype="http://schema.org/CreativeWork">
+            <a href="nv-publishing.html" title="View Napa Valley Publishing Company brand identity" itemprop="url"><div class="portfolio-wrap">
+              <img src="assets/img/nv-publishing/nv-publishing-thumb.png" class="img-fluid" alt="Napa Valley Publishing Company logo and branding thumbnail" itemprop="image">
+              <div class="portfolio-links">
+                NAPA VALLEY PUBLISHING CO. <span itemprop="name">Ad Design & Brand Identity</span>
+              </div>
+            </div></a>
+          </div>
+          </div>
+
+      </div>
     </section>
 
-    <section id="services">
-        <div class="container">
-            <h2>Our Services</h2>
-            <div class="services-infographic" id="servicesInfographic">
-                <div class="services-top">
-                    <div class="donut-container" id="donutContainer">
-                    <svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible;">
-                        <line class="connector-line connector-left" x1="-30" y1="175" x2="70" y2="175" stroke="#1B365D" stroke-width="2"/>
-                        <line class="connector-line connector-right" x1="400" y1="175" x2="280" y2="175" stroke="#87473E" stroke-width="2"/>
-                        <line class="connector-line connector-bottom" x1="175" y1="365" x2="175" y2="300" stroke="#8C7A5A" stroke-width="2"/>
-                    </svg>
-                    
-                    <svg class="donut-svg" viewBox="0 0 100 100">
-                        <path class="donut-section donut-section-1" d="M 50 10 A 40 40 0 0 0 15.36 70 L 50 50 Z" fill="#1B365D"/>
-                        <path class="donut-section donut-section-2" d="M 50 10 A 40 40 0 0 1 84.64 70 L 50 50 Z" fill="#87473E"/>
-                        <path class="donut-section donut-section-3" d="M 15.36 70 A 40 40 0 0 0 84.64 70 L 50 50 Z" fill="#8C7A5A"/>
-                        <circle cx="50" cy="50" r="0" fill="white"/>
-                        
-                        <image class="donut-icon animate-1" href="assets/img/GSD/Leadership-Coaching-Team-Dev.png" x="20" y="24" width="28" height="28"/>
-                        
-                        <image class="donut-icon animate-2" href="assets/img/GSD/Strategic-Analysis-Planning.png" x="52" y="24" width="28" height="28"/>
-                        
-                        <image class="donut-icon animate-3" href="assets/img/GSD/Project-Management.png" x="36" y="58" width="28" height="28"/>
-                    </svg>
-                    
-                    <div class="service-block service-block-left">
-                        <h3>Leadership Coaching <br>& Team Development</h3>
-                        <p>Leadership isn&rsquo;t theory—it&rsquo;s practice. We build trust, communicate effectively, and move from discussion to action. Whether you&rsquo;re building a new team, navigating change, or strengthening organizational culture, our approach focuses on real progress and lasting&nbsp;growth.</p>
-                    </div>
-                    
-                    <div class="service-block service-block-right">
-                        <h3>Strategic Analysis & Planning</h3>
-                        <p>We help make sense of complexity and set clear direction, combining data-driven insight with grounded, collaborative design. The result: actionable plans that align resources, stakeholders, and outcomes—not just documents that sit on a&nbsp;shelf.</p>
-                    </div>
-                </div>
-                
-                <div class="service-block service-block-bottom">
-                        <h3>Project Management</h3>
-                        <p>Plans only matter if they get implemented. We ensure that key initiatives move forward—on time, on budget, and with accountability. We bring structure, communication, and focus to complex projects so leaders can see real progress and measurable&nbsp;results.</p>
-                    </div>
-                </div>
-                
-                <div class="service-blocks-mobile">
-                    <div class="service-block-mobile blue">
-                        <h3>Leadership Coaching & Team Development</h3>
-                        <p>Leadership isn&rsquo;t theory—it&rsquo;s practice. We build trust, communicate effectively, and move from discussion to action. Whether you&rsquo;re building a new team, navigating change, or strengthening organizational culture, our approach focuses on real progress and lasting&nbsp;growth.</p>
-                    </div>
-                    
-                    <div class="service-block-mobile burgundy">
-                        <h3>Strategic Analysis & Planning</h3>
-                        <p>We help make sense of complexity and set clear direction, combining data-driven insight with grounded, collaborative design. The result: actionable plans that align resources, stakeholders, and outcomes—not just documents that sit on a&nbsp;shelf.</p>
-                    </div>
-                    
-                    <div class="service-block-mobile tan">
-                        <h3>Project Management</h3>
-                        <p>Plans only matter if they get implemented. We ensure that key initiatives move forward—on time, on budget, and with accountability. We bring structure, communication, and focus to complex projects so leaders can see real progress and measurable&nbsp;results.</p>
-                    </div>
-                </div>
-            </div>
+    <section id="testimonials" class="testimonials section-bg" itemscope itemtype="http://schema.org/CollectionPage">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Testimonials</h2>
+          <p>The following are some Bio-Rad Laboratories colleague testimonials, where I worked for 10 years as an Art Director.</p>
         </div>
-    </section>
 
-    <section id="team">
-        <div class="container">
-            <h2>Our Team</h2>
-            <div class="team-grid">
-                <div class="team-member" id="teamMember1">
-                    <div class="team-photo">
-                        <img src="assets/img/GSD/Peter-Parenti.png" alt="Peter I Parenti">
-                    </div>
-                    <div>
-                        <h3>Peter I Parenti, Ed.D</h3>
-                        <p class="title">Founder and CEO</p>
-                        <p class="email"><a style="text-decoration:none" href="mailto:peter@gsdleaders.com">peter@gsdleaders.com</a></p><br>
-                        <p class="email">A graduate from UC Berkeley's Leadership Program, Peter combines his vast experience in public and private service with extensive knowledge in organizational development. <br>For more, visit <a href="https://www.linkedin.com/in/peter-i-parenti-ed-d-5a00b26/">Peter's LinkedIn profile.</a></p>
-                        
-                    </div>
-                </div>
-                <div class="team-member" id="teamMember2">
-                    <div class="team-photo">
-                        <img src="assets/img/GSD/Pamela-VandeKamp.png" alt="Pam VandeKamp, Ed.D.">
-                    </div>
-                    <div>
-                        <h3>Pam VandeKamp, Ed.D.</h3>
-                        <p class="title">Director</p>
-                        <p class="email"><a style="text-decoration:none" href="mailto:pam@gsdleaders.com">pam@gsdleaders.com</a></p><br>
-                        <p class="email">A graduate from UC Berkeley's Leadership Program, Pam combines her vast experience in public and private service with extensive knowledge in organizational development. <br>For more, visit <a href="https://www.linkedin.com/in/pamvandekamp/">Pam's LinkedIn profile.</a></p>
-                       
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        <div class="testimonials-slider"> 
+            <div class="testimonials-wrapper">
 
-    <section id="contact">
-        <div class="container">
-            <h2 style="padding-bottom: 30px">Contact Us</h2>
-            <div class="contact-content">
-                <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap" rel="stylesheet">
-
-                <div class="form-wrapper" id="formWrapper">
-                    <div class="contact-intro">
-                        <h3>Let's Get Things Done—Together</h3>
-                        </div>
-                  <p class="form-intro">
-                    Tell us a bit about you and your goals so we can start shaping real solutions—today&nbsp;and for the&nbsp;future.
+                <div class="testimonial-item" itemprop="review" itemscope itemtype="http://schema.org/Review">
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  <p itemprop="reviewBody">
+                    I've had the pleasure of working with Jason for a number of years in his role as Art Director on our commercial marketing communications team. Jason accomplished key projects in a timely manner, often under tight deadlines. The projects spanned both digital and print assets, and frequently required innovating current processes to meet challenging design briefs. These accomplishments demonstrate his hard work, problem solving and prioritization skills.
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                   </p>
-                
-                  <form id="gsdForm">
-                    <div class="form-field">
-                      <label>Full Name: <span class="required-mark">*</span></label>
-                      <input type="text" name="fullname" required>
-                    </div>
-                    
-                    <div class="form-field">
-                      <label>Email Address: <span class="required-mark">*</span></label>
-                      <input type="email" name="email" required>
-                    </div>
-                    
-                    <div class="form-field">
-                      <label>Organization / Community / Business Name:</label>
-                      <input type="text" name="organization">
-                    </div>
-                    
-                    <div class="form-field">
-                      <label>Phone Number (optional):</label>
-                      <input type="tel" name="phone">
-                    </div>
-                    
-                    <div class="form-field">
-                        <label for="support_select">What kind of support would help most right now? (optional)</label>
-                        <select name="support_type" id="support_select">
-                            <option value="">-- Please Select One --</option>
-                            <option value="leadership_coaching">Leadership coaching and team development</option>
-                            <option value="strategic_planning">Strategic analysis and planning</option>
-                            <option value="project_management">Project management</option>
-                        </select>
-                    </div>
-                    <div class="form-field full-width">
-                      <label>Anything else you want us to know about before we call you back? (optional)</label>
-                      <textarea name="lastingchange" rows="3"></textarea>
-                    </div>
-                    
-                    <div class="form-field full-width">
-                      <button type="submit">Submit</button>
-                    </div>
-                  </form>
-                
-                  <p id="thankyou" style="display: none;">
-                    Thank you! Your message has been sent.
+                  <div itemprop="author" itemscope itemtype="http://schema.org/Person">
+                    <h3 itemprop="name">Ryan Short</h3>
+                    <h4 itemprop="jobTitle">Senior Vice President, Americas Commercial Organization <br /> Bio-Rad Laboratories</h4>
+                  </div>
+                </div>
+
+                <div class="testimonial-item" itemprop="review" itemscope itemtype="http://schema.org/Review">
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  <p itemprop="reviewBody">
+                    I had the opportunity to work alongside Jason for nearly 8 years and he impressed me with his professionalism and efficiency. I found Jason methodical and detail-oriented while delivering visually compelling projects on time. Jason's diverse skill set enabled him to excel at creating content across multiple media types (print, email, web), and he was a valued member of the team.
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                   </p>
-                  <p id="errorMessage" style="display: none; color: #87473E; font-weight: 600; margin-top: 1rem; text-align: center;">
-                    Error! There was an issue submitting your form. Please check your connection and try again.
-                  </p>
+                  <div itemprop="author" itemscope itemtype="http://schema.org/Person">
+                    <h3 itemprop="name">Leanne Huysentruyt</h3>
+                    <h4 itemprop="jobTitle">Associate Director, Revenue Operations <br /> Bio-Rad Laboratories</h4>
+                  </div>
                 </div>
                 
-                <script>
-                const scriptURL = "https://script.google.com/macros/s/AKfycbx58mUcBqxjNA27I27CgLn12UrDho1DV3tDiYyYuV1DmECJRx7oRPQ5c36FyuZK9Ac/exec";
-                const form = document.getElementById("gsdForm");
-                const thankyou = document.getElementById("thankyou");
-                const errorMessage = document.getElementById("errorMessage");
-                
-                form.addEventListener("submit", function(e){
-                  e.preventDefault();
-                
-                  thankyou.style.display = 'none';
-                  errorMessage.style.display = 'none';
+                <div class="testimonial-item" itemprop="review" itemscope itemtype="http://schema.org/Review">
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    <p itemprop="reviewBody">
+                      Jason is an incredible colleague, a world-class talent, and a class act. I had the pleasure of working with Jason over multiple years on many digital campaigns. Jason is creative, thoughtful, very open and responsive to feedback, and a great collaborator. He's very easy to work with and takes initiative. If I had an appropriate opening I would happily have him as a member of my team!
+                      <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                    </p>
+                    <div itemprop="author" itemscope itemtype="http://schema.org/Person">
+                        <h3 itemprop="name">Ian Harwood</h3>
+                        <h4 itemprop="jobTitle">Certified Senior Global Product Manager for Process Chromatography, Bio-Rad Laboratories; PhD, CPM</h4>
+                    </div>
+                </div>
 
-                  const formData = new FormData(form);
-                  
-                  const postBody = new URLSearchParams(formData);
-
-                  fetch(scriptURL, {
-                    method: 'POST',
-                    body: postBody
-                  })
-                  .then(response => {
-                    if (response.ok) {
-                        form.reset();
-                        thankyou.style.display = 'block';
-                    } else {
-                        throw new Error('Network response was not ok.');
-                    }
-                  })
-                  .catch(error => {
-                      console.error('Submission Error:', error);
-                      errorMessage.style.display = 'block'; 
-                  });
-                });
-                </script>
+                <div class="testimonial-item" itemprop="review" itemscope itemtype="http://schema.org/Review">
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    <p itemprop="reviewBody">
+                      I have worked with Jason for several years. In all my interactions with Jason he has been extremely helpful and professional. He has provided excellent work in a timely and efficient manner. He has gone above and beyond to ensure quality and satisfaction.
+                      <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                    </p>
+                    <div itemprop="author" itemscope itemtype="http://schema.org/Person">
+                        <h3 itemprop="name">Ingrid Miller</h3>
+                        <h4 itemprop="jobTitle">Bio-Rad Explorer Program Marketing Manager <br />Bio-Rad Laboratories</h4>
+                    </div>
+                </div>
             </div>
         </div>
+
+      </div>
     </section>
 
-    <footer>
-        <div class="container">
-            <a href="https://www.jobesstudio.com/" target="_blank" rel="noopener noreferrer" class="footer-designer">Designed by Jobes Studio</a>
-            <div class="footer-content">
-                <p>&copy; 2025 GSD Leaders, Inc. All rights reserved.</p>
+    <section id="contact" class="contact">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Have a project in mind?</h2>
+          <p>Let's make it happen. Contact me!</p>
+        </div>
+
+        <div class="row">
+
+          <div class="d-flex align-items-stretch" style="width: 100%;"> 
+            <div style="box-shadow: none !important" class="info">
+              
+              <div class="email" itemprop="email" style="text-align: center;">
+                <div class="contact-detail-row">
+                  <i class="bi bi-envelope"></i>
+                  <h4>Email:</h4>
+                </div>
+                <p>jobesstudio@gmail.com</p>
+              </div>
+
+              <div class="phone" itemprop="telephone" style="text-align: center;">
+                <div class="contact-detail-row">
+                  <i class="bi bi-phone"></i>
+                  <h4>Call:</h4>
+                </div>
+                <p>(707) 227-9078</p>
+              </div>
+
             </div>
-            <a href="#home" class="return-to-top">
-                <img src="assets/img/GSD/GSD-favicon.png" alt="Return to top" class="footer-icon">
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+    
+    <dialog id="image-modal">
+        <div class="modal-content-wrapper">
+            <button id="modal-close-btn" aria-label="Close Modal">&times;</button>
+            <img id="modal-image" src="" alt="">
+            <p id="modal-caption"></p>
+        </div>
+    </dialog>
+    </main>
+
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="assets/img/Jobes-Studio-logo.png" alt="Jobes Studio logo">
+        </div>
+        
+        <div class="social-links">
+            <a href="https://www.facebook.com/jobesstudios" target="_blank" class="facebook" title="Facebook Profile">
+              <i class="bx bxl-facebook"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/jason-jobes/" target="_blank" class="linkedin" title="LinkedIn Profile">
+              <i class="bx bxl-linkedin"></i>
             </a>
         </div>
-    </footer>
+        
+        <div class="copyright">
+          &copy; Copyright 2025<strong><span> Jason Jobes</span></strong>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <a href="#" class="back-to-top" id="back-to-top-btn"><i class="bi bi-arrow-up"></i></a>
 
-    <script>
-        // NEW ANIMATION OBSERVERS FOR INTRO, ABOUT, TEAM, AND CONTACT
-        
-        // Get section elements for background animation
-        const introSection = document.querySelector('.intro-section');
-        const aboutSection = document.getElementById('about');
-        
-        // Create observers for new sections
-        const introContent = document.getElementById('introContent');
-        const aboutContent = document.getElementById('aboutContent');
-        const teamMember1 = document.getElementById('teamMember1');
-        const teamMember2 = document.getElementById('teamMember2');
-        const formWrapper = document.getElementById('formWrapper');
-        
-        // Observer for intro section background
-        const introSectionObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('bg-animate');
-                    introSectionObserver.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
-        
-        // Observer for about section background
-        const aboutSectionObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('bg-animate');
-                    aboutSectionObserver.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
-        
-        // Observer for intro content
-        const introObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-in');
-                    introObserver.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.2
-        });
-        
-        // Observer for about section
-        const aboutObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-in');
-                    aboutObserver.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.2
-        });
-        
-        // Observer for team members
-        const teamObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-in');
-                    teamObserver.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.2
-        });
-        
-        // Observer for contact form
-        const contactObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-in');
-                    contactObserver.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.2
-        });
-        
-        // Observe background sections
-        if (introSection) introSectionObserver.observe(introSection);
-        if (aboutSection) aboutSectionObserver.observe(aboutSection);
-        
-        // Observe new animated elements
-        if (introContent) introObserver.observe(introContent);
-        if (aboutContent) aboutObserver.observe(aboutContent);
-        if (teamMember1) teamObserver.observe(teamMember1);
-        if (teamMember2) teamObserver.observe(teamMember2);
-        if (formWrapper) contactObserver.observe(formWrapper);
-        
-        // ORIGINAL SERVICES SECTION ANIMATION (PRESERVED)
-        const donutContainer = document.getElementById('donutContainer');
-        const servicesInfographic = document.getElementById('servicesInfographic');
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate');
-                    if (entry.target.id === 'donutContainer') {
-                        servicesInfographic.classList.add('animate');
-                    }
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.3
-        });
-        
-        observer.observe(donutContainer); 
-        observer.observe(servicesInfographic);
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      
+      // --- 1. New Tagline Animation (Delayed by 2 seconds) ---
+      const taglineLine2 = document.querySelector('.tagline-line-2');
+      if (taglineLine2) {
+          // Wait 2000ms (2 seconds) after load
+          setTimeout(() => {
+              taglineLine2.classList.add('is-visible');
+          }, 2000); 
+      }
+      
+      // --- 2. About Section Accordion Toggle ---
+      const readMoreBtn = document.getElementById('read-more-btn');
+      const accordionContent = document.getElementById('about-accordion-content');
+      
+      if (readMoreBtn && accordionContent) {
+          readMoreBtn.addEventListener('click', function(e) {
+              e.preventDefault();
+              const isOpen = accordionContent.classList.toggle('open');
+              
+              // Toggle button text and active state
+              readMoreBtn.classList.toggle('active', isOpen);
+              readMoreBtn.querySelector('span').textContent = isOpen ? 'Read less' : 'View more about my background';
+          });
+      }
 
-    </script>
+      // --- 3. Custom Modal/Dialog Implementation (Replaces GLightbox) ---
+      const modal = document.getElementById('image-modal');
+      const modalImage = document.getElementById('modal-image');
+      const modalCaption = document.getElementById('modal-caption');
+      const closeButton = document.getElementById('modal-close-btn');
+      const openModalButtons = document.querySelectorAll('.open-modal-btn');
+      
+      if (modal && modalImage && modalCaption && closeButton && openModalButtons.length > 0) {
+          // Function to open the modal
+          const openModal = (imageSrc, imageTitle) => {
+              modalImage.src = imageSrc;
+              modalImage.alt = imageTitle;
+              modalCaption.textContent = imageTitle;
+              
+              // Use modal.showModal() for proper accessibility and a dedicated backdrop
+              modal.showModal(); 
+              document.body.style.overflow = 'hidden'; // Prevent body scroll when modal is open
+          };
+          
+          openModalButtons.forEach(button => {
+              button.addEventListener('click', function() {
+                  const imageSrc = this.getAttribute('data-image');
+                  const imageTitle = this.getAttribute('data-title');
+                  openModal(imageSrc, imageTitle);
+              });
+          });
+          
+          // Function to close the modal
+          const closeModal = () => {
+              modal.close();
+              document.body.style.overflow = ''; // Restore body scroll
+          };
+          
+          // Close on button click
+          closeButton.addEventListener('click', closeModal);
+
+          // Close when clicking the backdrop (modern behavior for <dialog>)
+          // This uses the dialog element's border box coordinates to determine if the click was *outside* the content.
+          modal.addEventListener('click', (event) => {
+              const rect = modal.getBoundingClientRect();
+              const isInDialog = (rect.top <= event.clientY && event.clientY <= rect.bottom &&
+                                  rect.left <= event.clientX && event.clientX <= rect.right);
+              if (!isInDialog) {
+                  closeModal();
+              }
+          });
+          
+          // Close on escape key press (native <dialog> behavior, but good to ensure)
+          modal.addEventListener('cancel', (event) => {
+              event.preventDefault(); // Prevent default action (may close without restoring scroll)
+              closeModal();
+          });
+      }
+      // --- END Custom Modal/Dialog Implementation ---
+      
+      
+      // --- 4. Portfolio Grid Animation (Now only runs on Desktop/Tablet) ---
+      // Only run the IntersectionObserver logic if screen width is 992px or wider
+      if (window.innerWidth >= 992) {
+        // Observer options define when the element is considered visible
+        const observerOptionsFirstRow = { threshold: 0.1, rootMargin: '0px 0px -100px 0px' };
+        const observerOptionsSecondRow = { threshold: 0.5, rootMargin: '0px' };
+        const observerOptionsThirdRow = { threshold: 0.1, rootMargin: '0px 0px -100px 0px' };
+
+        const createObserver = (options) => {
+          return new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
+              }
+            });
+          }, options);
+        };
+
+        // Create observers for each row of the grid
+        const observerFirstRow = createObserver(observerOptionsFirstRow);
+        const observerSecondRow = createObserver(observerOptionsSecondRow);
+        const observerThirdRow = createObserver(observerOptionsThirdRow);
+
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        
+        // Assign items to the appropriate observer based on their index
+        // The index logic is based on the new 12-item grid structure (1, 2-3, 4, 5-6, 7, 8-9, 10, 11-12).
+        portfolioItems.forEach((item, index) => {
+          // Index starts at 0, nth-child starts at 1
+          const n = index + 1;
+          
+          // Rows 1, 2, 3, 4 (Items 1-6)
+          if (n <= 6) { 
+            observerFirstRow.observe(item);
+          } 
+          // Rows 5, 6 (Items 7-9)
+          else if (n <= 9) { 
+            observerSecondRow.observe(item);
+          } 
+          // Rows 7, 8 (Items 10-12)
+          else { 
+            observerThirdRow.observe(item);
+          }
+        });
+      }
+      
+      
+      // Basic smooth scrolling for internal links
+      document.querySelectorAll('a.scrollto').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+      });
+      
+      // --- 5. Automatic Testimonial Slider (Logic adjusted for 2-up) ---
+      const slider = document.querySelector('.testimonials-slider');
+      const wrapper = document.querySelector('.testimonials-wrapper');
+      const items = document.querySelectorAll('.testimonial-item');
+      
+      if (slider && wrapper && items.length > 0) {
+        let currentIndex = 0;
+        const intervalTime = 5000; 
+        
+        function updateSlider() {
+            // Get the computed width of a single item, including its margins
+            const itemStyle = getComputedStyle(items[0]);
+            // itemWidth = item's actual width + left margin + right margin
+            const itemWidth = items[0].offsetWidth + (parseFloat(itemStyle.marginLeft) * 2);
+
+            // Determine how many items to show at once (1 for mobile, 2 for desktop/tablet)
+            let itemsPerView = 1;
+            if (window.innerWidth > 768) {
+                itemsPerView = 2; // Show 2 items at once for wider screens
+            }
+
+            // The effective number of items we can scroll to before wrapping
+            const scrollableItems = items.length - itemsPerView + 1;
+            
+            // If the screen is wide enough to show all items, don't scroll
+            if (scrollableItems <= 1) {
+                wrapper.style.transform = `translateX(0px)`;
+                return; 
+            }
+            
+            // Advance the index, wrapping around when we reach the end of the scrollable range
+            currentIndex = (currentIndex % scrollableItems); 
+
+            // Calculate the total offset
+            let offset = -currentIndex * itemWidth;
+            
+            // Calculate the horizontal offset needed to center the visible set
+            const centerShift = (slider.offsetWidth - (itemWidth * itemsPerView)) / 2;
+            offset += centerShift + parseFloat(itemStyle.marginLeft); 
+
+            wrapper.style.transform = `translateX(${offset}px)`;
+
+            // Prepare for the next slide (increment index after transform)
+            currentIndex = (currentIndex + 1);
+        }
+
+        setTimeout(updateSlider, 10); 
+        setInterval(updateSlider, intervalTime);
+        
+        const resizeObserver = new ResizeObserver(entries => {
+            // Reset index to 0 when resizing to ensure centering is correct
+            currentIndex = 0; 
+            updateSlider();
+        });
+
+        resizeObserver.observe(slider); 
+      }
+      
+      // --- 6. Back to Top Button Logic (Fixed visibility) ---
+      const backToTop = document.querySelector('.back-to-top');
+      if (backToTop) {
+        const toggleBackToTop = () => {
+          // Add 'active' class to make it visible and opaque
+          if (window.scrollY > 100) {
+            backToTop.classList.add('active');
+          } else {
+            backToTop.classList.remove('active');
+          }
+        };
+        
+        window.addEventListener('load', toggleBackToTop);
+        document.addEventListener('scroll', toggleBackToTop);
+        
+        backToTop.addEventListener('click', function(e) {
+          e.preventDefault();
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        });
+      }
+      
+      // --- 7. New Header Mobile Navigation Toggle ---
+      const headerToggle = document.getElementById('mobile-nav-toggle-header');
+      const headerNav = document.querySelector('.horizontal-nav-in-header');
+      
+      if (headerToggle && headerNav) {
+          // Toggle the menu on button click
+          headerToggle.addEventListener('click', function() {
+              headerNav.classList.toggle('nav-active');
+              // Toggle the icon between 'list' and 'x' (optional, but good practice)
+              const icon = headerToggle.querySelector('i');
+              if (headerNav.classList.contains('nav-active')) {
+                  icon.classList.remove('bi-list');
+                  icon.classList.add('bi-x');
+              } else {
+                  icon.classList.remove('bi-x');
+                  icon.classList.add('bi-list');
+              }
+          });
+          
+          // Close the menu if a navigation link is clicked (mobile only)
+          document.querySelectorAll('.horizontal-nav-in-header a.scrollto').forEach(link => {
+              link.addEventListener('click', function() {
+                  // Only close if it is a mobile menu (check screen width for < 992px)
+                  if (window.innerWidth < 992) {
+                      headerNav.classList.remove('nav-active');
+                      // Reset icon
+                      const icon = headerToggle.querySelector('i');
+                      icon.classList.remove('bi-x');
+                      icon.classList.add('bi-list');
+                  }
+              });
+          });
+      }
+    });
+  </script>
+
 </body>
+
 </html>
